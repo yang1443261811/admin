@@ -125,7 +125,10 @@
                                         <div data-v-8181b19c="" class="col-sm-5">
                                             <!---->
                                             <div data-v-8181b19c="" class="cover-upload pull-right">
-                                                <a data-v-8181b19c="" href="javascript:;" class="btn btn-success file"><span data-v-8181b19c="">Upload New File</span> <input data-v-8181b19c="" type="file" /></a>
+                                                <a data-v-8181b19c="" href="javascript:;" class="btn btn-success file">
+                                                    <span data-v-8181b19c="">Upload New File</span>
+                                                    <input data-v-8181b19c="" type="file" id="fileupload" data-url="/files/upload" name="image" multiple/>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -199,9 +202,17 @@
     </div>
 </div>
 <script src="/js/common.js"></script>
+<script src="/js/jquery.ui.widget.js"></script>
+<script src="/js/jquery.iframe-transport.js"></script>
+<script src="/js/jquery.fileupload.js"></script>
+
 <script>
     $(document).ready(function() {
-        $('.js-example-basic-multiple').select2();
+        $('.js-example-basic-multiple').select2({
+            placeholder: "请选择",
+            placeholderOption: "first",
+            allowClear: true
+        });
         $('.js-example-basic-single').select2();
 
     });
@@ -209,6 +220,14 @@
     var E = window.wangEditor;
     var editor2 = new E('#editor');
     editor2.create();
+
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            console.log(data.result.file);
+        }
+    });
+
 </script>
 </body>
 </html>

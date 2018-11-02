@@ -27,3 +27,4 @@ Route::get('links', 'LinksController@index');
 Route::get('links/create', 'LinksController@create');
 Route::get('visitors', 'VisitorsController@index');
 Route::get('system', 'SystemController@index');
+Route::post('files/upload', 'FilesController@upload');
