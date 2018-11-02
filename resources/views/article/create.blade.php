@@ -22,6 +22,46 @@
     </script>
     <style>
         [v-cloak] { display: none; }
+        .select2-container--default .select2-selection--multiple {
+            border: 1px solid #ced4da;
+        }
+        .select2-container .select2-selection--multiple {
+            min-height: 38px;
+        }
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border: solid #ced4da 1px;
+            outline: 0;
+        }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            color:white;
+            background-color: #41b883;
+            border: 1px solid #41b883;
+        }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #41b883;
+            color: white;
+        }
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ced4da;
+        }
+        .select2-container .select2-selection--single {
+            height: 38px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 38px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 35px;
+        }
+        .select2-container--open .select2-dropdown--below {
+            z-index: 1000000;
+        }
+        .select2-dropdown {
+            border: 1px solid #ced4da;
+        }
+        .select2-container--default .select2-search--dropdown .select2-search__field {
+            border: 1px solid #ced4da;
+        }
     </style>
     <script>
         window.Laravel = {
@@ -162,6 +202,8 @@
 <script>
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();
+        $('.js-example-basic-single').select2();
+
     });
 
     var E = window.wangEditor;
