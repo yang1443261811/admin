@@ -123,7 +123,7 @@
                                             <input data-v-8181b19c="" type="text" id="page_image" name="page_image" placeholder="ex: /uploads/default_avatar.png" class="form-control" />
                                         </div>
                                         <div data-v-8181b19c="" class="col-sm-5">
-                                            <!---->
+                                            <img src="" alt="" width="35" height="35" class="cover">
                                             <div data-v-8181b19c="" class="cover-upload pull-right">
                                                 <a data-v-8181b19c="" href="javascript:;" class="btn btn-success file">
                                                     <span data-v-8181b19c="">Upload New File</span>
@@ -224,6 +224,8 @@
     $('#fileupload').fileupload({
         dataType: 'json',
         done: function (e, data) {
+            $('#page_image').val(data.result.file);
+            $('.cover').attr('src', '/' + data.result.file);
             console.log(data.result.file);
         }
     });
