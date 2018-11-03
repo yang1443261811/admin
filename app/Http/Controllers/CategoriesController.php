@@ -8,10 +8,6 @@ use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    public function __construct()
-    {
-    }
-
 
     /**
      * 分类主页
@@ -69,16 +65,16 @@ class CategoriesController extends Controller
      * @param Request $request
      * @return mixed|resource
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         if ($request->method() == 'GET') {
-            $category = Category::find($request->segment(3));
+            $category = Category::find($id);
 
-            return view('category_update', compact('category'));
+            return view('category.update', compact('category'));
         } else {
             $input = $request->only('id', 'name', 'description');
 
-            $result = Category::where('id', $input['id'])->update($input);
+            $result = Category::where('id', $id)->update($input);
 
             return response()->json($result);
         }
