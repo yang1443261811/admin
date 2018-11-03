@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="/css/app.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="/css/common.css?id=8f841e10d99c3fdf0293" />
     <style>
-        [v-cloak] {
-            display: none;
-        }
+        [v-cloak] { display: none; }
     </style>
     <script>
         window.Laravel = {
@@ -20,8 +18,6 @@
         }
         window.Language = "en"
     </script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 </head>
 <body class="" style="padding-right: 0px;">
@@ -38,27 +34,37 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/dashboard/tags/" class="btn btn-sm btn-secondary">Back</a> </small>
-                        <h5>Create Tag</h5>
+                        <small class="float-right"><a href="/dashboard/categories/" class="btn btn-sm btn-secondary">Back</a></small>
+                        <h5>Update Category</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <form role="form" class="col-md-4 offset-md-4" action="/tags/store">
+                            <form class="col-sm-6 offset-sm-2" action="/categories/update/{{$category->id}}">
                                 {{csrf_field()}}
-                                <div class="form-group">
-                                    <label for="tag">Tag</label>
-                                    <input type="text" id="tag" placeholder="Tag" name="tag" class="form-control" />
+                                <div class="form-group row">
+                                    <label for="name" class="col-sm-3 col-form-label">Category Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="name" id="name" value="{{$category->name}}" class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" id="title" placeholder="Title" name="title" class="form-control" />
+                                <div class="form-group row">
+                                    <label for="path" class="col-sm-3 col-form-label">Path</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="path" id="path" value="{{$category->path}}" class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="meta_description">Meta Description</label>
-                                    <textarea name="meta_description" id="meta_description" placeholder="Meta Description" class="form-control"></textarea>
+                                <div class="form-group row">
+                                    <label for="editor" class="col-sm-3 col-form-label">Description</label>
+                                    <div class="col-sm-9">
+                                        <textarea id="editor" name="description" placeholder="Please input category's description" class="form-control">
+                                            {{$category->description}}
+                                        </textarea>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-info">Create</button>
+                                <div class="form-group row">
+                                    <div class="offset-sm-2 col-sm-9">
+                                        <button type="submit" class="btn btn-info">Update</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
