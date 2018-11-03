@@ -19,15 +19,15 @@ class FilesController extends Controller
     {
         echo 123;
     }
+
     public function upload(Request $request)
     {
         if (!$request->hasFile('image')) {
             return response()->json(['success' => false, 'msg' => 'invalid file']);
         }
 
-        $path = $request->file('image')->store('public');
+        $file = $request->file('image')->store(date('Ymd'));
 
-        echo asset($path);
-//        return response()->json(['success' => true, 'file' => $path]);
+        return response()->json(['success' => true, 'file' => 'uploads/' . $file]);
     }
 }

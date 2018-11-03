@@ -39,7 +39,8 @@
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <form class="col-sm-6 offset-sm-2">
+                            <form class="col-sm-6 offset-sm-2" action="/categories/store">
+                                {{csrf_field()}}
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-3 col-form-label">Category Name</label>
                                     <div class="col-sm-9">
@@ -73,5 +74,15 @@
 </div>
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/common.js"></script>
+<script>
+    $('form').on('submit', function (e) {
+        e.preventDefault();
+
+        self = $(this);
+        $.post(self.attr('action'), self.serialize(), function (res) {
+            console.log(res);
+        })
+    })
+</script>
 </body>
 </html>
