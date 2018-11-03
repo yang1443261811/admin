@@ -56,95 +56,29 @@
                             </tr>
                             </thead>
                             <tbody data-v-6750c142="">
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 1 </td>
-                                <td data-v-6750c142=""> Marcelle Prohaska </td>
-                                <td data-v-6750c142=""> http://kihn.com/non-fugiat-alias-necessitatibus-quia-libero </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 2 </td>
-                                <td data-v-6750c142=""> Miss Anastasia Will </td>
-                                <td data-v-6750c142=""> http://www.feeney.info/consequatur-et-voluptatem-eveniet-earum-deserunt-magnam-reprehenderit-quam </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 3 </td>
-                                <td data-v-6750c142=""> Adela West V </td>
-                                <td data-v-6750c142=""> https://hayes.com/nisi-nobis-corrupti-nihil-voluptatem-molestias.html </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 4 </td>
-                                <td data-v-6750c142=""> Neva Kertzmann </td>
-                                <td data-v-6750c142=""> https://harris.info/occaecati-voluptas-et-odit-maiores-quasi-non-aut-veritatis.html </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 5 </td>
-                                <td data-v-6750c142=""> Ray Block </td>
-                                <td data-v-6750c142=""> http://www.wintheiser.net/autem-fuga-maiores-in-illo </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 6 </td>
-                                <td data-v-6750c142=""> Preston Marvin </td>
-                                <td data-v-6750c142=""> http://goyette.com/tenetur-reiciendis-quidem-officiis </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 7 </td>
-                                <td data-v-6750c142=""> Madison Mueller </td>
-                                <td data-v-6750c142=""> http://legros.com/nihil-et-provident-autem-numquam-amet-eos </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 8 </td>
-                                <td data-v-6750c142=""> Jameson Bayer </td>
-                                <td data-v-6750c142=""> http://www.mayer.net/et-et-rerum-repellendus </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 9 </td>
-                                <td data-v-6750c142=""> Gracie Fadel </td>
-                                <td data-v-6750c142=""> https://kutch.com/fugit-iste-temporibus-modi-fugit-quas-aut-occaecati.html </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 10 </td>
-                                <td data-v-6750c142=""> Keely Becker </td>
-                                <td data-v-6750c142=""> http://legros.com/laborum-voluptas-consectetur-ad-aut-veritatis-excepturi </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:33 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
+                            @if($categories->isEmpty())
+                                <tr data-v-6750c142="">
+                                    <td data-v-6750c142="" class="text-center" colspan="5"> 没有数据 </td>
+                                </tr>
+                            @else
+                                @foreach($categories as $category)
+                                <tr data-v-6750c142="">
+                                    <td data-v-6750c142="" class="text-center"> {{$category->id}} </td>
+                                    <td data-v-6750c142=""> {{$category->description}} </td>
+                                    <td data-v-6750c142=""> {{$category->path}} </td>
+                                    <td data-v-6750c142=""> {{$category->created_at}} </td>
+                                    <td data-v-6750c142="" class="actions text-center">
+                                        <a data-v-6750c142="" class="btn btn-info" href="/categories/edit/{{$category->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                        <a data-v-6750c142="" class="btn btn-danger" href="/categories/delete/{{$category->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                         <!---->
                         <nav data-v-551c9b7c="" data-v-6750c142="" class="d-flex justify-content-center">
-                            <ul data-v-551c9b7c="" class="pagination">
-                                <li data-v-551c9b7c="" class="page-item disabled"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-left"></i></a></li>
-                                <li data-v-551c9b7c="" class="page-item active"><a data-v-551c9b7c="" class="page-link"> 1 </a></li>
-                                <li data-v-551c9b7c="" class="page-item disabled"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-right"></i></a></li>
-                            </ul>
+                            {{ $categories->links() }}
                         </nav>
                     </div>
                 </div>
@@ -154,5 +88,14 @@
 </div>
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/common.js"></script>
+<script>
+    $('.btn-danger').click(function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        $.get(url, function (res) {
+            console.log(res);
+        })
+    })
+</script>
 </body>
 </html>

@@ -23,6 +23,8 @@ Route::get('tags', 'TagsController@index');
 Route::get('tags/create', 'TagsController@create');
 Route::get('categories', 'CategoriesController@index');
 Route::get('categories/create', 'CategoriesController@create');
+Route::post('categories/store', 'CategoriesController@store');
+Route::get('categories/delete/{id}', 'CategoriesController@delete');
 Route::get('links', 'LinksController@index');
 Route::get('links/create', 'LinksController@create');
 Route::get('visitors', 'VisitorsController@index');
