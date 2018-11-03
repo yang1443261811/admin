@@ -68,7 +68,7 @@
                                     <td data-v-6750c142=""> {{$category->path}} </td>
                                     <td data-v-6750c142=""> {{$category->created_at}} </td>
                                     <td data-v-6750c142="" class="actions text-center">
-                                        <a data-v-6750c142="" class="btn btn-info" href="/categories/edit/{{$category->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                        <a data-v-6750c142="" class="btn btn-info" href="/categories/update/{{$category->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
                                         <a data-v-6750c142="" class="btn btn-danger" href="/categories/delete/{{$category->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
                                     </td>
                                 </tr>
@@ -91,8 +91,9 @@
 <script>
     $('.btn-danger').click(function (e) {
         e.preventDefault();
-        var url = $(this).attr('href');
-        $.get(url, function (res) {
+        var self = $(this);
+        $.get(self.attr('href'), function (res) {
+            self.parents('tr');
             console.log(res);
         })
     })

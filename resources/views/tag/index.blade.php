@@ -20,7 +20,6 @@
         }
         window.Language = "en"
     </script>
-    <script type="text/javascript" charset="utf-8" async="" src="/js/19.c3c787c6964ede5060a5.js"></script>
 </head>
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
@@ -55,64 +54,32 @@
                                 <th data-v-6750c142=""> Meta Description </th>
                                 <th data-v-6750c142=""> Created At </th>
                                 <th data-v-6750c142="" class="text-center"> Actions </th>
-                                <!---->
                             </tr>
                             </thead>
                             <tbody data-v-6750c142="">
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 1 </td>
-                                <td data-v-6750c142=""> dolorum </td>
-                                <td data-v-6750c142=""> Illum ut qui odio. </td>
-                                <td data-v-6750c142=""> Itaque consequatur est alias doloribus blanditiis possimus. </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 2 </td>
-                                <td data-v-6750c142=""> odit </td>
-                                <td data-v-6750c142=""> Minus non sed quia omnis sit aliquam adipisci. </td>
-                                <td data-v-6750c142=""> Voluptas molestiae magnam nam et distinctio odio eligendi facilis. </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 3 </td>
-                                <td data-v-6750c142=""> commodi </td>
-                                <td data-v-6750c142=""> Quasi deserunt expedita rerum quas impedit eaque laboriosam. </td>
-                                <td data-v-6750c142=""> Nisi rerum culpa voluptas eveniet aspernatur. </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 4 </td>
-                                <td data-v-6750c142=""> molestias </td>
-                                <td data-v-6750c142=""> Cum laboriosam laborum aperiam labore eligendi. </td>
-                                <td data-v-6750c142=""> Voluptate officiis ut ad nisi amet sunt. </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 5 </td>
-                                <td data-v-6750c142=""> est </td>
-                                <td data-v-6750c142=""> Incidunt voluptatem quasi quisquam ut exercitationem consequatur. </td>
-                                <td data-v-6750c142=""> Suscipit excepturi beatae rem veniam ad porro est. </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
+                            @if($tags->isEmpty())
+                                <tr data-v-6750c142="">
+                                    <td data-v-6750c142="" class="text-center" colspan="6"> 没有数据 </td>
+                                </tr>
+                            @else
+                                @foreach($tags as $tag)
+                                    <tr data-v-6750c142="">
+                                        <td data-v-6750c142="" class="text-center"> {{$tag->id}} </td>
+                                        <td data-v-6750c142=""> {{$tag->tag}} </td>
+                                        <td data-v-6750c142=""> {{$tag->title}} </td>
+                                        <td data-v-6750c142=""> {{$tag->meta_description}} </td>
+                                        <td data-v-6750c142=""> {{$tag->created_at}} </td>
+                                        <td data-v-6750c142="" class="actions text-center">
+                                            <a data-v-6750c142="" class="btn btn-info" href="/tags/update/{{$tag->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                            <a data-v-6750c142="" class="btn btn-danger" href="/tags/delete/{{$tag->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
-                        <!---->
                         <nav data-v-551c9b7c="" data-v-6750c142="" class="d-flex justify-content-center">
-                            <ul data-v-551c9b7c="" class="pagination">
-                                <li data-v-551c9b7c="" class="page-item disabled"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-left"></i></a></li>
-                                <li data-v-551c9b7c="" class="page-item active"><a data-v-551c9b7c="" class="page-link"> 1 </a></li>
-                                <li data-v-551c9b7c="" class="page-item disabled"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-right"></i></a></li>
-                            </ul>
+                            {{ $tags->links() }}
                         </nav>
                     </div>
                 </div>
@@ -122,5 +89,15 @@
 </div>
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/common.js"></script>
+<script>
+    $('.btn-danger').click(function (e) {
+        e.preventDefault();
+        var self = $(this);
+        $.get(self.attr('href'), function (res) {
+            self.parents('tr').remove();
+            console.log(res);
+        })
+    })
+</script>
 </body>
 </html>

@@ -39,26 +39,26 @@
                 <div class="ibox">
                     <div class="ibox-title">
                         <small class="float-right"><a href="/dashboard/tags/" class="btn btn-sm btn-secondary">Back</a> </small>
-                        <h5>Create Tag</h5>
+                        <h5>Update Tag</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <form role="form" class="col-md-4 offset-md-4" action="/tags/store">
+                            <form role="form" class="col-md-4 offset-md-4" action="/tags/update/{{$tag->id}}">
                                 {{csrf_field()}}
                                 <div class="form-group">
                                     <label for="tag">Tag</label>
-                                    <input type="text" id="tag" placeholder="Tag" name="tag" class="form-control" />
+                                    <input type="text" id="tag" placeholder="Tag" name="tag" value="{{$tag->tag}}" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" id="title" placeholder="Title" name="title" class="form-control" />
+                                    <input type="text" id="title" placeholder="Title" name="title" value="{{$tag->title}}" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label for="meta_description">Meta Description</label>
-                                    <textarea name="meta_description" id="meta_description" placeholder="Meta Description" class="form-control"></textarea>
+                                    <textarea name="meta_description" id="meta_description" placeholder="Meta Description" class="form-control">{{$tag->meta_description}}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-info">Create</button>
+                                    <button type="submit" class="btn btn-info">Update</button>
                                 </div>
                             </form>
                         </div>
