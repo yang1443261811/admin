@@ -53,9 +53,30 @@ class ArticlesController extends Controller
         return response()->json(true);
     }
 
-    public function delete(Request $request, $id)
+    /**
+     * 删除文章
+     *
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
     {
         $result = Article::destroy($id);
+        return response()->json($result);
+    }
+
+    public function edit($id)
+    {
+        $tags = Tag::all();
+        $categories = Category::all();
+        $article = Article::find($id);
+        return view('article.update', compact('article', 'categories', 'tags'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $model = Article::find($id);
+        $result = $model->fill($request->all())->save();
         return response()->json($result);
     }
 
