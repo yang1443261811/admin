@@ -10,16 +10,9 @@
     <link rel="stylesheet" href="/css/app.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="/css/common.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
-    <script>
-        $( function() {
-            $("#datepicker").datepicker();
-        } );
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <style>
         [v-cloak] { display: none; }
         .select2-container--default .select2-selection--multiple {
@@ -69,8 +62,6 @@
         }
         window.Language = "en"
     </script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 </head>
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
@@ -90,18 +81,16 @@
                     </div>
                     <div class="ibox-content">
                         <div data-v-8181b19c="" class="row">
-                            <form data-v-8181b19c="" class="col-sm-9 offset-sm-1">
+                            <form data-v-8181b19c="" class="col-sm-9 offset-sm-1" action="/articles/store">
+                                {{csrf_field()}}
                                 <div data-v-8181b19c="" class="col-sm-12">
                                     <div data-v-8181b19c="" class="form-group row">
                                         <label data-v-8181b19c="" class="col-sm-2 col-form-label">Category</label>
                                         <div data-v-8181b19c="" class="col-sm-10">
-                                            <select class="js-example-basic-single form-control" name="state">
-                                                <option value="AL">Alabama</option>
-                                                <option value="WY">Wyoming</option>
-                                                <option value="WY">Wyoming</option>
-                                                <option value="WY">Wyoming</option>
-                                                <option value="WY">Wyoming</option>
-                                                <option value="WY">Wyoming</option>
+                                            <select class="js-example-basic-single form-control" name="category_id">
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -122,8 +111,7 @@
                                         <div data-v-8181b19c="" class="col-sm-5">
                                             <input data-v-8181b19c="" type="text" id="page_image" name="page_image" placeholder="ex: /uploads/default_avatar.png" class="form-control" />
                                         </div>
-                                        <div data-v-8181b19c="" class="col-sm-5">
-                                            <img src="" alt="" width="35" height="35" class="cover">
+                                        <div data-v-8181b19c="" class="col-sm-5 cover-box">
                                             <div data-v-8181b19c="" class="cover-upload pull-right">
                                                 <a data-v-8181b19c="" href="javascript:;" class="btn btn-success file">
                                                     <span data-v-8181b19c="">Upload New File</span>
@@ -141,12 +129,10 @@
                                     <div data-v-8181b19c="" class="form-group row">
                                         <label data-v-8181b19c="" class="col-sm-2 col-form-label">Tag</label>
                                         <div data-v-8181b19c="" class="col-sm-10">
-                                            <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
-                                                <option value="AL">Alabama</option>
-                                                <option value="WY">Wyoming</option>
-                                                <option value="WY">Wyoming</option>
-                                                <option value="WY">Wyoming</option>
-                                                <option value="WY">Wyoming</option>
+                                            <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                                                @foreach($tags as $tag)
+                                                    <option value="{{$tag->id}}">{{$tag->tag}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -201,11 +187,15 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
 <script src="/js/common.js"></script>
 <script src="/js/jquery.ui.widget.js"></script>
 <script src="/js/jquery.iframe-transport.js"></script>
 <script src="/js/jquery.fileupload.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2({
@@ -217,19 +207,64 @@
 
     });
 
+    $( function() {
+        $("#datepicker").datepicker();
+    } );
+
     var E = window.wangEditor;
-    var editor2 = new E('#editor');
-    editor2.create();
+    var editor = new E('#editor');
+    //开启debug模式
+    editor.customConfig.debug = true;
+    // 自定义菜单配置
+    editor.customConfig.menus = [
+        'head',  // 标题
+        'bold',  // 粗体
+        'fontSize',  // 字号
+        'fontName',  // 字体
+        'italic',  // 斜体
+        'underline',  // 下划线
+        'foreColor',  // 文字颜色
+        'backColor',  // 背景颜色
+        'link',  // 插入链接
+        'list',  // 列表
+        'justify',  // 对齐方式
+        'quote',  // 引用
+        'image',  // 插入图片
+        'table',  // 表格
+        'video',  // 插入视频
+        'code',  // 插入代码
+    ]
+    editor.create();
 
     $('#fileupload').fileupload({
         dataType: 'json',
         done: function (e, data) {
             $('#page_image').val(data.result.file);
-            $('.cover').attr('src', '/' + data.result.file);
+            if($(".cover-box").find("img").length==0){
+                $('.cover-upload').before('<img src="'+data.result.file+'"width="35" height="35"/>');
+            } else {
+                $(".cover-box").find("img").attr('src', data.result.file);
+            }
             console.log(data.result.file);
         }
     });
 
+    $('form').on('submit', function (e) {
+        e.preventDefault();
+        var self = $(this);
+        var params =  $.param({'content':editor.txt.html()})+'&'+self.serialize();
+        $.post(self.attr('action'), params, function (res) {
+            toastr.info('添加成功');
+            console.log(res);
+        }).complete(function (res) {
+            if (res.status != 200) {
+                $.each(res.responseJSON.errors, function (key, value) {
+                    toastr.warning(value[0]);
+                    return false;
+                });
+            }
+        });
+    })
 </script>
 </body>
 </html>
