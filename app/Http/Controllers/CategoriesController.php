@@ -72,7 +72,7 @@ class CategoriesController extends Controller
 
             return view('category.update', compact('category'));
         } else {
-            $input = $request->only('id', 'name', 'description');
+            $input = $request->only('name', 'description');
 
             $result = Category::where('id', $id)->update($input);
 

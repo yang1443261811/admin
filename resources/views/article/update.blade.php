@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
     <style>
         [v-cloak] { display: none; }
         .select2-container--default .select2-selection--multiple {
@@ -77,11 +77,11 @@
                 <div class="ibox">
                     <div class="ibox-title">
                         <small class="float-right"><a href="/dashboard/articles/" class="btn btn-sm btn-secondary">Back</a></small>
-                        <h5>Create Article</h5>
+                        <h5>Edit Article</h5>
                     </div>
                     <div class="ibox-content">
                         <div data-v-8181b19c="" class="row">
-                            <form data-v-8181b19c="" class="col-sm-9 offset-sm-1" action="/articles/store">
+                            <form data-v-8181b19c="" class="col-sm-9 offset-sm-1" action="/articles/update/{{$article->id}}">
                                 {{csrf_field()}}
                                 <div data-v-8181b19c="" class="col-sm-12">
                                     <div data-v-8181b19c="" class="form-group row">
@@ -89,7 +89,11 @@
                                         <div data-v-8181b19c="" class="col-sm-10">
                                             <select class="js-example-basic-single form-control" name="category_id">
                                                 @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    @if($category->id == $article->category_id)
+                                                        <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                                                    @else
+                                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -97,21 +101,22 @@
                                     <div data-v-8181b19c="" class="form-group row">
                                         <label data-v-8181b19c="" for="title" class="col-sm-2 col-form-label">Title</label>
                                         <div data-v-8181b19c="" class="col-sm-10">
-                                            <input data-v-8181b19c="" type="text" id="title" name="title" class="form-control" />
+                                            <input data-v-8181b19c="" type="text" id="title" name="title" class="form-control" value="{{$article->title}}"/>
                                         </div>
                                     </div>
                                     <div data-v-8181b19c="" class="form-group row">
                                         <label data-v-8181b19c="" for="subtitle" class="col-sm-2 col-form-label">SubTitle</label>
                                         <div data-v-8181b19c="" class="col-sm-10">
-                                            <input data-v-8181b19c="" type="text" id="subtitle" name="subtitle" class="form-control" />
+                                            <input data-v-8181b19c="" type="text" id="subtitle" name="subtitle" class="form-control" value="{{$article->subtitle}}"/>
                                         </div>
                                     </div>
                                     <div data-v-8181b19c="" class="form-group row">
                                         <label data-v-8181b19c="" for="page_image" class="col-sm-2 col-form-label">Page Image</label>
                                         <div data-v-8181b19c="" class="col-sm-5">
-                                            <input data-v-8181b19c="" type="text" id="page_image" name="page_image" placeholder="ex: /uploads/default_avatar.png" class="form-control" />
+                                            <input data-v-8181b19c="" type="text" id="page_image" name="page_image" placeholder="ex: /uploads/default_avatar.png" class="form-control" value="{{$article->page_image}}"/>
                                         </div>
                                         <div data-v-8181b19c="" class="col-sm-5 cover-box">
+                                            <img src="{{$article->page_image}}" width="35" height="35"/>
                                             <div data-v-8181b19c="" class="cover-upload pull-right">
                                                 <a data-v-8181b19c="" href="javascript:;" class="btn btn-success file">
                                                     <span data-v-8181b19c="">Upload New File</span>
@@ -122,7 +127,9 @@
                                     </div>
                                     <div data-v-8181b19c="" class="form-group row">
                                         <label data-v-8181b19c="" for="title" class="col-sm-2 col-form-label">Content</label>
-                                        <div data-v-8181b19c="" class="col-sm-10"><div id="editor"></div></div>
+                                        <div data-v-8181b19c="" class="col-sm-10">
+                                            <div id="editor"> <p>{!!$article->content!!}</p></div>
+                                        </div>
                                     </div>
                                     <div data-v-8181b19c="" class="form-group row">
                                         <label data-v-8181b19c="" class="col-sm-2 col-form-label">Tag</label>
@@ -137,7 +144,7 @@
                                     <div data-v-8181b19c="" class="form-group row">
                                         <label data-v-8181b19c="" for="meta_description" class="col-sm-2 col-form-label">Meta Description</label>
                                         <div data-v-8181b19c="" class="col-sm-10">
-                                            <textarea data-v-8181b19c="" id="meta_description" name="meta_description" class="form-control"></textarea>
+                                            <textarea data-v-8181b19c="" id="meta_description" name="meta_description" class="form-control">{{$article->meta_description}}</textarea>
                                         </div>
                                     </div>
                                     <div data-v-8181b19c="" class="form-group row">
@@ -201,6 +208,7 @@
             allowClear: true
         });
         $('.js-example-basic-single').select2();
+
     });
 
     $( function() {
@@ -229,7 +237,7 @@
         'table',  // 表格
         'video',  // 插入视频
         'code',  // 插入代码
-    ];
+    ]
     editor.create();
 
     $('#fileupload').fileupload({
@@ -250,7 +258,7 @@
         var self = $(this);
         var params =  $.param({'content':editor.txt.html()})+'&'+self.serialize();
         $.post(self.attr('action'), params, function (res) {
-            toastr.info('添加成功');
+            toastr.info('修改成功');
             console.log(res);
         }).complete(function (res) {
             if (res.status != 200) {

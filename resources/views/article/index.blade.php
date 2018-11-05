@@ -68,7 +68,7 @@
                                     <td data-v-6750c142=""> {{$article->created_at}} </td>
                                     <td data-v-6750c142="" class="actions text-center">
                                         <a data-v-6750c142="" class="btn btn-success" href="/"><i data-v-6750c142="" class="fas fa-eye"></i> </a>
-                                        <a data-v-6750c142="" class="btn btn-info" href="/articles/update/{{$article->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                        <a data-v-6750c142="" class="btn btn-info" href="/articles/edit/{{$article->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
                                         <a data-v-6750c142="" class="btn btn-danger" href="/articles/delete/{{$article->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
                                     </td>
                                 </tr>
@@ -76,7 +76,6 @@
                             @endif
                             </tbody>
                         </table>
-                        <!---->
                         <nav data-v-551c9b7c="" data-v-6750c142="" class="d-flex justify-content-center">
                             {{$articles->links()}}
                         </nav>
