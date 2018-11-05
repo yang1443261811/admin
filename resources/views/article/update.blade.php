@@ -202,11 +202,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script>
     $(document).ready(function() {
+        var option = [];
+        @foreach($article->tags as $item)
+            option.push('{{$item->id}}');
+        @endforeach
+        {{--$default = {{json_encode($article->tags()->tag)}}--}}
+        console.log(option);
         $('.js-example-basic-multiple').select2({
             placeholder: "请选择",
             placeholderOption: "first",
-            allowClear: true
-        });
+            allowClear: true,
+        }).val(option).trigger('change');
         $('.js-example-basic-single').select2();
 
     });
