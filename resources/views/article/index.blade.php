@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/app.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="/css/common.css?id=8f841e10d99c3fdf0293" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
     <style>
         [v-cloak] { display: none; }
     </style>
@@ -56,96 +57,28 @@
                             </tr>
                             </thead>
                             <tbody data-v-6750c142="">
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 1 </td>
-                                <td data-v-6750c142=""> Repellendus et tenetur expedita quos dolorem rerum eligendi. </td>
-                                <td data-v-6750c142=""> repellendus et tenetur expedita quos dolorem rerum eligendi. </td>
-                                <td data-v-6750c142=""> 1 month ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 2 </td>
-                                <td data-v-6750c142=""> Minus rerum numquam harum accusamus laudantium qui cum ipsum. </td>
-                                <td data-v-6750c142=""> minus rerum numquam harum accusamus laudantium qui cum ipsum. </td>
-                                <td data-v-6750c142=""> 1 month ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 3 </td>
-                                <td data-v-6750c142=""> Rerum vel dicta id aliquam officiis dolorem. </td>
-                                <td data-v-6750c142=""> rerum vel dicta id aliquam officiis dolorem. </td>
-                                <td data-v-6750c142=""> 1 month ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 4 </td>
-                                <td data-v-6750c142=""> Debitis vel est laudantium quis expedita numquam. </td>
-                                <td data-v-6750c142=""> debitis vel est laudantium quis expedita numquam. </td>
-                                <td data-v-6750c142=""> 1 month ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 5 </td>
-                                <td data-v-6750c142=""> Enim fugit explicabo magni non. </td>
-                                <td data-v-6750c142=""> enim fugit explicabo magni non. </td>
-                                <td data-v-6750c142=""> 5 days ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 6 </td>
-                                <td data-v-6750c142=""> Molestiae qui at exercitationem occaecati architecto provident accusantium rerum fugiat doloremque. </td>
-                                <td data-v-6750c142=""> molestiae qui at exercitationem occaecati architecto provident accusantium rerum fugiat doloremque. </td>
-                                <td data-v-6750c142=""> 1 month ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 7 </td>
-                                <td data-v-6750c142=""> Enim quia facere iusto id. </td>
-                                <td data-v-6750c142=""> enim quia facere iusto id. </td>
-                                <td data-v-6750c142=""> 1 month ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 8 </td>
-                                <td data-v-6750c142=""> Commodi omnis optio sit ipsa nesciunt et aut ea. </td>
-                                <td data-v-6750c142=""> commodi omnis optio sit ipsa nesciunt et aut ea. </td>
-                                <td data-v-6750c142=""> 1 month ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 9 </td>
-                                <td data-v-6750c142=""> Autem quisquam quod molestiae ut et consequuntur. </td>
-                                <td data-v-6750c142=""> autem quisquam quod molestiae ut et consequuntur. </td>
-                                <td data-v-6750c142=""> 4 weeks ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 10 </td>
-                                <td data-v-6750c142=""> Sit ipsa sequi ut vitae reiciendis eligendi quia consequatur distinctio. </td>
-                                <td data-v-6750c142=""> sit ipsa sequi ut vitae reiciendis eligendi quia consequatur distinctio. </td>
-                                <td data-v-6750c142=""> 1 month ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-success"><i data-v-6750c142="" class="fas fa-eye"></i> </a><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
+                            @if($articles->isEmpty())
+                                <tr data-v-6750c142=""><td data-v-6750c142="" class="text-center" colspan="5"> 没有数据 </td></tr>
+                            @else
+                                @foreach($articles as $article)
+                                <tr data-v-6750c142="">
+                                    <td data-v-6750c142="" class="text-center"> {{$article->id}} </td>
+                                    <td data-v-6750c142=""> {{$article->title}} </td>
+                                    <td data-v-6750c142=""> {{$article->subtitle}} </td>
+                                    <td data-v-6750c142=""> {{$article->created_at}} </td>
+                                    <td data-v-6750c142="" class="actions text-center">
+                                        <a data-v-6750c142="" class="btn btn-success" href="/"><i data-v-6750c142="" class="fas fa-eye"></i> </a>
+                                        <a data-v-6750c142="" class="btn btn-info" href="/articles/update/{{$article->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                        <a data-v-6750c142="" class="btn btn-danger" href="/articles/delete/{{$article->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                         <!---->
                         <nav data-v-551c9b7c="" data-v-6750c142="" class="d-flex justify-content-center">
-                            <ul data-v-551c9b7c="" class="pagination">
-                                <li data-v-551c9b7c="" class="page-item disabled"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-left"></i></a></li>
-                                <li data-v-551c9b7c="" class="page-item active"><a data-v-551c9b7c="" class="page-link"> 1 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"> 2 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-right"></i></a></li>
-                            </ul>
+                            {{$articles->links()}}
                         </nav>
                     </div>
                 </div>
@@ -155,5 +88,21 @@
 </div>
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+<script>
+    $('.btn-danger').click(function (e) {
+        e.preventDefault();
+        var self = $(this);
+        $.get(self.attr('href'), function (res) {
+            if (res) {
+                self.parents('tr').remove();
+                toastr.info('删除成功');
+            } else {
+                toastr.warning('删除失败');
+            }
+            console.log(res);
+        })
+    })
+</script>
 </body>
 </html>

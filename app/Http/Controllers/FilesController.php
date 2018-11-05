@@ -28,6 +28,6 @@ class FilesController extends Controller
 
         $file = $request->file('image')->store(date('Ymd'));
 
-        return response()->json(['success' => true, 'file' => 'uploads/' . $file]);
+        return response()->json(['success' => true, 'file' => '/uploads/' . $file]);
     }
 }

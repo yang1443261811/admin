@@ -16,6 +16,8 @@ Route::get('users', 'UsersController@index');
 Route::get('users/create', 'UsersController@create');
 Route::get('articles', 'ArticlesController@index');
 Route::get('articles/create', 'ArticlesController@create');
+Route::post('articles/store', 'ArticlesController@store');
+Route::get('articles/delete/{id}', 'ArticlesController@delete');
 Route::get('discussions', 'DiscussionsController@index');
 Route::get('discussions/create', 'DiscussionsController@create');
 Route::get('comments', 'CommentsController@index');
