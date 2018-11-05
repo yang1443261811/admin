@@ -45,10 +45,16 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
         $this->validator($request);
-        $input = $request->all() + ['user_id' => 1, 'last_user_id' => 1];
+        $input = $request->all();
+        $input = array_merge($input, [
+            'user_id'     => 1,
+            'last_user_id'=> 1,
+            'is_draft'    => isset($input['is_draft']),
+            'is_original' => isset($input['is_original'])
+        ]);
         $article = new Article();
-        $result = $article->fill($input)->save();
-        $result = $article->tags()->sync($input['tags']);
+        $article->fill($input)->save();
+        $article->tags()->sync($input['tags']);
 
         return response()->json(true);
     }
@@ -65,6 +71,12 @@ class ArticlesController extends Controller
         return response()->json($result);
     }
 
+    /**
+     * 编辑文章
+     *
+     * @param int $id
+     * @return mixed
+     */
     public function edit($id)
     {
         $tags = Tag::all();
@@ -73,10 +85,23 @@ class ArticlesController extends Controller
         return view('article.update', compact('article', 'categories', 'tags'));
     }
 
+    /**
+     * 修改文章
+     *
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update(Request $request, $id)
     {
         $model = Article::find($id);
-        $result = $model->fill($request->all())->save();
+        $input = $request->all();
+        $input = array_merge($input, [
+            'is_draft'    => isset($input['is_draft']),
+            'is_original' => isset($input['is_original'])
+        ]);
+        $result = $model->fill($input)->save();
+        $model->tags()->sync($input['tags']);
         return response()->json($result);
     }
 
