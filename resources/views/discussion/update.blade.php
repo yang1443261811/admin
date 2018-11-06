@@ -64,17 +64,17 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/dashboard/discussions/" class="btn btn-sm btn-secondary">Back</a></small>
-                        <h5>Create Discussion</h5>
+                        <small class="float-right"><a href="/discussions/" class="btn btn-sm btn-secondary">Back</a></small>
+                        <h5>Update Discussion</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <form class="col-sm-9 offset-sm-1" method="post" action="/discussions/store">
+                            <form class="col-sm-9 offset-sm-1" method="post" action="/discussions/update/{{$discussion->id}}">
                                 {{csrf_field()}}
                                 <div class="form-group row">
                                     <label for="title" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
-                                        <input type="text" id="title" name="title" class="form-control" />
+                                        <input type="text" id="title" name="title" class="form-control" value="{{$discussion->title}}"/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="title" class="col-sm-2 col-form-label">Content</label>
-                                    <div class="col-sm-10" id="editor"></div>
+                                    <div class="col-sm-10" id="editor"><p>{!!$discussion->content!!}</p></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-2 col-form-label">
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
-                                        <button type="submit" class="btn btn-info">Create</button>
+                                        <button type="submit" class="btn btn-info">Update</button>
                                     </div>
                                 </div>
                             </form>
@@ -122,7 +122,12 @@
 <script>
     $(function(){
         //初始tag下拉框
-        $('.js-example-basic-multiple').select2({placeholder: "请选择"});
+        var option = [];
+        @foreach($discussion->tags as $item)
+            option.push('{{$item->id}}');
+        @endforeach
+        //初始tag下拉框
+        $('.js-example-basic-multiple').select2({placeholder: "请选择"}).val(option).trigger('change');
 
         //初始化文本编辑器 start
         var E = window.wangEditor;
@@ -157,7 +162,7 @@
             var self = $(this);
             var params =  $.param({'content':editor.txt.html()})+'&'+self.serialize();
             $.post(self.attr('action'), params, function (res) {
-                toastr.info('添加成功');
+                toastr.info('更新成功');
                 window.setTimeout(function(){
                     window.location.href = '/discussions';
                 }, 1500);

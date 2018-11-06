@@ -194,7 +194,7 @@
 <script src="/js/jquery.fileupload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(function () {
         //初始tag下拉框
         $('.js-example-basic-multiple').select2({placeholder: "请选择"});
 

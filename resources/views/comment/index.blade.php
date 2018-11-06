@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/app.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="/css/common.css?id=8f841e10d99c3fdf0293" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
     <style>
         [v-cloak] { display: none; }
     </style>
@@ -52,113 +53,33 @@
                                 <th data-v-6750c142=""> Commentable Title </th>
                                 <th data-v-6750c142=""> Created At </th>
                                 <th data-v-6750c142="" class="text-center"> Actions </th>
-                                <!---->
                             </tr>
                             </thead>
                             <tbody data-v-6750c142="">
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 1 </td>
-                                <td data-v-6750c142=""> Felicia Beier </td>
-                                <td data-v-6750c142=""> discussions </td>
-                                <td data-v-6750c142=""> Veniam nobis vero culpa et adipisci ut. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 2 </td>
-                                <td data-v-6750c142=""> Ms. Trudie Murphy MD </td>
-                                <td data-v-6750c142=""> articles </td>
-                                <td data-v-6750c142=""> Minus rerum numquam harum accusamus laudantium qui cum ipsum. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 3 </td>
-                                <td data-v-6750c142=""> Issac DuBuque </td>
-                                <td data-v-6750c142=""> articles </td>
-                                <td data-v-6750c142=""> Rerum vel dicta id aliquam officiis dolorem. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 4 </td>
-                                <td data-v-6750c142=""> Felicia Beier </td>
-                                <td data-v-6750c142=""> articles </td>
-                                <td data-v-6750c142=""> Eius eos eum et. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 5 </td>
-                                <td data-v-6750c142=""> Prof. Rickie Ferry Sr. </td>
-                                <td data-v-6750c142=""> articles </td>
-                                <td data-v-6750c142=""> Autem quisquam quod molestiae ut et consequuntur. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 6 </td>
-                                <td data-v-6750c142=""> Ms. Trudie Murphy MD </td>
-                                <td data-v-6750c142=""> articles </td>
-                                <td data-v-6750c142=""> Vel et dolorem omnis porro eaque placeat. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 7 </td>
-                                <td data-v-6750c142=""> Kasey Rohan </td>
-                                <td data-v-6750c142=""> discussions </td>
-                                <td data-v-6750c142=""> Velit nisi omnis excepturi est. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 8 </td>
-                                <td data-v-6750c142=""> Dr. Brant McDermott </td>
-                                <td data-v-6750c142=""> articles </td>
-                                <td data-v-6750c142=""> At sint rem. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 9 </td>
-                                <td data-v-6750c142=""> Ms. Trudie Murphy MD </td>
-                                <td data-v-6750c142=""> discussions </td>
-                                <td data-v-6750c142=""> Quis ipsa eum laborum quasi eum sed et omnis. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 10 </td>
-                                <td data-v-6750c142=""> Camryn Wilderman DDS </td>
-                                <td data-v-6750c142=""> articles </td>
-                                <td data-v-6750c142=""> Repellendus et tenetur expedita quos dolorem rerum eligendi. </td>
-                                <td data-v-6750c142=""> 5 hours ago </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
+                            @if($comments->isEmpty())
+                                <tr data-v-6750c142="">
+                                    <td data-v-6750c142="" class="text-center" colspan="6"> no Content </td>
+                                </tr>
+                            @else
+                                @foreach($comments as $comment)
+                                    <tr data-v-6750c142="">
+                                        <td data-v-6750c142="" class="text-center"> {{$comment->id}} </td>
+                                        <td data-v-6750c142=""> Felicia Beier </td>
+                                        <td data-v-6750c142=""> {{$comment->commentable_type}} </td>
+                                        <td data-v-6750c142=""> {{isset($comment->commentable) ? $comment->commentable->title : 'Be Forbidden!'}} </td>
+                                        <td data-v-6750c142=""> {{$comment->created_at}} </td>
+                                        <td data-v-6750c142="" class="actions text-center">
+                                            <a data-v-6750c142="" class="btn btn-info" href="/comments/edit/{{$comment->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                            <a data-v-6750c142="" class="btn btn-danger" href="/comments/delete/{{$comment->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                         <!---->
                         <nav data-v-551c9b7c="" data-v-6750c142="" class="d-flex justify-content-center">
-                            <ul data-v-551c9b7c="" class="pagination">
-                                <li data-v-551c9b7c="" class="page-item disabled"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-left"></i></a></li>
-                                <li data-v-551c9b7c="" class="page-item active"><a data-v-551c9b7c="" class="page-link"> 1 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"> 2 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"> 3 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"> 4 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"> 5 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-right"></i></a></li>
-                            </ul>
+                           {{$comments->links()}}
                         </nav>
                     </div>
                 </div>
@@ -167,6 +88,22 @@
     </div>
 </div>
 <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script src="/js/common.js"></script>
+<script>
+    $('.btn-danger').click(function (e) {
+        e.preventDefault();
+        var self = $(this);
+        $.get(self.attr('href'), function (res) {
+            if (res) {
+                self.parents('tr').remove();
+                toastr.info('删除成功');
+            } else {
+                toastr.warning('删除失败');
+            }
+            console.log(res);
+        })
+    })
+</script>
 </body>
 </html>

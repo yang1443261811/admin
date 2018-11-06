@@ -64,46 +64,23 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/dashboard/discussions/" class="btn btn-sm btn-secondary">Back</a></small>
+                        <small class="float-right"><a href="/comments" class="btn btn-sm btn-secondary">Back</a></small>
                         <h5>Create Discussion</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <form class="col-sm-9 offset-sm-1" method="post" action="/discussions/store">
-                                {{csrf_field()}}
-                                <div class="form-group row">
-                                    <label for="title" class="col-sm-2 col-form-label">Title</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="title" name="title" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Tag</label>
-                                    <div class="col-sm-10">
-                                        <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
-                                            @foreach($tags as $tag)
-                                                <option value="{{$tag->id}}">{{$tag->tag}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            <form class="col-sm-9 offset-sm-1" method="post" action="/comments/update/{{$comment->id}}">
+                                <div class="form-group text-center">
+                                    <h3>{{$comment->commentable->title}}</h3>
+                                    <h6 id="type">{{$comment->commentable_type}}</h6>
                                 </div>
                                 <div class="form-group row">
                                     <label for="title" class="col-sm-2 col-form-label">Content</label>
-                                    <div class="col-sm-10" id="editor"></div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-2 col-form-label">
-                                        Status
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="togglebutton" style="margin-top: 6px;">
-                                            <label><input type="checkbox" name="status" value="1" /> <span class="toggle"></span></label>
-                                        </div>
-                                    </div>
+                                    <div class="col-sm-10" id="editor"><p>{!! $comment->content !!}</p></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
-                                        <button type="submit" class="btn btn-info">Create</button>
+                                        <button type="submit" class="btn btn-info">Edit</button>
                                     </div>
                                 </div>
                             </form>
@@ -121,9 +98,6 @@
 <script src="/js/common.js"></script>
 <script>
     $(function(){
-        //初始tag下拉框
-        $('.js-example-basic-multiple').select2({placeholder: "请选择"});
-
         //初始化文本编辑器 start
         var E = window.wangEditor;
         var editor = new E('#editor');
@@ -155,19 +129,12 @@
         $('form').on('submit', function (e) {
             e.preventDefault();
             var self = $(this);
-            var params =  $.param({'content':editor.txt.html()})+'&'+self.serialize();
+            var params = {'content':editor.txt.html(), '_token':'{{csrf_token()}}'};
             $.post(self.attr('action'), params, function (res) {
-                toastr.info('添加成功');
+                toastr.info('更新成功');
                 window.setTimeout(function(){
-                    window.location.href = '/discussions';
+                    window.location.href = '/comments';
                 }, 1500);
-            }).complete(function (res) {
-                if (res.status != 200) {
-                    $.each(res.responseJSON.errors, function (key, value) {
-                        toastr.warning(value[0]);
-                        return false;
-                    });
-                }
             });
         })
 
