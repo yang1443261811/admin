@@ -1,14 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: BL
- * Date: 2018/11/1
- * Time: 17:43
- */
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Visitor;
 use Illuminate\Http\Request;
 
 class VisitorsController extends Controller
@@ -24,6 +18,8 @@ class VisitorsController extends Controller
      */
     public function index()
     {
-        return view('visitor.index');
+        $visitors = Visitor::orderBy('created_at', 'desc')
+            ->paginate(20);
+        return view('visitor.index', compact('visitors'));
     }
 }
