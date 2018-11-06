@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/dashboard/articles/" class="btn btn-sm btn-secondary">Back</a></small>
+                        <small class="float-right"><a href="/articles" class="btn btn-sm btn-secondary">Back</a></small>
                         <h5>Edit Article</h5>
                     </div>
                     <div class="ibox-content">
@@ -179,7 +179,7 @@
                                 <div data-v-8181b19c="" class="col-sm-12">
                                     <div data-v-8181b19c="" class="form-group row">
                                         <div data-v-8181b19c="" class="offset-sm-2 col-sm-10">
-                                            <button data-v-8181b19c="" type="submit" class="btn btn-info">Create </button>
+                                            <button data-v-8181b19c="" type="submit" class="btn btn-info">Update </button>
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +194,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+<script src="/js/wangEditor.min.js"></script>
 <script src="/js/common.js"></script>
 <script src="/js/jquery.ui.widget.js"></script>
 <script src="/js/jquery.iframe-transport.js"></script>
@@ -206,21 +206,18 @@
         @foreach($article->tags as $item)
             option.push('{{$item->id}}');
         @endforeach
-        {{--$default = {{json_encode($article->tags()->tag)}}--}}
-        console.log(option);
-        $('.js-example-basic-multiple').select2({
-            placeholder: "请选择",
-            placeholderOption: "first",
-            allowClear: true,
-        }).val(option).trigger('change');
+        //初始tag下拉框
+        $('.js-example-basic-multiple').select2({placeholder: "请选择"}).val(option).trigger('change');
+
+        //初始化分类下拉框
         $('.js-example-basic-single').select2();
 
     });
 
-    $( function() {
-        $("#datepicker").datepicker();
-    } );
+    //初始化日期选择器
+    $("#datepicker").datepicker();
 
+    //初始化文本编辑器 start
     var E = window.wangEditor;
     var editor = new E('#editor');
     //开启debug模式
@@ -245,7 +242,9 @@
         'code',  // 插入代码
     ]
     editor.create();
+    //初始化文本编辑器 end
 
+    //图片上传插件初始化
     $('#fileupload').fileupload({
         dataType: 'json',
         done: function (e, data) {
@@ -255,17 +254,19 @@
             } else {
                 $(".cover-box").find("img").attr('src', data.result.file);
             }
-            console.log(data.result.file);
         }
     });
 
+    //ajax 提交表单数据
     $('form').on('submit', function (e) {
         e.preventDefault();
         var self = $(this);
         var params =  $.param({'content':editor.txt.html()})+'&'+self.serialize();
         $.post(self.attr('action'), params, function (res) {
             toastr.info('修改成功');
-            console.log(res);
+            window.setTimeout(function(){
+                window.location.href = '/articles';
+            }, 1500);
         }).complete(function (res) {
             if (res.status != 200) {
                 $.each(res.responseJSON.errors, function (key, value) {
