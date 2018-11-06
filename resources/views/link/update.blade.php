@@ -83,27 +83,28 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/links/" class="btn btn-sm btn-secondary">Back</a> </small>
-                        <h5>Create Link</h5>
+                        <small class="float-right"><a href="/links" class="btn btn-sm btn-secondary">Back</a> </small>
+                        <h5>Update Link</h5>
                     </div>
                     <div class="ibox-content">
                         <div data-v-4cfc7054="" class="row">
-                            <form data-v-4cfc7054="" role="form" enctype="multipart/form-data" action="/links/create" class="col-sm-4 offset-sm-4">
+                            <form data-v-4cfc7054="" role="form" enctype="multipart/form-data" action="/links/update/{{$link->id}}" class="col-sm-4 offset-sm-4">
                                 {{csrf_field()}}
                                 <div data-v-4cfc7054="" class="form-group">
                                     <label data-v-4cfc7054="" for="name">Link Name</label>
-                                    <input data-v-4cfc7054="" type="text" id="name" name="name" placeholder="Link Name" class="form-control" />
+                                    <input data-v-4cfc7054="" type="text" id="name" name="name" placeholder="Link Name" class="form-control" value="{{$link->name}}"/>
                                 </div>
                                 <div data-v-4cfc7054="" class="form-group">
                                     <label data-v-4cfc7054="" for="link">Link</label>
-                                    <input data-v-4cfc7054="" type="link" id="link" name="link" placeholder="Link" class="form-control" />
+                                    <input data-v-4cfc7054="" type="link" id="link" name="link" placeholder="Link" class="form-control" value="{{$link->link}}"/>
                                 </div>
                                 <div data-v-4cfc7054="" class="form-group">
                                     <label data-v-4cfc7054="" for="image">Image</label>
                                     <div data-v-4cfc7054="" class="upload-box">
                                         <input data-v-4cfc7054="" type="file" id="image" name="image" class="form-control fileupload" data-url="/files/upload" />
-                                        <input type="hidden" value="" name="image" class="cover">
-                                        <i data-v-4cfc7054="" class="fas fa-image link-image"></i>
+                                        <input type="hidden" value="{{$link->image}}" name="image" class="cover">
+                                        {{--<i data-v-4cfc7054="" class="fas fa-image link-image"></i>--}}
+                                        <img data-v-4cfc7054="" src="{{$link->image}}" width="100" height="100" class="img-circle image" />
                                         <div data-v-4cfc7054="" class="mask">
                                             <i data-v-4cfc7054="" class="fas fa-cloud-upload-alt"></i>
                                         </div>
