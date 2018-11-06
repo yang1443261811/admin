@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/app.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="/css/common.css?id=8f841e10d99c3fdf0293" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
     <style>
         [v-cloak] {
             display: none;
@@ -52,133 +53,37 @@
                                 <th data-v-6750c142="" class="text-center"> Image </th>
                                 <th data-v-6750c142="" class="text-center"> Name </th>
                                 <th data-v-6750c142=""> Link </th>
-                                <!---->
                                 <th data-v-6750c142="" class="width-10-percent text-center"> Enabled </th>
                                 <th data-v-6750c142=""> Created At </th>
                                 <th data-v-6750c142="" class="text-center"> Actions </th>
-                                <!---->
                             </tr>
                             </thead>
                             <tbody data-v-6750c142="">
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 1 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?47148" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Valerie Armstrong </td>
-                                <td data-v-6750c142=""> https://www.luettgen.com/reprehenderit-aspernatur-illum-et-reprehenderit-animi-amet-sint-sit </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 2 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?67038" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Leo Howell </td>
-                                <td data-v-6750c142=""> https://www.will.net/nihil-est-incidunt-saepe-quis-cumque-dolor-eum </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 3 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?62731" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Ocie Gutmann MD </td>
-                                <td data-v-6750c142=""> https://www.zulauf.com/quam-dolorem-rerum-ipsum-voluptatem-qui-accusamus-ea </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 4 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?57544" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Priscilla Pouros </td>
-                                <td data-v-6750c142=""> http://www.wyman.com/ </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 5 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?42946" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Edison Mosciski </td>
-                                <td data-v-6750c142=""> http://cartwright.info/facere-id-possimus-fugiat-voluptas </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 6 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?97871" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Dr. Angelica Wiza I </td>
-                                <td data-v-6750c142=""> http://www.carter.info/explicabo-molestiae-repudiandae-ut-numquam.html </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 7 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?76453" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Athena Toy PhD </td>
-                                <td data-v-6750c142=""> http://crona.com/ducimus-rerum-repellat-repudiandae-hic-sed </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 8 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?54275" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Prof. Cydney Schmeler </td>
-                                <td data-v-6750c142=""> https://trantow.com/beatae-dolores-necessitatibus-possimus-quia-fuga.html </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 9 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?24838" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Deven Schoen </td>
-                                <td data-v-6750c142=""> http://metz.biz/nulla-culpa-facere-nisi-saepe.html </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 10 </td>
-                                <td data-v-6750c142="" class="text-center"><img src="https://lorempixel.com/640/480/?55439" width="50" height="50" class="rounded-circle" /></td>
-                                <td data-v-6750c142="" class="text-center"> Percy Bauch </td>
-                                <td data-v-6750c142=""> http://kutch.com/laborum-quibusdam-voluptatibus-vitae-voluptatem-inventore-suscipit.html </td>
-                                <!---->
-                                <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:34 </td>
-                                <td data-v-6750c142="" class="actions text-center"><a data-v-6750c142="" class="btn btn-info"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a><a data-v-6750c142="" class="btn btn-danger"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a></td>
-                                <!---->
-                            </tr>
+                            @if($links->isEmpty())
+                                <tr data-v-6750c142="">
+                                    <td data-v-6750c142="" class="text-center" colspan="6"> no Content </td>
+                                </tr>
+                            @else
+                                @foreach($links as $link)
+                                    <tr data-v-6750c142="">
+                                        <td data-v-6750c142="" class="text-center"> {{$link->id}} </td>
+                                        <td data-v-6750c142=""> <img src="{{$link->image}}" width="50" height="50" class="rounded-circle" /> </td>
+                                        <td data-v-6750c142=""> {{$link->name}} </td>
+                                        <td data-v-6750c142=""> {{$link->link}} </td>
+                                        <td data-v-6750c142="" class="component text-center"><span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span></td>
+                                        <td data-v-6750c142=""> {{$link->created_at}} </td>
+                                        <td data-v-6750c142="" class="actions text-center">
+                                            <a data-v-6750c142="" class="btn btn-info" href="/links/edit/{{$link->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                            <a data-v-6750c142="" class="btn btn-danger" href="/links/delete/{{$link->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                         <!---->
                         <nav data-v-551c9b7c="" data-v-6750c142="" class="d-flex justify-content-center">
-                            <ul data-v-551c9b7c="" class="pagination">
-                                <li data-v-551c9b7c="" class="page-item disabled"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-left"></i></a></li>
-                                <li data-v-551c9b7c="" class="page-item active"><a data-v-551c9b7c="" class="page-link"> 1 </a></li>
-                                <li data-v-551c9b7c="" class="page-item disabled"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-right"></i></a></li>
-                            </ul>
+                           {{$links->links()}}
                         </nav>
                     </div>
                 </div>
@@ -187,6 +92,21 @@
     </div>
 </div>
 <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script src="/js/common.js"></script>
+<script>
+    $('.btn-danger').click(function (e) {
+        e.preventDefault();
+        var self = $(this);
+        $.get(self.attr('href'), function (res) {
+            if (res) {
+                self.parents('tr').remove();
+                toastr.info('删除成功');
+            } else {
+                toastr.warning('删除失败');
+            }
+        })
+    })
+</script>
 </body>
 </html>
