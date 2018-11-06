@@ -57,6 +57,21 @@
                             </tr>
                             </thead>
                             <tbody data-v-6750c142="">
+                            @if($visitors->isEmpty())
+                                <tr data-v-6750c142="">
+                                    <td data-v-6750c142="" class="text-center" colspan="6"> no Content </td>
+                                </tr>
+                            @else
+                                @foreach($visitors as $visitor)
+                                    <tr data-v-6750c142="">
+                                        <td data-v-6750c142="" class="text-center"> {{$visitor->id}} </td>
+                                        <td data-v-6750c142=""> {{isset($visitor->article) ? $visitor->article->title : ''}}</td>
+                                        <td data-v-6750c142=""> {{$visitor->ip}} </td>
+                                        <td data-v-6750c142=""> {{$visitor->clicks}} </td>
+                                        <td data-v-6750c142=""> {{$visitor->created_at}} </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             <tr data-v-6750c142="">
                                 <td data-v-6750c142="" class="text-center"> 101 </td>
                                 <td data-v-6750c142="" class="text-center">Repellendus et tenetur expedita quos dolorem rerum eligendi. </td>
@@ -64,82 +79,11 @@
                                 <td data-v-6750c142=""> 1 </td>
                                 <td data-v-6750c142=""> 2018-11-01 05:18:38 </td>
                             </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 66 </td>
-                                <td data-v-6750c142="" class="text-center">Autem quisquam quod molestiae ut et consequuntur. </td>
-                                <td data-v-6750c142=""> 179.139.229.41 </td>
-                                <td data-v-6750c142=""> 13 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:35 </td>
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 67 </td>
-                                <td data-v-6750c142="" class="text-center">Molestiae qui at exercitationem occaecati architecto provident accusantium rerum fugiat doloremque. </td>
-                                <td data-v-6750c142=""> 213.191.218.167 </td>
-                                <td data-v-6750c142=""> 13 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:35 </td>
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 68 </td>
-                                <td data-v-6750c142="" class="text-center">Molestiae qui at exercitationem occaecati architecto provident accusantium rerum fugiat doloremque. </td>
-                                <td data-v-6750c142=""> 105.114.184.30 </td>
-                                <td data-v-6750c142=""> 65 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:35 </td>
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 69 </td>
-                                <td data-v-6750c142="" class="text-center">Ducimus omnis sunt eius veritatis dignissimos vitae. </td>
-                                <td data-v-6750c142=""> 21.126.254.215 </td>
-                                <td data-v-6750c142=""> 8 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:35 </td>
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 70 </td>
-                                <td data-v-6750c142="" class="text-center">Eius eos eum et.</td>
-                                <td data-v-6750c142=""> 177.125.232.211 </td>
-                                <td data-v-6750c142=""> 62 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:35 </td>
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 71 </td>
-                                <td data-v-6750c142="" class="text-center">Rerum vel dicta id aliquam officiis dolorem. </td>
-                                <td data-v-6750c142=""> 222.115.175.166 </td>
-                                <td data-v-6750c142=""> 14 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:35 </td>
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 72 </td>
-                                <td data-v-6750c142="" class="text-center">Aut amet illo quaerat voluptatem corrupti rerum corporis eaque. </td>
-                                <td data-v-6750c142=""> 242.57.53.54 </td>
-                                <td data-v-6750c142=""> 9 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:35 </td>
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 73 </td>
-                                <td data-v-6750c142="" class="text-center">Exercitationem quis incidunt quis mollitia temporibus unde nobis laborum. </td>
-                                <td data-v-6750c142=""> 48.199.11.12 </td>
-                                <td data-v-6750c142=""> 20 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:35 </td>
-                            </tr>
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 74 </td>
-                                <td data-v-6750c142="" class="text-center">Molestiae qui at exercitationem occaecati architecto provident accusantium rerum fugiat doloremque. </td>
-                                <td data-v-6750c142=""> 199.229.105.60 </td>
-                                <td data-v-6750c142=""> 28 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:10:35 </td>
-                            </tr>
                             </tbody>
                         </table>
                         <!---->
                         <nav data-v-551c9b7c="" data-v-6750c142="" class="d-flex justify-content-center">
-                            <ul data-v-551c9b7c="" class="pagination">
-                                <li data-v-551c9b7c="" class="page-item disabled"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-left"></i></a></li>
-                                <li data-v-551c9b7c="" class="page-item active"><a data-v-551c9b7c="" class="page-link"> 1 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"> 2 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"> 3 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"> 4 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"> 5 </a></li>
-                                <li data-v-551c9b7c="" class="page-item"><a data-v-551c9b7c="" class="page-link"><i data-v-551c9b7c="" class="fas fa-chevron-right"></i></a></li>
-                            </ul>
+                           {{$visitors->links()}}
                         </nav>
                     </div>
                 </div>
