@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />--}}
     <style>
         [v-cloak] { display: none; }
         .select2-container--default .select2-selection--multiple {
@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/dashboard/articles/" class="btn btn-sm btn-secondary">Back</a></small>
+                        <small class="float-right"><a href="/articles/" class="btn btn-sm btn-secondary">Back</a></small>
                         <h5>Create Article</h5>
                     </div>
                     <div class="ibox-content">
@@ -187,7 +187,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+<script src="/js/wangEditor.min.js"></script>
 <script src="/js/common.js"></script>
 <script src="/js/jquery.ui.widget.js"></script>
 <script src="/js/jquery.iframe-transport.js"></script>
@@ -195,18 +195,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('.js-example-basic-multiple').select2({
-            placeholder: "请选择",
-            placeholderOption: "first",
-            allowClear: true
-        });
+        //初始tag下拉框
+        $('.js-example-basic-multiple').select2({placeholder: "请选择"});
+
+        //初始化分类下拉框
         $('.js-example-basic-single').select2();
     });
 
-    $( function() {
-        $("#datepicker").datepicker();
-    } );
+    //初始化日期选择器
+    $("#datepicker").datepicker();
 
+    //初始化文本编辑器 start
     var E = window.wangEditor;
     var editor = new E('#editor');
     //开启debug模式
@@ -231,7 +230,9 @@
         'code',  // 插入代码
     ];
     editor.create();
+    //初始化文本编辑器 end
 
+    //图片上传插件初始化
     $('#fileupload').fileupload({
         dataType: 'json',
         done: function (e, data) {
@@ -241,17 +242,19 @@
             } else {
                 $(".cover-box").find("img").attr('src', data.result.file);
             }
-            console.log(data.result.file);
         }
     });
 
+    //ajax 提交表单数据
     $('form').on('submit', function (e) {
         e.preventDefault();
         var self = $(this);
         var params =  $.param({'content':editor.txt.html()})+'&'+self.serialize();
         $.post(self.attr('action'), params, function (res) {
             toastr.info('添加成功');
-            console.log(res);
+            window.setTimeout(function(){
+                window.location.href = '/articles';
+            }, 1500);
         }).complete(function (res) {
             if (res.status != 200) {
                 $.each(res.responseJSON.errors, function (key, value) {
