@@ -37,7 +37,7 @@
                 <div data-v-6750c142="" class="ibox">
                     <div data-v-6750c142="" class="ibox-title d-flex">
                         <h5 data-v-6750c142="" class="align-self-center font-weight-normal"> Visitors</h5>
-                        <small data-v-6750c142="" class="ml-auto d-flex flex-row">
+                        <small data-v-6750c142="" class="ml-auto d-flex flex-row" style="height:31px;">
                             <form action="/visitors" method="get" style="display: inherit;">
                                 <div data-v-6750c142="" class="input-group input-group-sm mr-2">
                                     <input data-v-6750c142="" type="text" name="keyword" placeholder="" class="form-control" value="{{empty($keyword) ? '' : $keyword}}"/>
