@@ -75,13 +75,6 @@
                                     </tr>
                                 @endforeach
                             @endif
-                            <tr data-v-6750c142="">
-                                <td data-v-6750c142="" class="text-center"> 101 </td>
-                                <td data-v-6750c142="" class="text-center">Repellendus et tenetur expedita quos dolorem rerum eligendi. </td>
-                                <td data-v-6750c142=""> 127.0.0.1 </td>
-                                <td data-v-6750c142=""> 1 </td>
-                                <td data-v-6750c142=""> 2018-11-01 05:18:38 </td>
-                            </tr>
                             </tbody>
                         </table>
                         <!---->
