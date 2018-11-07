@@ -74,11 +74,11 @@ class TagsController extends Controller
      * 设置验证规则
      *
      * @param Request $request
-     * @return array
+     * @return void
      */
     protected function validator(Request $request)
     {
-        return $this->validate($request, [
+        $this->validate($request, [
             'tag' => 'required|min:2|max:16',
             'title' => 'required|min:2|max:32',
             'meta_description' => 'required|max:255',

@@ -14,7 +14,7 @@ class ArticlesController extends Controller
     }
 
     /**
-     * Display the dashboard page.
+     * 首页
      *
      * @return mixed
      */
@@ -110,7 +110,7 @@ class ArticlesController extends Controller
      * 验证文章字段
      *
      * @param Request $request
-     * @return array
+     * @return void
      */
     protected function validator(Request $request)
     {
@@ -133,6 +133,6 @@ class ArticlesController extends Controller
             'page_image.required'  => '文章封面必填',
         ];
 
-        return $this->validate($request, $rules, $messages);
+         $this->validate($request, $rules, $messages);
     }
 }
