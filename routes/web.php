@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@dashboard');
 Route::get('users', 'UsersController@index');
 Route::get('users/create', 'UsersController@create');
+Route::post('users/store', 'UsersController@store');
 Route::get('articles', 'ArticlesController@index');
 Route::get('articles/create', 'ArticlesController@create');
 Route::post('articles/store', 'ArticlesController@store');

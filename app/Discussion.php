@@ -74,6 +74,29 @@ class Discussion extends Model
     }
 
     /**
+     * Get number of the records.
+     *
+     * @param  Request $request
+     * @param  integer $number
+     * @param  string  $sort
+     * @param  string  $sortColumn
+     * @return collection
+     */
+    public static function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        $keyword = $request->get('keyword');
+
+        return static::when($keyword, function ($query) use ($keyword) {
+                $query->where('title', 'like', "%{$keyword}%")
+                    ->orWhereHas('user', function ($query) use ($keyword) {
+                        $query->where('name', 'like', "%{$keyword}%");
+                    });
+            })
+            ->orderBy($sortColumn, $sort)->paginate($number);
+    }
+
+
+    /**
      * Set the content attribute.
      *
      * @param $value

@@ -14,11 +14,11 @@ class CategoriesController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(20);
-
-        return view('category.index', compact('categories'));
+        $keyword = $request->input('keyword');
+        $categories = Category::pageWithRequest($request);
+        return view('category.index', compact('categories', 'keyword'));
     }
 
     public function create()

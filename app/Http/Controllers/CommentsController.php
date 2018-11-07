@@ -12,11 +12,11 @@ class CommentsController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        $comments = Comment::orderBy('created_at', 'desc')
-            ->paginate(20);
-        return view('comment.index', compact('comments'));
+        $keyword = $request->input('keyword');
+        $comments = Comment::pageWithRequest($request);
+        return view('comment.index', compact('comments', 'keyword'));
     }
 
     public function edit($id)

@@ -18,11 +18,11 @@ class ArticlesController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::orderBy('created_at', 'desc')
-            ->paginate(20);
-        return view('article.index', compact('articles'));
+        $keyword = $request->input('keyword');
+        $articles = Article::pageWithRequest($request);
+        return view('article.index', compact('articles', 'keyword'));
     }
 
     /**

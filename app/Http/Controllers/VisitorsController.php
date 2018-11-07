@@ -16,10 +16,10 @@ class VisitorsController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        $visitors = Visitor::orderBy('created_at', 'desc')
-            ->paginate(20);
-        return view('visitor.index', compact('visitors'));
+        $keyword = $request->input('keyword');
+        $visitors = Visitor::pageWithRequest($request);
+        return view('visitor.index', compact('visitors', 'keyword'));
     }
 }
