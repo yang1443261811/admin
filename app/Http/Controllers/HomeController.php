@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\User;
+use App\Visitor;
+use App\Article;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,6 +21,13 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        return view('dashboard.index');
+        $users = User::count();
+        $visitors = Visitor::sum('clicks');
+        $articles = Article::count();
+        $comments = Comment::count();
+
+        $data = compact('users', 'visitors', 'articles', 'comments');
+
+        return view('dashboard.index', $data);
     }
 }
