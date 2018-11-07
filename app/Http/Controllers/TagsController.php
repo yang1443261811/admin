@@ -13,10 +13,11 @@ class TagsController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tags = Tag::orderBy('created_at', 'desc')->paginate(20);
-        return view('tag.index', compact('tags'));
+        $keyword = $request->input('keyword');
+        $tags = Tag::pageWithRequest($request);
+        return view('tag.index', compact('tags', 'keyword'));
     }
 
     public function create()

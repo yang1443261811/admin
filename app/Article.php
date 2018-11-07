@@ -5,6 +5,7 @@ namespace App;
 //use App\Scopes\DraftScope;
 //use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
+
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
@@ -46,7 +47,7 @@ class Article extends Model
     ];
 
     protected $casts = [
-        'content'    =>    'array'
+        'content' => 'array'
     ];
 
     /**
@@ -144,11 +145,12 @@ class Article extends Model
      * @param $value
      * @param $extra
      */
-    public function setUniqueSlug($value, $extra) {
-        $slug = str_slug($value.'-'.$extra);
+    public function setUniqueSlug($value, $extra)
+    {
+        $slug = str_slug($value . '-' . $extra);
 
         if (static::whereSlug($slug)->exists()) {
-            $this->setUniqueSlug($slug, (int) $extra + 1);
+            $this->setUniqueSlug($slug, (int)$extra + 1);
             return;
         }
 
@@ -169,4 +171,24 @@ class Article extends Model
 //
 //        $this->attributes['content'] = json_encode($data);
 //    }
+
+    /**
+     * 分页获取数据
+     *
+     * @param $request
+     * @param int $number
+     * @param string $sort
+     * @param string $sortColumn
+     * @return mixed
+     */
+    public static function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        $keyword = $request->get('keyword');
+
+        return static::when($keyword, function ($query) use ($keyword) {
+            $query->where('title', 'like', "%{$keyword}%")
+                ->orWhere('subtitle', 'like', "%{$keyword}%");
+        })
+            ->orderBy($sortColumn, $sort)->paginate($number);
+    }
 }

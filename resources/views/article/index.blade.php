@@ -37,12 +37,16 @@
                     <div data-v-6750c142="" class="ibox-title d-flex">
                         <h5 data-v-6750c142="" class="align-self-center font-weight-normal">Articles</h5>
                         <small data-v-6750c142="" class="ml-auto d-flex flex-row">
-                            <div data-v-6750c142="" class="input-group input-group-sm mr-2">
-                                <input data-v-6750c142="" type="text" placeholder="" class="form-control" />
-                                <div data-v-6750c142="" class="input-group-append">
-                                    <button data-v-6750c142="" type="button" class="btn btn-outline-secondary"><span data-v-6750c142="" class="fa fa-search"></span></button>
+                            <form action="/articles" method="get" style="display: inherit;">
+                                <div data-v-6750c142="" class="input-group input-group-sm mr-2">
+                                    <input data-v-6750c142="" type="text" name="keyword" placeholder="" class="form-control" value="{{empty($keyword) ? '' : $keyword}}"/>
+                                        <div data-v-6750c142="" class="input-group-append" >
+                                            <button data-v-6750c142="" type="submit" class="btn btn-outline-secondary"><span data-v-6750c142="" class="fa fa-search"></span></button>
+                                        </div>
                                 </div>
-                            </div> <a href="/articles/create" class="btn btn-sm btn-success" data-v-6750c142="">Create</a></small>
+                            </form>
+                            <a href="/articles/create" class="btn btn-sm btn-success" data-v-6750c142="" style="height:31px;">Create</a>
+                        </small>
                     </div>
                     <div data-v-6750c142="" class="ibox-content no-padding table-responsive">
                         <table data-v-6750c142="" class="table table-striped table-hover">
