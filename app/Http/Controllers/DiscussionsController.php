@@ -93,7 +93,7 @@ class DiscussionsController extends Controller
      * 验证文章字段
      *
      * @param Request $request
-     * @return mixed
+     * @return void
      */
     protected function validator(Request $request)
     {
@@ -109,6 +109,6 @@ class DiscussionsController extends Controller
             'tags.required' => '文章标签必填',
         ];
 
-        return $this->validate($request, $rules, $messages);
+        $this->validate($request, $rules, $messages);
     }
 }

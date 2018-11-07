@@ -12,7 +12,7 @@ class LinksController extends Controller
     }
 
     /**
-     * Display the dashboard page.
+     * 首页
      *
      * @return mixed
      */
@@ -57,7 +57,7 @@ class LinksController extends Controller
      * 验证文章字段
      *
      * @param Request $request
-     * @return array
+     * @return void
      */
     protected function validator(Request $request)
     {
@@ -72,6 +72,6 @@ class LinksController extends Controller
             'image.required' => '图片不能为空',
         ];
 
-        return $this->validate($request, $rules, $messages);
+        $this->validate($request, $rules, $messages);
     }
 }

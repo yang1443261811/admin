@@ -21,6 +21,11 @@ class CategoriesController extends Controller
         return view('category.index', compact('categories', 'keyword'));
     }
 
+    /**
+     * 创建
+     *
+     * @return mixed
+     */
     public function create()
     {
         return view('category.create');
@@ -77,11 +82,11 @@ class CategoriesController extends Controller
      * 设置验证规则
      *
      * @param Request $request
-     * @return mixed
+     * @return void
      */
     protected function validator(Request $request)
     {
-        return $this->validate($request, [
+        $this->validate($request, [
             'name'        => 'required|min:2|max:64',
             'path'        => 'required',
             'description' => 'required|max:255',
