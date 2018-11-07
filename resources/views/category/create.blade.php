@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/app.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="/css/common.css?id=8f841e10d99c3fdf0293" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
     <style>
         [v-cloak] { display: none; }
     </style>
@@ -73,15 +74,26 @@
     </div>
 </div>
 <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script src="/js/common.js"></script>
 <script>
+    //ajax提交表单数据
     $('form').on('submit', function (e) {
         e.preventDefault();
-
         self = $(this);
         $.post(self.attr('action'), self.serialize(), function (res) {
-            console.log(res);
-        })
+            toastr.info('添加成功');
+            window.setTimeout(function(){
+                window.location.href = '/categories';
+            }, 1500);
+        }).complete(function (res) {
+            if (res.status != 200) {
+                $.each(res.responseJSON.errors, function (key, value) {
+                    toastr.warning(value[0]);
+                    return false;
+                });
+            }
+        });
     })
 </script>
 </body>

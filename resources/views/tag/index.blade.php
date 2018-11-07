@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/app.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="/css/common.css?id=8f841e10d99c3fdf0293" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
     <style>
         [v-cloak] {
             display: none;
@@ -88,14 +89,19 @@
     </div>
 </div>
 <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script src="/js/common.js"></script>
 <script>
     $('.btn-danger').click(function (e) {
         e.preventDefault();
         var self = $(this);
         $.get(self.attr('href'), function (res) {
-            self.parents('tr').remove();
-            console.log(res);
+            if (res) {
+                self.parents('tr').remove();
+                toastr.info('删除成功');
+            } else {
+                toastr.warning('删除失败');
+            }
         })
     })
 </script>

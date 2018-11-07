@@ -99,7 +99,6 @@
             } else {
                 toastr.warning('删除失败');
             }
-            console.log(res);
         })
     })
 </script>
