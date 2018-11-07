@@ -18,6 +18,7 @@ class CategoriesController extends Controller
     {
         $keyword = $request->input('keyword');
         $categories = Category::pageWithRequest($request);
+
         return view('category.index', compact('categories', 'keyword'));
     }
 
@@ -41,6 +42,7 @@ class CategoriesController extends Controller
     {
         $this->validator($request);
         $result = (new Category())->fill($request->all())->save();
+
         return response()->json($result);
     }
 
@@ -57,6 +59,7 @@ class CategoriesController extends Controller
         }
 
         $result = Category::destroy($id);
+
         return response()->json($result);
     }
 
@@ -74,6 +77,7 @@ class CategoriesController extends Controller
         } else {
             $input = $request->only('name', 'description');
             $result = Category::where('id', $id)->update($input);
+
             return response()->json($result);
         }
     }

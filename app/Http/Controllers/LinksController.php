@@ -20,6 +20,7 @@ class LinksController extends Controller
     {
         $keyword = $request->input('keyword');
         $links = Link::pageWithRequest($request);
+
         return view('link.index', compact('links', 'keyword'));
     }
 
@@ -31,6 +32,7 @@ class LinksController extends Controller
 
         $this->validator($request);
         $result = (new Link)->fill($request->all())->save();
+
         return response()->json($result);
     }
 
@@ -44,12 +46,14 @@ class LinksController extends Controller
         $this->validator($request);
         $model = Link::find($id);
         $res = $model->fill($request->all())->save();
+
         return response()->json($res);
     }
 
     public function delete($id)
     {
         $result = Link::destroy($id);
+
         return response()->json($result);
     }
 

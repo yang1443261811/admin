@@ -17,6 +17,7 @@ class DiscussionsController extends Controller
     {
         $keyword = $request->input('keyword');
         $discussions = Discussion::pageWithRequest($request);
+
         return view('discussion.index', compact('discussions', 'keyword'));
     }
 
@@ -57,6 +58,7 @@ class DiscussionsController extends Controller
     {
         $tags = Tag::all();
         $discussion = Discussion::find($id);
+
         return view('discussion.update', compact('tags', 'discussion'));
     }
 
@@ -74,6 +76,7 @@ class DiscussionsController extends Controller
         $model = Discussion::find($id);
         $model->fill($input)->save();
         $model->tags()->sync($input['tags']);
+
         return response()->json(true);
     }
 
@@ -86,6 +89,7 @@ class DiscussionsController extends Controller
     public function delete($id)
     {
         $result = Discussion::destroy($id);
+
         return response()->json($result);
     }
 

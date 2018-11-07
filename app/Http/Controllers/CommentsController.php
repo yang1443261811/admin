@@ -16,6 +16,7 @@ class CommentsController extends Controller
     {
         $keyword = $request->input('keyword');
         $comments = Comment::pageWithRequest($request);
+
         return view('comment.index', compact('comments', 'keyword'));
     }
 
@@ -41,6 +42,7 @@ class CommentsController extends Controller
     {
         $content = $request->only('content');
         $result  = Comment::where('id', $id)->update($content);
+
         return response()->json($result);
     }
 
@@ -53,6 +55,7 @@ class CommentsController extends Controller
     public function delete($id)
     {
         $result = Comment::destroy($id);
+
         return response()->json($result);
     }
 }
