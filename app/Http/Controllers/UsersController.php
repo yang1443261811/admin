@@ -17,11 +17,18 @@ class UsersController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('user.index');
+        $keyword = $request->input('keyword');
+        $users = User::pageWithRequest($request);
+        return view('user.index', compact('users', 'keyword'));
     }
 
+    /**
+     * 创建
+     *
+     * @return mixed
+     */
     public function create()
     {
         return view('user.create');
@@ -43,5 +50,42 @@ class UsersController extends Controller
         (new User)->fill($data)->save();
 
         return response()->json(true);
+    }
+
+    /**
+     * 编辑
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function edit($id)
+    {
+        return view('user.update', ['user' => User::find($id)]);
+    }
+
+    /**
+     * 更新
+     *
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(Request $request, $id)
+    {
+        $model = User::find($id);
+        $result = $model->fill($request->all())->save();
+        return response()->json($result);
+    }
+
+    /**
+     * 删除
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
+    {
+        $result = User::destroy($id);
+        return response()->json($result);
     }
 }

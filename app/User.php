@@ -16,7 +16,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'is_admin', 'avatar', 'password', 'confirm_code',
+        'nickname', 'real_name', 'weibo_name', 'weibo_link', 'email_notify_enabled',
+        'github_id', 'github_name', 'github_url', 'website', 'description', 'status'
     ];
 
     /**
@@ -27,4 +29,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get number of the records
+     *
+     * @param  Request $request
+     * @param  int $number
+     * @param  string $sort
+     * @param  string $sortColumn
+     * @return mixed
+     */
+    public static function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        $keyword = $request->get('keyword');
+
+        return static::when($keyword, function ($query) use ($keyword) {
+                $query->where('name', 'like', "%{$keyword}%");
+            })
+            ->orderBy($sortColumn, $sort)
+            ->paginate($number);
+    }
 }
