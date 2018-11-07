@@ -13,7 +13,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Display the dashboard page.
+     * 首页
      *
      * @return mixed
      */

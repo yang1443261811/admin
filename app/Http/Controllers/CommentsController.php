@@ -19,11 +19,24 @@ class CommentsController extends Controller
         return view('comment.index', compact('comments', 'keyword'));
     }
 
+    /**
+     * 编辑
+     *
+     * @param $id
+     * @return mixed
+     */
     public function edit($id)
     {
         return view('comment.update', ['comment' => Comment::find($id)]);
     }
 
+    /**
+     * 更新
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update(Request $request, $id)
     {
         $content = $request->only('content');
