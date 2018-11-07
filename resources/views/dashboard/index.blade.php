@@ -50,7 +50,7 @@
                                 <h5 data-v-39463faa="" class="no-margins">Users</h5>
                             </div>
                             <div data-v-39463faa="" class="ibox-content">
-                                <h1 data-v-39463faa="" class="no-margins"><i data-v-39463faa="" class="fas fa-users"></i>11</h1>
+                                <h1 data-v-39463faa="" class="no-margins"><i data-v-39463faa="" class="fas fa-users"></i>{{$users}}</h1>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                                 <h5 data-v-39463faa="" class="no-margins">Views</h5>
                             </div>
                             <div data-v-39463faa="" class="ibox-content">
-                                <h1 data-v-39463faa="" class="no-margins"><i data-v-39463faa="" class="fas fa-eye"></i>4861</h1>
+                                <h1 data-v-39463faa="" class="no-margins"><i data-v-39463faa="" class="fas fa-eye"></i>{{$visitors}}</h1>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                                 <h5 data-v-39463faa="" class="no-margins">Articles</h5>
                             </div>
                             <div data-v-39463faa="" class="ibox-content">
-                                <h1 data-v-39463faa="" class="no-margins"><i data-v-39463faa="" class="fas fa-newspaper"></i>20</h1>
+                                <h1 data-v-39463faa="" class="no-margins"><i data-v-39463faa="" class="fas fa-newspaper"></i>{{$articles}}</h1>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                                 <h5 data-v-39463faa="" class="no-margins">Comments</h5>
                             </div>
                             <div data-v-39463faa="" class="ibox-content">
-                                <h1 data-v-39463faa="" class="no-margins"><i data-v-39463faa="" class="fas fa-comments"></i>50</h1>
+                                <h1 data-v-39463faa="" class="no-margins"><i data-v-39463faa="" class="fas fa-comments"></i>{{$comments}}</h1>
                             </div>
                         </div>
                     </div>
