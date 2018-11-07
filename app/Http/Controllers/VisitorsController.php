@@ -20,6 +20,7 @@ class VisitorsController extends Controller
     {
         $keyword = $request->input('keyword');
         $visitors = Visitor::pageWithRequest($request);
+
         return view('visitor.index', compact('visitors', 'keyword'));
     }
 }

@@ -18,6 +18,7 @@ class ArticlesController extends Controller
     {
         $keyword = $request->input('keyword');
         $articles = Article::pageWithRequest($request);
+
         return view('article.index', compact('articles', 'keyword'));
     }
 
@@ -30,6 +31,7 @@ class ArticlesController extends Controller
     {
         $tags = Tag::all();
         $categories = Category::all();
+
         return view('article.create', compact('tags', 'categories'));
     }
 
@@ -65,6 +67,7 @@ class ArticlesController extends Controller
     public function delete($id)
     {
         $result = Article::destroy($id);
+
         return response()->json($result);
     }
 
@@ -79,6 +82,7 @@ class ArticlesController extends Controller
         $tags = Tag::all();
         $categories = Category::all();
         $article = Article::find($id);
+
         return view('article.update', compact('article', 'categories', 'tags'));
     }
 
@@ -99,6 +103,7 @@ class ArticlesController extends Controller
         $model = Article::find($id);
         $result = $model->fill($input)->save();
         $model->tags()->sync($input['tags']);
+
         return response()->json($result);
     }
 

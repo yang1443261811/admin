@@ -21,6 +21,7 @@ class UsersController extends Controller
     {
         $keyword = $request->input('keyword');
         $users = User::pageWithRequest($request);
+
         return view('user.index', compact('users', 'keyword'));
     }
 
@@ -74,6 +75,7 @@ class UsersController extends Controller
     {
         $model = User::find($id);
         $result = $model->fill($request->all())->save();
+
         return response()->json($result);
     }
 
@@ -86,6 +88,7 @@ class UsersController extends Controller
     public function delete($id)
     {
         $result = User::destroy($id);
+
         return response()->json($result);
     }
 }

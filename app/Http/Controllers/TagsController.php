@@ -17,6 +17,7 @@ class TagsController extends Controller
     {
         $keyword = $request->input('keyword');
         $tags = Tag::pageWithRequest($request);
+
         return view('tag.index', compact('tags', 'keyword'));
     }
 
@@ -35,19 +36,20 @@ class TagsController extends Controller
     {
         $this->validator($request);
         $result = (new Tag())->fill($request->all())->save();
+
         return response()->json($result);
     }
 
     /**
      * 删除
      *
-     * @param Request $request
      * @param int $id
      * @return Response
      */
-    public function delete(Request $request, $id)
+    public function delete($id)
     {
         $result = Tag::destroy($id);
+
         return response()->json($result);
     }
 
@@ -65,6 +67,7 @@ class TagsController extends Controller
         } else {
             $input = $request->only('tag', 'title', 'meta_description');
             $result = Tag::where('id', $id)->update($input);
+
             return response()->json($result);
         }
     }
