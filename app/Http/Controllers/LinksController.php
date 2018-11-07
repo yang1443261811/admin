@@ -16,11 +16,11 @@ class LinksController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        $links = Link::orderBy('created_at', 'desc')
-            ->paginate(20);
-        return view('link.index', ['links' => $links]);
+        $keyword = $request->input('keyword');
+        $links = Link::pageWithRequest($request);
+        return view('link.index', compact('links', 'keyword'));
     }
 
     public function create(Request $request)

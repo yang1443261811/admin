@@ -13,11 +13,11 @@ class DiscussionsController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        $discussions = Discussion::orderBy('created_at', 'desc')
-            ->paginate(20);
-        return view('discussion.index', compact('discussions'));
+        $keyword = $request->input('keyword');
+        $discussions = Discussion::pageWithRequest($request);
+        return view('discussion.index', compact('discussions', 'keyword'));
     }
 
     /**
@@ -55,7 +55,7 @@ class DiscussionsController extends Controller
      */
     public function edit($id)
     {
-        $tags =  Tag::all();
+        $tags = Tag::all();
         $discussion = Discussion::find($id);
         return view('discussion.update', compact('tags', 'discussion'));
     }
@@ -98,15 +98,15 @@ class DiscussionsController extends Controller
     protected function validator(Request $request)
     {
         $rules = [
-            'title'   => 'bail|required|min:3',
+            'title' => 'bail|required|min:3',
             'content' => 'bail|required',
-            'tags'    => 'bail|required',
+            'tags' => 'bail|required',
         ];
-        $messages =  [
-            'title.required'   => '标题必填',
-            'title.min'        => '标题至少三个字符',
+        $messages = [
+            'title.required' => '标题必填',
+            'title.min' => '标题至少三个字符',
             'content.required' => '文章内容必填',
-            'tags.required'    => '文章标签必填',
+            'tags.required' => '文章标签必填',
         ];
 
         return $this->validate($request, $rules, $messages);
