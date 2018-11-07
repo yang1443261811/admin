@@ -35,19 +35,16 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validator($request);
-
         $result = (new Category())->fill($request->all())->save();
-
         return response()->json($result);
     }
 
     /**
      * 删除分类
      *
-     * @param Request $request
      * @return Response
      */
-    public function delete(Request $request, $id)
+    public function delete($id)
     {
         $count = Article::where('category_id', $id)->count();
         if ($count > 0) {
@@ -55,7 +52,6 @@ class CategoriesController extends Controller
         }
 
         $result = Category::destroy($id);
-
         return response()->json($result);
     }
 
@@ -69,13 +65,10 @@ class CategoriesController extends Controller
     {
         if ($request->method() == 'GET') {
             $category = Category::find($id);
-
             return view('category.update', compact('category'));
         } else {
             $input = $request->only('name', 'description');
-
             $result = Category::where('id', $id)->update($input);
-
             return response()->json($result);
         }
     }
@@ -83,14 +76,22 @@ class CategoriesController extends Controller
     /**
      * 设置验证规则
      *
-     * @param array $data
+     * @param Request $request
      * @return mixed
      */
     protected function validator(Request $request)
     {
         return $this->validate($request, [
-            'name' => 'required|min:2|max:16',
+            'name'        => 'required|min:2|max:64',
+            'path'        => 'required',
             'description' => 'required|max:255',
+        ], [
+            'name.required'       => '分类名称必填',
+            'name.min'            => '分类名称至少两位',
+            'name.max'            => '分类名称太长',
+            'path.required'       => 'path不能为空',
+            'description.required'=> '描述必填',
+            'description.max'     => '描述太长',
         ]);
     }
 }
