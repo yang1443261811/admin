@@ -9,10 +9,6 @@ use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
-    public function __construct()
-    {
-    }
-
     /**
      * 首页
      *
