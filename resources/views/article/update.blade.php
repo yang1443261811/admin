@@ -199,6 +199,8 @@
 <script src="/js/jquery.ui.widget.js"></script>
 <script src="/js/jquery.iframe-transport.js"></script>
 <script src="/js/jquery.fileupload.js"></script>
+<script src="/js/jquery.fileupload-process.js"></script>
+<script src="/js/jquery.fileupload-validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -247,6 +249,19 @@
     //图片上传插件初始化
     $('#fileupload').fileupload({
         dataType: 'json',
+        maxFileSize: 2000000,//文件不超过5M
+        acceptFileTypes:  /(\.|\/)(gif|jpe?g|png)$/i,//文件格式限制
+        messages:{
+            maxFileSize: '图片太大',
+            acceptFileTypes: '只能上传图片'
+        },
+        processfail:function (e, data) {
+            var currentFile = data.files[data.index];
+            if (data.files.error && currentFile.error) {
+                // there was an error, do something about it
+                toastr.warning(currentFile.error);
+            }
+        },
         done: function (e, data) {
             $('#page_image').val(data.result.file);
             if($(".cover-box").find("img").length==0){
