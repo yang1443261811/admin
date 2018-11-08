@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/app.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="/css/common.css?id=8f841e10d99c3fdf0293" />
+    <link rel="stylesheet" href="/css/sweetalert2.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
     <style>
         [v-cloak] { display: none; }
@@ -90,21 +91,39 @@
     </div>
 </div>
 <script src="/js/jquery-2.2.4.min.js"></script>
-<script src="/js/common.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+<script src="/js/sweetalert2.min.js"></script>
+<script src="/js/common.js"></script>
 <script>
+    //sweetalert2插件配置
+    var config = {
+        title: "确定删除吗？",
+        text: "你将无法恢复该数据记录！",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "确定删除！",
+        cancelButtonText: "取消删除！",
+    };
+
+    //执行删除请求
     $('.btn-danger').click(function (e) {
         e.preventDefault();
         var self = $(this);
-        $.get(self.attr('href'), function (res) {
-            if (res) {
-                self.parents('tr').remove();
-                toastr.info('删除成功');
-            } else {
-                toastr.warning('删除失败');
+        swal(config).then(function (isConfirm) {
+            //如果确认删除则通过ajax提交删除请求
+            if (isConfirm.value) {
+                $.get(self.attr('href'), function (res) {
+                    if (res) {
+                        self.parents('tr').remove();
+                        swal({title:"删除成功！",text:"数据已经被删除.", type:"success", timer: 1500});
+                    } else {
+                        swal({title:"失败！",text:"删除失败,请重试.", type:"error", timer: 1500});
+                    }
+                });
             }
-        })
-    })
+        });
+    });
 </script>
 </body>
 </html>

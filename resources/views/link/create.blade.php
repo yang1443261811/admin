@@ -135,7 +135,7 @@
 <script src="/js/jquery.fileupload-validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script>
-    //图片上传插件初始化
+    /*********************图片上传插件初始化 start*************************/
     $('.fileupload').fileupload({
         dataType: 'json',
         maxFileSize: 2000000,//文件不超过5M
@@ -152,14 +152,29 @@
             }
         },
         done: function (e, data) {
+            $('.mask').hide();
             $('.cover').val(data.result.file);
-            if($(".upload-box").find("img").length==0){
+            if($(".upload-box").find("img").length == 0){
                 $('.link-image').replaceWith('<img data-v-4cfc7054="" src="'+data.result.file+'" width="100" height="100" class="img-circle image" />');
             } else {
                 $(".upload-box").find("img").attr('src', data.result.file);
             }
         }
     });
+    /*********************图片上传插件初始化 end*************************/
+
+    /*************鼠标划过图片显示遮罩 start*******************/
+    $('body').on('mouseover', '.fileupload', function () {
+        if($(".upload-box").find("img").length !== 0) {
+            $('.mask').show();
+        }
+    });
+    $('body').on('mouseout', '.fileupload', function () {
+        if($(".upload-box").find("img").length !== 0) {
+            $('.mask').hide();
+        }
+    });
+    /*************鼠标划过图片显示遮罩 end*******************/
 
     //ajax 提交表单数据
     $('form').on('submit', function (e) {
