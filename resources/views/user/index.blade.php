@@ -88,7 +88,6 @@
                             @endif
                             </tbody>
                         </table>
-                        <!---->
                         <nav data-v-551c9b7c="" data-v-6750c142="" class="d-flex justify-content-center">
                             {{$users->links()}}
                         </nav>
