@@ -154,7 +154,7 @@
         },
         done: function (e, data) {
             $('.cover').val(data.result.file);
-            if($(".upload-box").find("img").length==0){
+            if($(".upload-box").find("img").length === 0){
                 $('.link-image').replaceWith('<img data-v-4cfc7054="" src="'+data.result.file+'" width="100" height="100" class="img-circle image" />');
             } else {
                 $(".upload-box").find("img").attr('src', data.result.file);
