@@ -73,6 +73,7 @@ class CategoriesController extends Controller
     {
         if ($request->method() == 'GET') {
             $category = Category::find($id);
+
             return view('category.update', compact('category'));
         } else {
             $input = $request->only('name', 'description');
