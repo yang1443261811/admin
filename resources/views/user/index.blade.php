@@ -76,7 +76,11 @@
                                         <td data-v-6750c142=""> {{$user->name}} </td>
                                         <td data-v-6750c142=""> {{$user->email}} </td>
                                         <td data-v-6750c142="" class="component text-center">
-                                            <span data-v-453bbac3="" data-v-6750c142="" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span>
+                                            @if($user->status == 1)
+                                                <span data-v-453bbac3="{{$user->status}}" data-v-6750c142="{{$user->id}}" style="color: rgb(142, 180, 203);"><i data-v-453bbac3="" class="fas fa-circle"></i></span>
+                                            @else
+                                                <span data-v-453bbac3="{{$user->status}}" data-v-6750c142="{{$user->id}}" style="color: rgb(191, 83, 41);"><i data-v-453bbac3="" class="fas fa-circle"></i></span>
+                                            @endif
                                         </td>
                                         <td data-v-6750c142=""> {{$user->created_at}} </td>
                                         <td data-v-6750c142="" class="actions text-center">
@@ -104,13 +108,13 @@
 <script>
     //sweetalert2插件配置
     var config = {
-        title: "确定删除吗？",
-        text: "你将无法恢复该数据记录！",
+        title: "Are you sure？",
+        text: "The action may affect some data, Please think twice！",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "确定删除！",
-        cancelButtonText: "取消删除！",
+        confirmButtonText: "YES！",
+        cancelButtonText: "NO！",
     };
 
     //执行删除请求
@@ -132,12 +136,19 @@
         });
     });
 
+    //更新用户状态
     $('.component span').click(function () {
+        var self = $(this);
         swal(config).then(function (isConfirm) {
             if (isConfirm.value) {
-                swal({title:"删除！",text:"数据已经被删除.", type:"success", timer: 2000});
-            } else {
-                swal("取消！", "你的虚拟文件是安全的:)", "error");
+                var status = parseInt(self.attr('data-v-453bbac3')) === 1 ? 0 : 1;
+                var color = status === 1 ? 'rgb(142, 180, 203)' : 'rgb(191, 83, 41)';
+                var url = '/users/status/' + self.attr('data-v-6750c142') + '?status='+status;
+                $.get(url, function (res) {
+                    self.attr('data-v-453bbac3', status);
+                    self.css('color', color);
+                    swal({title:"成功！",text:"用户状态设置成功.", type:"success", timer: 2000});
+                });
             }
         });
     })

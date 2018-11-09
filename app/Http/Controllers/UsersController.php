@@ -91,4 +91,19 @@ class UsersController extends Controller
 
         return response()->json($result);
     }
+
+    /**
+     * 更改用户状态
+     *
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function status(Request $request, $id)
+    {
+        $input = $request->input();
+        $result = User::where('id', $id)->update($input);
+
+        return response()->json($result);
+    }
 }
