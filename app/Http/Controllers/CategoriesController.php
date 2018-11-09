@@ -72,11 +72,12 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->method() == 'GET') {
-            $category = Category::find($id);
-
-            return view('category.update', compact('category'));
+            return view('category.update', ['category' =>  Category::find($id)]);
         } else {
+            $this->validator($request);
+
             $input = $request->only('name', 'description');
+
             $result = Category::where('id', $id)->update($input);
 
             return response()->json($result);
