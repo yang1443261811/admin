@@ -251,7 +251,7 @@
         },
         done: function (e, data) {
             $('#page_image').val(data.result.file);
-            if($(".cover-box").find("img").length==0){
+            if(parseInt($(".cover-box").find("img").length) === 0){
                 $('.cover-upload').before('<img src="'+data.result.file+'"width="35" height="35"/>');
             } else {
                 $(".cover-box").find("img").attr('src', data.result.file);

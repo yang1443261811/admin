@@ -93,6 +93,14 @@ class DiscussionsController extends Controller
         return response()->json($result);
     }
 
+    public function status(Request $request, $id)
+    {
+        $input = $request->input();
+        $result = Discussion::where('id', $id)->update($input);
+
+        return response()->json($result);
+    }
+
     /**
      * 验证文章字段
      *

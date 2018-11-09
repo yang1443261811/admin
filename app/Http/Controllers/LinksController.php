@@ -24,6 +24,12 @@ class LinksController extends Controller
         return view('link.index', compact('links', 'keyword'));
     }
 
+    /**
+     * 创建新记录
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function create(Request $request)
     {
         if ($request->method() == 'GET') {
@@ -36,11 +42,24 @@ class LinksController extends Controller
         return response()->json($result);
     }
 
+    /**
+     * 编辑
+     *
+     * @param int $id
+     * @return mixed
+     */
     public function edit($id)
     {
         return view('link.update', ['link' =>  Link::find($id)]);
     }
 
+    /**
+     * 更新
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update(Request $request, $id)
     {
         $this->validator($request);
@@ -50,9 +69,30 @@ class LinksController extends Controller
         return response()->json($res);
     }
 
+    /**
+     * 删除
+     *
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function delete($id)
     {
         $result = Link::destroy($id);
+
+        return response()->json($result);
+    }
+
+    /**
+     * 更改用户状态
+     *
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function status(Request $request, $id)
+    {
+        $input = $request->input();
+        $result = Link::where('id', $id)->update($input);
 
         return response()->json($result);
     }
