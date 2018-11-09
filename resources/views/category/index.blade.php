@@ -69,7 +69,7 @@
                                 @foreach($categories as $category)
                                 <tr data-v-6750c142="">
                                     <td data-v-6750c142="" class="text-center"> {{$category->id}} </td>
-                                    <td data-v-6750c142=""> {{$category->description}} </td>
+                                    <td data-v-6750c142=""> {{$category->name}} </td>
                                     <td data-v-6750c142=""> {{$category->path}} </td>
                                     <td data-v-6750c142=""> {{$category->created_at}} </td>
                                     <td data-v-6750c142="" class="actions text-center">
