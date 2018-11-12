@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\DiscussionRepository;
 use Illuminate\Http\Request;
 use Validator;
+use App\Tag;
 
 class DiscussionController extends Controller
 {
@@ -36,7 +37,7 @@ class DiscussionController extends Controller
      */
     public function create()
     {
-        return view('discussion.create');
+        return view('front.discussion.create', ['tags' => Tag::all()]);
     }
 
     /**
@@ -47,7 +48,7 @@ class DiscussionController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all() + ['user_id' => \Auth()->id()];
+        $input = $request->all() + ['user_id' => \Auth()->id(), 'last_user_id' => \Auth()->id()];
 
         $this->validator($input)->validate();
 

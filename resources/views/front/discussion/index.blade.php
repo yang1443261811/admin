@@ -41,7 +41,7 @@
                     <div class="media">
                         <div class="media-left">
                             <a href="/discussion/show/{{$item->id}}">
-                                <img class="avatar media-object img-circle" src="{{\Auth()->check() ? $item->user->avatar : '/images/default.png'}}">
+                                <img class="avatar media-object img-circle" src="{{\Auth()->check() && !empty($item->user->avatar) ? $item->user->avatar : '/images/default.png'}}">
                             </a>
                         </div>
                         <div class="media-body">

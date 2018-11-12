@@ -9,17 +9,25 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
-
     <link rel="shortcut icon" href="/img/io.jpg">
-
     <title>Yang Blog</title>
-
     <link rel="stylesheet" href="/css/home.css">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <style>
         .dicussion {
             margin-top: 40px;
         }
+        .select2-container--default .select2-selection--multiple {
+            border:2px solid #dce4ec
+        }
+        .select2-container .select2-selection--multiple {
+            min-height: 38px;
+        }
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border: solid #dce4ec 2px;
+            outline: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -45,47 +53,10 @@
                         <div class="form-group {{ $errors->has('tags') ? ' has-error' : '' }}">
                             <label class="col-sm-2 control-label">标签</label>
                             <div class="col-sm-10">
-                                <select class="select" multiple="multiple" name="tags[]" style="width: 100%">
-                                    <option value="1">Git</option>
-                                    <option value="2">入门</option>
-                                    <option value="3">components</option>
-                                    <option value="4">VarDumper</option>
-                                    <option value="5">Linux</option>
-                                    <option value="6">LNMP</option>
-                                    <option value="7">CentOS</option>
-                                    <option value="8">MySQL</option>
-                                    <option value="9">Laravel</option>
-                                    <option value="13">VisitorRegistry</option>
-                                    <option value="14">浏览数</option>
-                                    <option value="15">统计</option>
-                                    <option value="16">Collection</option>
-                                    <option value="17">Homestead</option>
-                                    <option value="18">Ubuntu</option>
-                                    <option value="19">PHP7</option>
-                                    <option value="20">HTTPS</option>
-                                    <option value="21">Domain</option>
-                                    <option value="22">Vuejs</option>
-                                    <option value="23">Photo</option>
-                                    <option value="24">编辑器</option>
-                                    <option value="31">分页</option>
-                                    <option value="32">overtrue</option>
-                                    <option value="33">Elasticsearch</option>
-                                    <option value="34">Kibana</option>
-                                    <option value="35">Marvel</option>
-                                    <option value="36">API</option>
-                                    <option value="37">Token</option>
-                                    <option value="38">Authentication</option>
-                                    <option value="39">Iterm2</option>
-                                    <option value="40">fish</option>
-                                    <option value="41">Others</option>
-                                    <option value="42">Blog</option>
-                                    <option value="43">share</option>
-                                    <option value="44">Deployer</option>
-                                    <option value="45">Package</option>
-                                    <option value="46">Algorithm</option>
-                                    <option value="47">Composer</option>
-                                    <option value="48">Python</option>
-                                    <option value="49">Redis</option>
+                                <select class="select js-example-basic-multiple" multiple="multiple" name="tags[]" style="width: 100%">
+                                    @foreach($tags as $item)
+                                    <option value="{{$item->id}}">{{$item->tag}}</option>
+                                    @endforeach
                                 </select>
                                 @if ($errors->has('tags'))
                                     <span class="help-block">
@@ -121,21 +92,25 @@
 
 <!-- Scripts -->
 <script src="/js/jquery-2.2.4.min.js"></script>
-<script src="/js/layer/layer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
+    $(function () {
+        //初始tag下拉框
+        $('.js-example-basic-multiple').select2({placeholder: "请选择"});
 
-    $('.dropdown').click(function () {
-        if ($(this).hasClass('open')) {
-            $(this).removeClass('open');
-        } else {
-            $(this).addClass('open');
-        }
+        $('.dropdown').click(function () {
+            if ($(this).hasClass('open')) {
+                $(this).removeClass('open');
+            } else {
+                $(this).addClass('open');
+            }
+        });
+
+        $('.navbar-toggle').click(function () {
+            $('#app-navbar-collapse').toggle();
+        });
+
     });
-
-    $('.navbar-toggle').click(function () {
-        $('#app-navbar-collapse').toggle();
-    });
-
 </script>
 
 

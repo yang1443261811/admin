@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
 
-    <link rel="shortcut icon" href="/img/io.jpg">
+    <link rel="shortcut icon" href="/image/io.jpg">
 
     <title>Yang Blog</title>
 

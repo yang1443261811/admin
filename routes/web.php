@@ -56,7 +56,6 @@ Route::group(['prefix' => '/admin', 'namespace' => 'admin'], function () {
     Route::get('links/status/{id}', 'LinksController@status');
     Route::get('visitors', 'VisitorsController@index');
     Route::get('system', 'SystemController@index');
-    Route::post('files/upload', 'FilesController@upload');
 });
 
 Route::get('/', 'IndexController@index');
@@ -80,3 +79,8 @@ Route::post('discussion/store', 'DiscussionController@store');
 Route::any('discussion/create', 'DiscussionController@create');
 Route::any('discussion/show/{id}', 'DiscussionController@show');
 Route::any('tag/{tag}', 'TagController@show');
+Route::post('files/upload', 'FilesController@upload');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
