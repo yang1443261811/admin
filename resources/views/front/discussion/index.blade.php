@@ -9,12 +9,13 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
-
     <link rel="shortcut icon" href="/img/io.jpg">
-
     <title>Yang Blog</title>
-
     <link rel="stylesheet" href="/css/home.css">
+    <style>
+        .pagination{padding: 0;line-height:0}
+        .pagination ul li a{height:100%;margin-bottom:10px;}
+    </style>
 
 </head>
 <body>

@@ -45,7 +45,7 @@
                         @foreach($articles as $item)
                             <div class="media">
                                 <a class="media-left" href="/post/show/{{$item->id}}">
-                                    <img alt="redis-five-kinds-of-structure-and-order" src="/{{$item->cover}}" style="height:140px;" data-holder-rendered="true">
+                                    <img alt="redis-five-kinds-of-structure-and-order" src="{{$item->page_image}}" style="height:140px;" data-holder-rendered="true">
                                 </a>
                                 <div class="media-body">
                                     <h6 class="media-heading">
@@ -59,15 +59,15 @@
                                     </div>
                                     <div class="extra">
                                         @if(!empty($item->tags))
-                                            @foreach(json_decode($item->tags) as $tag)
-                                                <a href="/post/find/{{$tag}}">
-                                                    <div class="label"><i class="ion-pricetag"></i>{{$tag}}</div>
+                                            @foreach($item->tags as $tag)
+                                                <a href="/tag/{{$tag->tag}}">
+                                                    <div class="label"><i class="ion-pricetag"></i>{{$tag->tag}}</div>
                                                 </a>
                                             @endforeach
                                         @endif
                                         <div class="info">
                                             <i class="ion-person"></i>小贱贱&nbsp;,&nbsp;
-                                            <i class="ion-clock"></i>{{changeTime($item->created_at)}}&nbsp;,&nbsp;
+                                            <i class="ion-clock"></i>{{$item->created_at}}&nbsp;,&nbsp;
                                             <i class="ion-ios-eye"></i>{{$item->view_count}}
                                             <a href="/post/show/{{$item->id}}" class="pull-right">
                                                 Read More <i class="ion-ios-arrow-forward"></i>
