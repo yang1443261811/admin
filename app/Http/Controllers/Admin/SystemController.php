@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: BL
- * Date: 2018/11/1
- * Time: 17:46
- */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SystemController extends Controller
 {
