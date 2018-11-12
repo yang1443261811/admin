@@ -28,4 +28,33 @@ class DiscussionRepository
         return $this->model->orderBy($sortColumn, $sort)->paginate($number);
     }
 
+    /**
+     * Store a new discussion.
+     * @param  array $data
+     * @return Model
+     */
+    public function store($data)
+    {
+        $discussion = $this->model->create($data);
+
+        if (is_array($data['tags'])) {
+            $this->syncTag($discussion, $data['tags']);
+        } else {
+            $this->syncTag($discussion, json_decode($data['tags']));
+        }
+
+        return $discussion;
+    }
+
+    /**
+     * Sync the tags for the discussion.
+     *
+     * @param  int $number
+     * @return Paginate
+     */
+    public function syncTag(Discussion $discussion, array $tags)
+    {
+        return $discussion->tags()->sync($tags);
+    }
+
 }

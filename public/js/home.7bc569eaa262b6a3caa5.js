@@ -3669,7 +3669,7 @@
             }, methods: {
                 upload: function (e) {
                     var n = this, t = e.target.files[0], i = new FormData;
-                    i.append("image", t), i.append("strategy", "avatar"), this.$http.post("/admin/file/upload", i).then(function (e) {
+                    i.append("image", t), i.append("strategy", "avatar"), this.$http.post("/files/upload", i).then(function (e) {
                         n.cropImage = e.data, n.dialogVisible = !0
                     })
                 }, succeed: function () {

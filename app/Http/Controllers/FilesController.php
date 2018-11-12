@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,6 +29,6 @@ class FilesController extends Controller
 
         $file = $request->file('image')->store(date('Ymd'));
 
-        return response()->json(['success' => true, 'file' => '/uploads/' . $file]);
+        return response()->json(['success' => true, 'url' => 'uploads/' . $file]);
     }
 }
