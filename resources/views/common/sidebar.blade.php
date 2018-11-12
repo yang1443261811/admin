@@ -15,15 +15,15 @@
             </div>
         </div>
         <li data-v-0abac408="" class="nav-index"><a data-v-0abac408="" href="/" class="active"><i data-v-0abac408="" class="fas fa-tachometer-alt"></i> Dashboard </a></li>
-        <li data-v-0abac408="" class="nav-users"><a data-v-0abac408="" href="/users" class=""><i data-v-0abac408="" class="fas fa-users"></i> Users </a></li>
-        <li data-v-0abac408="" class="nav-articles"><a data-v-0abac408="" href="/articles" class=""><i data-v-0abac408="" class="fas fa-book"></i> Articles </a></li>
-        <li data-v-0abac408="" class="nav-discussions"><a data-v-0abac408="" href="/discussions/" class=""><i data-v-0abac408="" class="fas fa-question-circle"></i> Discussion </a></li>
-        <li data-v-0abac408="" class="nav-comments"><a data-v-0abac408="" href="/comments" class=""><i data-v-0abac408="" class="fas fa-comments"></i> Comments </a></li>
-        <li data-v-0abac408="" class="nav-files"><a data-v-0abac408="" href="/files" class=""><i data-v-0abac408="" class="fas fa-folder"></i> Files </a></li>
-        <li data-v-0abac408="" class="nav-tags"><a data-v-0abac408="" href="/tags" class=""><i data-v-0abac408="" class="fas fa-tags"></i> Tags </a></li>
-        <li data-v-0abac408="" class="nav-categories"><a data-v-0abac408="" href="/categories" class=""><i data-v-0abac408="" class="fas fa-list-alt"></i> Categories </a></li>
-        <li data-v-0abac408="" class="nav-links"><a data-v-0abac408="" href="/links" class=""><i data-v-0abac408="" class="fas fa-globe"></i> Links </a></li>
-        <li data-v-0abac408="" class="nav-visitors"><a data-v-0abac408="" href="/visitors" class=""><i data-v-0abac408="" class="fas fa-eye"></i> Visitors </a></li>
-        <li data-v-0abac408="" class="nav-system"><a data-v-0abac408="" href="/system" class=""><i data-v-0abac408="" class="fas fa-cogs"></i> Systems </a></li>
+        <li data-v-0abac408="" class="nav-users"><a data-v-0abac408="" href="/admin/users" class=""><i data-v-0abac408="" class="fas fa-users"></i> Users </a></li>
+        <li data-v-0abac408="" class="nav-articles"><a data-v-0abac408="" href="/admin/articles" class=""><i data-v-0abac408="" class="fas fa-book"></i> Articles </a></li>
+        <li data-v-0abac408="" class="nav-discussions"><a data-v-0abac408="" href="/admin/discussions/" class=""><i data-v-0abac408="" class="fas fa-question-circle"></i> Discussion </a></li>
+        <li data-v-0abac408="" class="nav-comments"><a data-v-0abac408="" href="/admin/comments" class=""><i data-v-0abac408="" class="fas fa-comments"></i> Comments </a></li>
+        <li data-v-0abac408="" class="nav-files"><a data-v-0abac408="" href="/admin/files" class=""><i data-v-0abac408="" class="fas fa-folder"></i> Files </a></li>
+        <li data-v-0abac408="" class="nav-tags"><a data-v-0abac408="" href="/admin/tags" class=""><i data-v-0abac408="" class="fas fa-tags"></i> Tags </a></li>
+        <li data-v-0abac408="" class="nav-categories"><a data-v-0abac408="" href="/admin/categories" class=""><i data-v-0abac408="" class="fas fa-list-alt"></i> Categories </a></li>
+        <li data-v-0abac408="" class="nav-links"><a data-v-0abac408="" href="/admin/links" class=""><i data-v-0abac408="" class="fas fa-globe"></i> Links </a></li>
+        <li data-v-0abac408="" class="nav-visitors"><a data-v-0abac408="" href="/admin/visitors" class=""><i data-v-0abac408="" class="fas fa-eye"></i> Visitors </a></li>
+        <li data-v-0abac408="" class="nav-system"><a data-v-0abac408="" href="/admin/system" class=""><i data-v-0abac408="" class="fas fa-cogs"></i> Systems </a></li>
     </ul>
 </div>
