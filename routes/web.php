@@ -59,3 +59,24 @@ Route::group(['prefix' => '/admin', 'namespace' => 'admin'], function () {
     Route::post('files/upload', 'FilesController@upload');
 });
 
+Route::get('/', 'IndexController@index');
+Route::get('post', 'PostController@index');
+Route::get('post/show/{id}', 'PostController@show');
+Route::get('post/find/{tag}', 'PostController@find');
+Route::get('post/search', 'PostController@search');
+Route::post('comment/create', 'CommentController@create');
+Route::post('comment/vote/{type}', 'CommentController@postVoteComment');
+Route::post('comment/show/{id}', 'CommentController@show');
+Route::get('comment/test', 'CommentController@test');
+Route::get('/', 'IndexController@index');
+Route::get('Index/about', 'IndexController@about');
+Route::get('user/center/{id}', 'UserController@center');
+Route::get('user/login', 'UserController@login');
+Route::get('user/register', 'UserController@register');
+Route::any('user/profile', 'UserController@profile');
+Route::any('user/cropAvatar', 'UserController@cropAvatar');
+Route::any('discussion', 'DiscussionController@index');
+Route::post('discussion/store', 'DiscussionController@store');
+Route::any('discussion/create', 'DiscussionController@create');
+Route::any('discussion/show/{id}', 'DiscussionController@show');
+Route::any('tag/{tag}', 'TagController@show');
