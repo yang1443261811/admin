@@ -101,7 +101,7 @@
                             <i class="ion-pricetag"></i>
                             @if($articles->tags)
                                 @foreach($articles->tags as $tag)
-                                    <a href="/post/find/{{$tag->tag}}">{{$tag->tag}}</a>，
+                                    <a href="/tag/{{$tag->tag}}">{{$tag->tag}}</a>，
                                 @endforeach
                             @endif
                             <i class="ion-clock"></i>{{$articles->created_at}}
