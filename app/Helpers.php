@@ -5,7 +5,7 @@ if (! function_exists('p')) {
      *
      * @param  array $data
      */
-    function p(array $data)
+    function p($data)
     {
         echo '<pre>';
         print_r($data);

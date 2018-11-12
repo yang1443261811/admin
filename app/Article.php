@@ -46,9 +46,9 @@ class Article extends Model
         'published_at',
     ];
 
-    protected $casts = [
-        'content' => 'array'
-    ];
+//    protected $casts = [
+//        'content' => 'array'
+//    ];
 
     /**
      * The "booting" method of the model.
@@ -190,5 +190,22 @@ class Article extends Model
                 ->orWhere('subtitle', 'like', "%{$keyword}%");
         })
             ->orderBy($sortColumn, $sort)->paginate($number);
+    }
+
+    /**
+     * 获取文章并记录访问日志
+     *
+     * @param int $article_id
+     * @return mixed
+     */
+    public function browseArticles($article_id)
+    {
+        $model = static::find($article_id);
+
+        $model->increment('view_count');
+
+        $this->visitor->log($article_id);
+
+        return $model;
     }
 }
