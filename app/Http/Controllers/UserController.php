@@ -65,6 +65,7 @@ class UserController extends Controller
     public function cropAvatar(Request $request, Filesystem $filesystem)
     {
         $currentImage = $request->input('image');
+//p($currentImage);
         $data = $request->input('data');
 
         $image = Image::make($currentImage['url']);
