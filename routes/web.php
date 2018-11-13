@@ -70,6 +70,7 @@ Route::get('comment/test', 'CommentController@test');
 Route::get('/', 'IndexController@index');
 Route::get('Index/about', 'IndexController@about');
 Route::get('user/center/{id}', 'UserController@center');
+Route::get('user/setting/{id?}', 'UserController@setting');
 Route::get('user/login', 'UserController@login');
 Route::get('user/register', 'UserController@register');
 Route::any('user/profile', 'UserController@profile');

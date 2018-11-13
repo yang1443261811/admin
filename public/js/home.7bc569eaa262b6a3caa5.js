@@ -3863,7 +3863,7 @@
                 }, upload: function (e) {
                     var n = this, t = {image: this.image, data: this.cropper.getData()};
                     this.$http.post("/user/cropAvatar", t).then(function (e) {
-                        n.$emit("succeed")
+                        // n.$emit("succeed")
                     })
                 }, cancel: function () {
                     this.$emit("canceled")
