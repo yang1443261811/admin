@@ -28,7 +28,7 @@
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
     {{--侧栏--}}
-    @include('common.sidebar')
+    @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -39,12 +39,12 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/dashboard/tags/" class="btn btn-sm btn-secondary">Back</a> </small>
+                        <small class="float-right"><a href="/admin/tags/" class="btn btn-sm btn-secondary">Back</a> </small>
                         <h5>Update Tag</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <form role="form" class="col-md-4 offset-md-4" action="/tags/update/{{$tag->id}}">
+                            <form role="form" class="col-md-4 offset-md-4" action="/admin/tags/update/{{$tag->id}}">
                                 {{csrf_field()}}
                                 <div class="form-group">
                                     <label for="tag">Tag</label>

@@ -29,6 +29,6 @@ class HomeController extends Controller
 
         $data = compact('users', 'visitors', 'articles', 'comments');
 
-        return view('dashboard.index', $data);
+        return view('back.dashboard.index', $data);
     }
 }

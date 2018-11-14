@@ -20,7 +20,7 @@ class ArticlesController extends Controller
         $keyword = $request->input('keyword');
         $articles = Article::pageWithRequest($request);
 
-        return view('article.index', compact('articles', 'keyword'));
+        return view('back.article.index', compact('articles', 'keyword'));
     }
 
     /**
@@ -33,7 +33,7 @@ class ArticlesController extends Controller
         $tags = Tag::all();
         $categories = Category::all();
 
-        return view('article.create', compact('tags', 'categories'));
+        return view('back.article.create', compact('tags', 'categories'));
     }
 
     /**
@@ -84,7 +84,7 @@ class ArticlesController extends Controller
         $categories = Category::all();
         $article = Article::find($id);
 
-        return view('article.update', compact('article', 'categories', 'tags'));
+        return view('back.article.update', compact('article', 'categories', 'tags'));
     }
 
     /**

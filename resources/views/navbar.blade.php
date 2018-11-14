@@ -51,6 +51,9 @@
                     <ul class="dropdown-menu text-center" role="menu">
                         <li><a href="/user/center/{{\Auth::user()->id}}"><i class="ion-person"></i>个人中心</a></li>
                         <li><a href="/user/setting"><i class="ion-gear-b"></i>个人设置</a></li>
+                        @if(Auth::user()->is_admin)
+                        <li><a href="/admin/dashboard"><i class="icon ion-speedometer"></i>仪表盘</a></li>
+                        @endif
                         <li class="divider"></li>
                         <li>
                             <a href="/logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

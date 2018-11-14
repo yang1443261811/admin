@@ -72,7 +72,7 @@
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
     {{--侧栏--}}
-    @include('common.sidebar')
+    @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -83,12 +83,12 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/links/" class="btn btn-sm btn-secondary">Back</a> </small>
+                        <small class="float-right"><a href="/admin/links/" class="btn btn-sm btn-secondary">Back</a> </small>
                         <h5>Create Link</h5>
                     </div>
                     <div class="ibox-content">
                         <div data-v-4cfc7054="" class="row">
-                            <form data-v-4cfc7054="" role="form" enctype="multipart/form-data" action="/links/create" class="col-sm-4 offset-sm-4">
+                            <form data-v-4cfc7054="" role="form" enctype="multipart/form-data" action="/admin/links/create" class="col-sm-4 offset-sm-4">
                                 {{csrf_field()}}
                                 <div data-v-4cfc7054="" class="form-group">
                                     <label data-v-4cfc7054="" for="name">Link Name</label>

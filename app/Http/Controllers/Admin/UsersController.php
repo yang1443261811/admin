@@ -23,7 +23,7 @@ class UsersController extends Controller
         $keyword = $request->input('keyword');
         $users = User::pageWithRequest($request);
 
-        return view('user.index', compact('users', 'keyword'));
+        return view('back.user.index', compact('users', 'keyword'));
     }
 
     /**
@@ -33,7 +33,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('back.user.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        return view('user.update', ['user' => User::find($id)]);
+        return view('back.user.update', ['user' => User::find($id)]);
     }
 
     /**

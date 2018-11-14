@@ -24,7 +24,7 @@
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
     {{--侧栏--}}
-    @include('common.sidebar')
+    @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -35,12 +35,12 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/dashboard/categories/" class="btn btn-sm btn-secondary">Back</a></small>
+                        <small class="float-right"><a href="/admin/categories/" class="btn btn-sm btn-secondary">Back</a></small>
                         <h5>Create Category</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <form class="col-sm-6 offset-sm-2" action="/categories/store">
+                            <form class="col-sm-6 offset-sm-2" action="/admin/categories/store">
                                 {{csrf_field()}}
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-3 col-form-label">Category Name</label>

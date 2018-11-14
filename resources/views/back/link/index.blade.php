@@ -26,7 +26,7 @@
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
     {{--侧栏--}}
-    @include('common.sidebar')
+    @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -39,7 +39,7 @@
                     <div data-v-6750c142="" class="ibox-title d-flex">
                         <h5 data-v-6750c142="" class="align-self-center font-weight-normal"> Links</h5>
                         <small data-v-6750c142="" class="ml-auto d-flex flex-row" style="height:31px;">
-                            <form action="/links" method="get" style="display: inherit;">
+                            <form action="/admin/links" method="get" style="display: inherit;">
                                 <div data-v-6750c142="" class="input-group input-group-sm mr-2">
                                     <input data-v-6750c142="" type="text" name="keyword" placeholder="" class="form-control" value="{{empty($keyword) ? '' : $keyword}}"/>
                                     <div data-v-6750c142="" class="input-group-append" >
@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <a href="/links/create" class="btn btn-sm btn-success" data-v-6750c142="" style="height:31px;">Create</a>
+                            <a href="/admin/links/create" class="btn btn-sm btn-success" data-v-6750c142="" style="height:31px;">Create</a>
                         </small>
                     </div>
                     <div data-v-6750c142="" class="ibox-content no-padding table-responsive">
@@ -84,8 +84,8 @@
                                         </td>
                                         <td data-v-6750c142=""> {{$link->created_at}} </td>
                                         <td data-v-6750c142="" class="actions text-center">
-                                            <a data-v-6750c142="" class="btn btn-info" href="/links/edit/{{$link->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
-                                            <a data-v-6750c142="" class="btn btn-danger" href="/links/delete/{{$link->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
+                                            <a data-v-6750c142="" class="btn btn-info" href="/admin/links/edit/{{$link->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                            <a data-v-6750c142="" class="btn btn-danger" href="/admin/links/delete/{{$link->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -144,7 +144,7 @@
             if (isConfirm.value) {
                 var status = parseInt(self.attr('data-v-453bbac3')) === 1 ? 0 : 1;
                 var color = status === 1 ? 'rgb(142, 180, 203)' : 'rgb(191, 83, 41)';
-                var url = '/links/status/' + self.attr('data-v-6750c142') + '?status='+status;
+                var url = '/admin/links/status/' + self.attr('data-v-6750c142') + '?status='+status;
                 $.get(url, function (res) {
                     self.attr('data-v-453bbac3', status);
                     self.css('color', color);

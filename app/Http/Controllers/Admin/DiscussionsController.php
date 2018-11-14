@@ -19,7 +19,7 @@ class DiscussionsController extends Controller
         $keyword = $request->input('keyword');
         $discussions = Discussion::pageWithRequest($request);
 
-        return view('discussion.index', compact('discussions', 'keyword'));
+        return view('back.discussion.index', compact('discussions', 'keyword'));
     }
 
     /**
@@ -29,7 +29,7 @@ class DiscussionsController extends Controller
      */
     public function create()
     {
-        return view('discussion.create', ['tags' => Tag::all()]);
+        return view('back.discussion.create', ['tags' => Tag::all()]);
     }
 
     /**
@@ -60,7 +60,7 @@ class DiscussionsController extends Controller
         $tags = Tag::all();
         $discussion = Discussion::find($id);
 
-        return view('discussion.update', compact('tags', 'discussion'));
+        return view('back.discussion.update', compact('tags', 'discussion'));
     }
 
     /**

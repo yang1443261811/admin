@@ -19,12 +19,12 @@ class TagsController extends Controller
         $keyword = $request->input('keyword');
         $tags = Tag::pageWithRequest($request);
 
-        return view('tag.index', compact('tags', 'keyword'));
+        return view('back.tag.index', compact('tags', 'keyword'));
     }
 
     public function create()
     {
-        return view('tag.create');
+        return view('back.tag.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class TagsController extends Controller
     {
         if ($request->method() == 'GET') {
             $tag = Tag::find($id);
-            return view('tag.update', compact('tag'));
+            return view('back.tag.update', compact('tag'));
         } else {
             $input = $request->only('tag', 'title', 'meta_description');
             $result = Tag::where('id', $id)->update($input);
