@@ -159,7 +159,7 @@
             $.post(self.attr('action'), params, function (res) {
                 toastr.info('添加成功');
                 window.setTimeout(function(){
-                    window.location.href = '/discussions';
+                    window.location.href = '/admin/discussions';
                 }, 1500);
             }).complete(function (res) {
                 if (res.status != 200) {

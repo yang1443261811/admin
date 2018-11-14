@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/dashboard/categories/" class="btn btn-sm btn-secondary">Back</a></small>
+                        <small class="float-right"><a href="/admin/categories/" class="btn btn-sm btn-secondary">Back</a></small>
                         <h5>Update Category</h5>
                     </div>
                     <div class="ibox-content">
@@ -85,7 +85,7 @@
         $.post(self.attr('action'), self.serialize(), function (res) {
             toastr.info('修改成功');
             window.setTimeout(function(){
-                window.location.href = '/categories';
+                window.location.href = '/admin/categories';
             }, 1500);
         }).complete(function (res) {
             if (res.status != 200) {

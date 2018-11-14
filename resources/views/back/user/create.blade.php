@@ -98,7 +98,7 @@
         $.post(self.attr('action'), self.serialize(), function (res) {
             toastr.info('添加成功');
             window.setTimeout(function(){
-                window.location.href = '/users';
+                window.location.href = '/admin/users';
             }, 1500);
         }).complete(function (res) {
             if (res.status != 200) {

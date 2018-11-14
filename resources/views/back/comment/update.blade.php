@@ -133,7 +133,7 @@
             $.post(self.attr('action'), params, function (res) {
                 toastr.info('更新成功');
                 window.setTimeout(function(){
-                    window.location.href = '/comments';
+                    window.location.href = '/admin/comments';
                 }, 1500);
             });
         })

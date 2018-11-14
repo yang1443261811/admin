@@ -74,6 +74,7 @@ Route::get('user/setting/{id?}', 'UserController@setting');
 Route::get('user/login', 'UserController@login');
 Route::get('user/register', 'UserController@register');
 Route::any('user/profile', 'UserController@profile');
+Route::get('user/link', 'UserController@link');
 Route::any('user/cropAvatar', 'UserController@cropAvatar');
 Route::any('discussion', 'DiscussionController@index');
 Route::post('discussion/store', 'DiscussionController@store');

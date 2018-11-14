@@ -92,7 +92,7 @@
             if (res) {
                 toastr.info('修改成功');
                 window.setTimeout(function(){
-                    window.location.href = '/users';
+                    window.location.href = '/admin/users';
                 }, 1500);
             } else {
                 toastr.warning('删除失败');

@@ -79,7 +79,7 @@
         $.post(self.attr('action'), self.serialize(), function (res) {
             toastr.info('更新成功');
             window.setTimeout(function(){
-                window.location.href = '/tags';
+                window.location.href = '/admin/tags';
             }, 1500);
         }).complete(function (res) {
             if (res.status != 200) {

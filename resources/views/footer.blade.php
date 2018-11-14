@@ -4,7 +4,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <ul class="connect">
                     <li>
-                        <a href="https://pigjian.com">
+                        <a href="/">
                             <i class="large ion-ios-home"></i>
                         </a>
                     </li>
@@ -20,7 +20,7 @@
                     </li>
                 </ul>
                 <div class="links">
-                    <a href="https://pigjian.com/link">友情链接</a>
+                    <a href="/user/link">友情链接</a>
                     <a href="/Index/about">关于我</a>
                 </div>
                 <div class="sponsors">

@@ -128,16 +128,16 @@
 
         <div class="links">
             <a href="/post">Blog</a>
-            <a href="/share">Share</a>
-            <a target="_blank" href="http://weibo.com/1839900520">Weibo</a>
-            <a target="_blank" href="https://github.com/jcc">GitHub</a>
-            <a href="/about">Me</a>
-            <a href="/donate">Donate</a>
+            {{--<a href="/share">Share</a>--}}
+            {{--<a target="_blank" href="http://weibo.com/1839900520">Weibo</a>--}}
+            <a target="_blank" href="https://github.com/yang1443261811">GitHub</a>
+            <a href="/Index/about">Me</a>
+            {{--<a href="/donate">Donate</a>--}}
         </div>
     </div>
 </div>
 
-<script src="./js/particles.min.js"></script>
+<script src="/js/particles.min.js"></script>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
