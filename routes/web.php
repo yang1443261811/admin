@@ -76,6 +76,7 @@ Route::get('user/register', 'UserController@register');
 Route::any('user/profile', 'UserController@profile');
 Route::get('user/link', 'UserController@link');
 Route::any('user/cropAvatar', 'UserController@cropAvatar');
+Route::get('user/notification', 'UserController@notification');
 Route::any('discussion', 'DiscussionController@index');
 Route::post('discussion/store', 'DiscussionController@store');
 Route::any('discussion/create', 'DiscussionController@create');
