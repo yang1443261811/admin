@@ -27,7 +27,7 @@
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
     {{--侧栏--}}
-    @include('common.sidebar')
+    @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -38,12 +38,12 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/users" class="btn btn-sm btn-secondary">Back</a> </small>
+                        <small class="float-right"><a href="/admin/users" class="btn btn-sm btn-secondary">Back</a> </small>
                         <h5>Create User</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <form role="form" class="form col-md-4 offset-md-4" action="/users/store">
+                            <form role="form" class="form col-md-4 offset-md-4" action="/admin/users/store">
                                 {{csrf_field()}}
                                 <div class="form-group text-center">
                                     <img src="/images/default.png" id="avatar" width="100" class="rounded-circle" />

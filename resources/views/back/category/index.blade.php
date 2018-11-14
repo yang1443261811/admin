@@ -25,7 +25,7 @@
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
     {{--侧栏--}}
-    @include('common.sidebar')
+    @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -38,7 +38,7 @@
                     <div data-v-6750c142="" class="ibox-title d-flex">
                         <h5 data-v-6750c142="" class="align-self-center font-weight-normal">Categories</h5>
                         <small data-v-6750c142="" class="ml-auto d-flex flex-row" style="height:31px;">
-                            <form action="/categories" method="get" style="display: inherit;">
+                            <form action="/admin/categories" method="get" style="display: inherit;">
                                 <div data-v-6750c142="" class="input-group input-group-sm mr-2">
                                     <input data-v-6750c142="" type="text" name="keyword" placeholder="" class="form-control" value="{{empty($keyword) ? '' : $keyword}}"/>
                                     <div data-v-6750c142="" class="input-group-append" >
@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <a href="/categories/create" class="btn btn-sm btn-success" data-v-6750c142="" style="height:31px;">Create</a></small>
+                            <a href="/admin/categories/create" class="btn btn-sm btn-success" data-v-6750c142="" style="height:31px;">Create</a></small>
                     </div>
                     <div data-v-6750c142="" class="ibox-content no-padding table-responsive">
                         <table data-v-6750c142="" class="table table-striped table-hover">
@@ -73,8 +73,8 @@
                                     <td data-v-6750c142=""> {{$category->path}} </td>
                                     <td data-v-6750c142=""> {{$category->created_at}} </td>
                                     <td data-v-6750c142="" class="actions text-center">
-                                        <a data-v-6750c142="" class="btn btn-info" href="/categories/update/{{$category->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
-                                        <a data-v-6750c142="" class="btn btn-danger" href="/categories/delete/{{$category->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
+                                        <a data-v-6750c142="" class="btn btn-info" href="/admin/categories/update/{{$category->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                        <a data-v-6750c142="" class="btn btn-danger" href="/admin/categories/delete/{{$category->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
                                     </td>
                                 </tr>
                                 @endforeach

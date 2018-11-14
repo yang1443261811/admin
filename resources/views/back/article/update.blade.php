@@ -65,7 +65,7 @@
 </head>
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
-    {{--侧栏--}} @include('common.sidebar')
+    {{--侧栏--}} @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -76,12 +76,12 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/articles" class="btn btn-sm btn-secondary">Back</a></small>
+                        <small class="float-right"><a href="/admin/articles" class="btn btn-sm btn-secondary">Back</a></small>
                         <h5>Edit Article</h5>
                     </div>
                     <div class="ibox-content">
                         <div data-v-8181b19c="" class="row">
-                            <form data-v-8181b19c="" class="col-sm-9 offset-sm-1" action="/articles/update/{{$article->id}}">
+                            <form data-v-8181b19c="" class="col-sm-9 offset-sm-1" action="/admin/articles/update/{{$article->id}}">
                                 {{csrf_field()}}
                                 <div data-v-8181b19c="" class="col-sm-12">
                                     <div data-v-8181b19c="" class="form-group row">
@@ -280,7 +280,7 @@
         $.post(self.attr('action'), params, function (res) {
             toastr.info('修改成功');
             window.setTimeout(function(){
-                window.location.href = '/articles';
+                window.location.href = '/admin/articles';
             }, 1500);
         }).complete(function (res) {
             if (res.status != 200) {

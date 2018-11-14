@@ -20,7 +20,7 @@ class CategoriesController extends Controller
         $keyword = $request->input('keyword');
         $categories = Category::pageWithRequest($request);
 
-        return view('category.index', compact('categories', 'keyword'));
+        return view('back.category.index', compact('categories', 'keyword'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        return view('back.category.create');
     }
 
     /**
@@ -73,7 +73,7 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->method() == 'GET') {
-            return view('category.update', ['category' =>  Category::find($id)]);
+            return view('back.category.update', ['category' =>  Category::find($id)]);
         } else {
             $this->validator($request);
 

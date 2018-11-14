@@ -14,7 +14,7 @@
                 <a data-v-0abac408="" href="/setting"><i data-v-0abac408="" class="fas fa-cog"></i></a>
             </div>
         </div>
-        <li data-v-0abac408="" class="nav-index"><a data-v-0abac408="" href="/" class="active"><i data-v-0abac408="" class="fas fa-tachometer-alt"></i> Dashboard </a></li>
+        <li data-v-0abac408="" class="nav-index"><a data-v-0abac408="" href="/admin/dashboard" class="active"><i data-v-0abac408="" class="fas fa-tachometer-alt"></i> Dashboard </a></li>
         <li data-v-0abac408="" class="nav-users"><a data-v-0abac408="" href="/admin/users" class=""><i data-v-0abac408="" class="fas fa-users"></i> Users </a></li>
         <li data-v-0abac408="" class="nav-articles"><a data-v-0abac408="" href="/admin/articles" class=""><i data-v-0abac408="" class="fas fa-book"></i> Articles </a></li>
         <li data-v-0abac408="" class="nav-discussions"><a data-v-0abac408="" href="/admin/discussions/" class=""><i data-v-0abac408="" class="fas fa-question-circle"></i> Discussion </a></li>

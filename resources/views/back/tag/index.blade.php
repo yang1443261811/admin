@@ -26,7 +26,7 @@
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
     {{--侧栏--}}
-    @include('common.sidebar')
+    @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -39,7 +39,7 @@
                     <div data-v-6750c142="" class="ibox-title d-flex">
                         <h5 data-v-6750c142="" class="align-self-center font-weight-normal"> Tags</h5>
                         <small data-v-6750c142="" class="ml-auto d-flex flex-row" style="height:31px;">
-                            <form action="/tags" method="get" style="display: inherit;">
+                            <form action="/admin/tags" method="get" style="display: inherit;">
                                 <div data-v-6750c142="" class="input-group input-group-sm mr-2">
                                     <input data-v-6750c142="" type="text" name="keyword" placeholder="" class="form-control" value="{{empty($keyword) ? '' : $keyword}}"/>
                                     <div data-v-6750c142="" class="input-group-append" >
@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <a href="/tags/create" class="btn btn-sm btn-success" data-v-6750c142="" style="height:31px;">Create</a>
+                            <a href="/admin/tags/create" class="btn btn-sm btn-success" data-v-6750c142="" style="height:31px;">Create</a>
                         </small>
                     </div>
                     <div data-v-6750c142="" class="ibox-content no-padding table-responsive">
@@ -76,8 +76,8 @@
                                         <td data-v-6750c142=""> {{$tag->meta_description}} </td>
                                         <td data-v-6750c142=""> {{$tag->created_at}} </td>
                                         <td data-v-6750c142="" class="actions text-center">
-                                            <a data-v-6750c142="" class="btn btn-info" href="/tags/update/{{$tag->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
-                                            <a data-v-6750c142="" class="btn btn-danger" href="/tags/delete/{{$tag->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
+                                            <a data-v-6750c142="" class="btn btn-info" href="/admin/tags/update/{{$tag->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                            <a data-v-6750c142="" class="btn btn-danger" href="/admin/tags/delete/{{$tag->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach

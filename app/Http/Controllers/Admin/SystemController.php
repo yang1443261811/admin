@@ -36,6 +36,6 @@ class SystemController extends Controller
             'db_version'    => $version,
         ];
 
-        return view('system.index', $data);
+        return view('back.system.index', $data);
     }
 }

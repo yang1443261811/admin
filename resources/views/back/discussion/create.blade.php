@@ -53,7 +53,7 @@
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
     {{--侧栏--}}
-    @include('common.sidebar')
+    @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -64,12 +64,12 @@
             <div class="row">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <small class="float-right"><a href="/dashboard/discussions/" class="btn btn-sm btn-secondary">Back</a></small>
+                        <small class="float-right"><a href="/admin/discussions/" class="btn btn-sm btn-secondary">Back</a></small>
                         <h5>Create Discussion</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <form class="col-sm-9 offset-sm-1" method="post" action="/discussions/store">
+                            <form class="col-sm-9 offset-sm-1" method="post" action="/admin/discussions/store">
                                 {{csrf_field()}}
                                 <div class="form-group row">
                                     <label for="title" class="col-sm-2 col-form-label">Title</label>

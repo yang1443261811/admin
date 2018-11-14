@@ -18,7 +18,7 @@ class CommentsController extends Controller
         $keyword = $request->input('keyword');
         $comments = Comment::pageWithRequest($request);
 
-        return view('comment.index', compact('comments', 'keyword'));
+        return view('back.comment.index', compact('comments', 'keyword'));
     }
 
     /**
@@ -29,7 +29,7 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        return view('comment.update', ['comment' => Comment::find($id)]);
+        return view('back.comment.update', ['comment' => Comment::find($id)]);
     }
 
     /**

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +9,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
-
     <link rel="shortcut icon" href="/img/io.jpg">
-
     <title>Yang Blog</title>
-
     <link rel="stylesheet" href="/css/home.css">
     <style>
         .pagination{padding: 0;line-height:0}
@@ -23,9 +19,8 @@
     <!-- Scripts -->
     <script>
         window.Language = 'zh_cn';
-
-        window.Laravel = {"csrfToken":"{{csrf_token()}}"}    </script>
-
+        window.Laravel = {"csrfToken":"{{csrf_token()}}"}
+    </script>
 </head>
 <body>
 <div id="app">

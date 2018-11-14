@@ -24,7 +24,7 @@
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
     {{--侧栏--}}
-    @include('common.sidebar')
+    @include('back.common.sidebar')
     <div id="page-content-wrapper">
         <nav class="navbar navbar bg-white">
             <div class="navbar-brand">
@@ -73,8 +73,8 @@
                                         <td data-v-6750c142=""> {{isset($comment->commentable) ? $comment->commentable->title : 'Be Forbidden!'}} </td>
                                         <td data-v-6750c142=""> {{$comment->created_at}} </td>
                                         <td data-v-6750c142="" class="actions text-center">
-                                            <a data-v-6750c142="" class="btn btn-info" href="/comments/edit/{{$comment->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
-                                            <a data-v-6750c142="" class="btn btn-danger" href="/comments/delete/{{$comment->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
+                                            <a data-v-6750c142="" class="btn btn-info" href="/admin/comments/edit/{{$comment->id}}"><i data-v-6750c142="" class="fas fa-pencil-alt"></i> </a>
+                                            <a data-v-6750c142="" class="btn btn-danger" href="/admin/comments/delete/{{$comment->id}}"><i data-v-6750c142="" class="fas fa-trash-alt"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach

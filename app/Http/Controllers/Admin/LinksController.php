@@ -22,7 +22,7 @@ class LinksController extends Controller
         $keyword = $request->input('keyword');
         $links = Link::pageWithRequest($request);
 
-        return view('link.index', compact('links', 'keyword'));
+        return view('back.link.index', compact('links', 'keyword'));
     }
 
     /**
@@ -34,7 +34,7 @@ class LinksController extends Controller
     public function create(Request $request)
     {
         if ($request->method() == 'GET') {
-            return view('link.create');
+            return view('back.link.create');
         }
 
         $this->validator($request);
@@ -51,7 +51,7 @@ class LinksController extends Controller
      */
     public function edit($id)
     {
-        return view('link.update', ['link' =>  Link::find($id)]);
+        return view('back.link.update', ['link' =>  Link::find($id)]);
     }
 
     /**
