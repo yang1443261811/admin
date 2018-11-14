@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Filesystem\Filesystem;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use App\Link;
 use Image;
-use App\User;
 
 class UserController extends Controller
 {
@@ -53,7 +53,16 @@ class UserController extends Controller
         } else {
             return view('profile', $this->user->getById(\Auth::id()));
         }
+    }
 
+    /**
+     * 友情链接
+     *
+     * @return mixed
+     */
+    public function link()
+    {
+        return view('link', ['links' => Link::all()]);
     }
 
     /**
@@ -65,7 +74,7 @@ class UserController extends Controller
     public function cropAvatar(Request $request, Filesystem $filesystem)
     {
         $currentImage = $request->input('image');
-//p($currentImage);
+
         $data = $request->input('data');
 
         $image = Image::make($currentImage['url']);

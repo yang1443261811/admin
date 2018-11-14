@@ -1,100 +1,82 @@
+@extends('layouts.app')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="PJ Blog,blog,pigjian,laravel,vuejs">
-    <meta name="description" content="Nothing is impossible in PJ Blog">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{csrf_token()}}">
-    <link rel="shortcut icon" href="/img/io.jpg">
-    <title>{{$discussion->title}}</title>
-    <link rel="stylesheet" href="/css/home.css">
-
-</head>
-<body>
-<div id="app">
-    @include('navbar')
-    <div class="main">
-        <div class="container-fluid">
-            <div class="jumbotron text-center">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <h4>{{$discussion->title}}</h4>
-
-                        <span><i class="ion-person" style="margin-right: 10px"></i>{{$discussion->user->nickname}}</span><br/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="discuss-show container">
+@section('content')
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <div class="media">
-                        <div class="media-body box-body">
-                            <div class="heading">
-                                <i class="ion-clock"></i>发表时间 : {{$discussion->created_at}}&nbsp;&nbsp;&nbsp;&nbsp;
-                                <i class="ion-chatbubble-working"></i>回复数 : 1
-                            </div>
-                            <div class="discuss-body">
-                                <parse>{{$discussion->content}}</parse>
-                            </div>
-                            <div class="footing"></div>
+                    <h4>{{$discussion->title}}</h4>
+
+                    <span><i class="ion-person" style="margin-right: 10px"></i>{{$discussion->user->nickname}}</span><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="discuss-show container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="media">
+                    <div class="media-body box-body">
+                        <div class="heading">
+                            <i class="ion-clock"></i>发表时间 : {{$discussion->created_at}}&nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="ion-chatbubble-working"></i>回复数 : 1
                         </div>
+                        <div class="discuss-body">
+                            <parse>{{$discussion->content}}</parse>
+                        </div>
+                        <div class="footing"></div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <comment username="{{$discussion->user->nickname}}"
-                 user-avatar="{{$discussion->avatar}}"
-                 commentable-type="discussions"
-                 commentable-id="{{$discussion->id}}"
-                 null-text=""
-                 can-comment>
+    <comment username="{{$discussion->user->nickname}}"
+             user-avatar="{{$discussion->avatar}}"
+             commentable-type="discussions"
+             commentable-id="{{$discussion->id}}"
+             null-text=""
+             can-comment>
+    </comment>
 
-        </comment>
-
-        <div class="container">
-            <div class="row comment">
-                <div class="col-md-8 col-md-offset-2">
-                    <h5></h5>
-                </div>
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="/user/Jiajian">
-                                <img src="https://pig-storage.b0.upaiyun.com/avatar/2017/05/16/s1ovquiAPBXDpjLEF7XzXF7Y1Cy6YI88nRotOQVa.png" class="media-object img-circle">
-                            </a>
-                        </div>
-                        <div class="media-body box-body">
-                            <div class="heading">
-                                <i class="ion-person"></i>
-                                <a href="/user/Jiajian">Jiajian</a>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <i class="ion-clock"></i>4个月前
-                                <span class="pull-right operate">
+    <div class="container">
+        <div class="row comment">
+            <div class="col-md-8 col-md-offset-2">
+                <h5></h5>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="/user/Jiajian">
+                            <img src="https://pig-storage.b0.upaiyun.com/avatar/2017/05/16/s1ovquiAPBXDpjLEF7XzXF7Y1Cy6YI88nRotOQVa.png" class="media-object img-circle">
+                        </a>
+                    </div>
+                    <div class="media-body box-body">
+                        <div class="heading">
+                            <i class="ion-person"></i>
+                            <a href="/user/Jiajian">Jiajian</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="ion-clock"></i>4个月前
+                            <span class="pull-right operate">
                                     <span class="vote-button">
                                         <a href="javascript:;"><i class="ion-happy-outline"></i></a>
                                         <a href="javascript:;"><i class="ion-sad-outline"></i></a>
                                     </span>
                                     <a href="javascript:;"><i class="ion-ios-undo"></i></a>
                                 </span>
-                            </div>
-                            <div class="comment-body markdown">
-                                <p>代码高亮是用
-                                    <a href="https://highlightjs.org/">highlight.js</a> ，然后样式自行调。
-                                </p>
-                            </div>
+                        </div>
+                        <div class="comment-body markdown">
+                            <p>代码高亮是用
+                                <a href="https://highlightjs.org/">highlight.js</a> ，然后样式自行调。
+                            </p>
                         </div>
                     </div>
-                    @if(\Auth()->check())
+                </div>
+                @if(\Auth()->check())
                     <form class="form-horizontal" style="margin-top: 30px;">
                         <div class="form-group">
                             <label class="col-sm-2 control-label own-avatar">
-                                <a href="/user/center/{{\Auth()->id()}}"><img src="{{$discussion->user->avatar}}" class="img-circle"></a>
+                                <a href="/user/center/{{\Auth()->id()}}"><img src="{{$discussion->user->avatar ?: '/images/default.png'}}" class="img-circle"></a>
                             </label> <div class="col-sm-10">
                                 <div data-v-49ec89dc="" class="complete-box" id="content">
                                     <textarea data-v-49ec89dc="" id="v-textcomplete-zgm95aha" placeholder="Markdown" rows="7" name="textcomplete" class="form-control" style="line-height: 20px;">
@@ -112,20 +94,16 @@
                             </div>
                         </div>
                     </form>
-                    @endif
-                </div>
+                @endif
             </div>
         </div>
     </div>
-    @include('footer')
-</div>
+@endsection
 
-<!-- Scripts -->
-<script src="/js/jquery-2.2.4.min.js"></script>
-<script src="/js/home.js"></script>
-<script src="/js/highlight.pack.js"></script>
-<script>
-    hljs.initHighlightingOnLoad();
-</script>
-</body>
-</html>
+@section('js')
+    <script src="/js/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+@endsection
+

@@ -84,7 +84,7 @@
         $.post(self.attr('action'), self.serialize(), function (res) {
             toastr.info('添加成功');
             window.setTimeout(function(){
-                window.location.href = '/categories';
+                window.location.href = '/admin/categories';
             }, 1500);
         }).complete(function (res) {
             if (res.status != 200) {
