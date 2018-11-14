@@ -170,25 +170,15 @@
     </div>
     @include('footer')
 </div>
-{{--<script src="/js/home.7bc569eaa262b6a3caa5.js"></script>--}}
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/highlight.pack.js"></script>
 <script src="/js/layer/layer.js"></script>
+<script src="/js/home.js"></script>
 <script src="/js/detials.js"></script>
 <script>
     hljs.initHighlightingOnLoad();
 
-    $('.dropdown').click(function () {
-        if ($(this).hasClass('open')) {
-            $(this).removeClass('open');
-        } else {
-            $(this).addClass('open');
-        }
-    });
 
-    $('.navbar-toggle').click(function () {
-        $('#app-navbar-collapse').toggle();
-    });
 
 </script>
 </body>

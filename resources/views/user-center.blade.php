@@ -7,22 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="PJ Blog,blog,pigjian,laravel,vuejs">
     <meta name="description" content="Nothing is impossible in PJ Blog">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
-
     <link rel="shortcut icon" href="/img/io.jpg">
-
-    <title>PJ Blog</title>
-
+    <title>Yang Blog</title>
     <link rel="stylesheet" href="/css/home.css">
-
     <!-- Scripts -->
     <script>
         window.Language = 'zh_cn';
-
-        window.Laravel = {"csrfToken":"{{csrf_token()}}"}    </script>
-
+        window.Laravel = {"csrfToken":"{{csrf_token()}}"}
+    </script>
 </head>
 <body>
 <div id="app">
@@ -93,13 +87,12 @@
 </div>
 
 <!-- Scripts -->
-<script src="/js/home.7bc569eaa262b6a3caa5.js"></script>
+<script src="/js/home.js"></script>
 <script>
     $(function () {
         $("[data-toggle='tooltip']").tooltip();
     });
 </script>
-
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

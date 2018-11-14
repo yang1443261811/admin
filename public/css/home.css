@@ -12824,8 +12824,9 @@ i.large {
     position: absolute;
     top: 0;
     left: 0;
-    width: 150px;
-    height: 150px;
+    right:0;
+    width: 82px;
+    height: 38px;
     opacity: 0;
     cursor: pointer
 }

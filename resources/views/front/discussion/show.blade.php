@@ -7,14 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="PJ Blog,blog,pigjian,laravel,vuejs">
     <meta name="description" content="Nothing is impossible in PJ Blog">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
-
     <link rel="shortcut icon" href="/img/io.jpg">
-
     <title>{{$discussion->title}}</title>
-
     <link rel="stylesheet" href="/css/home.css">
 
 </head>
@@ -126,23 +122,10 @@
 
 <!-- Scripts -->
 <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/home.js"></script>
 <script src="/js/highlight.pack.js"></script>
 <script>
     hljs.initHighlightingOnLoad();
-</script>
-
-<script>
-    $('.dropdown').click(function () {
-        if ($(this).hasClass('open')) {
-            $(this).removeClass('open');
-        } else {
-            $(this).addClass('open');
-        }
-    });
-
-    $('.navbar-toggle').click(function () {
-        $('#app-navbar-collapse').toggle();
-    });
 </script>
 </body>
 </html>
