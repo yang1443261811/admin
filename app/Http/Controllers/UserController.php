@@ -55,6 +55,11 @@ class UserController extends Controller
         }
     }
 
+    public function notification()
+    {
+        return view('notify');
+    }
+
     /**
      * 友情链接
      *

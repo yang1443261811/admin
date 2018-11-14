@@ -35,7 +35,7 @@
                 @if(Auth::check())
                 <!-- Authentication Links -->
                 <li class="notification">
-                    <a href="https://pigjian.com/user/notification">
+                    <a href="/user/notification">
                         <i class="ion-android-notifications">
                             <span class="new"></span>
                         </i>
