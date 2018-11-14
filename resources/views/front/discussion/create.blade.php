@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="PJ Blog,blog,pigjian,laravel,vuejs">
     <meta name="description" content="hi">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
     <link rel="shortcut icon" href="/img/io.jpg">
@@ -92,24 +91,12 @@
 
 <!-- Scripts -->
 <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/home.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
     $(function () {
         //初始tag下拉框
         $('.js-example-basic-multiple').select2({placeholder: "请选择"});
-
-        $('.dropdown').click(function () {
-            if ($(this).hasClass('open')) {
-                $(this).removeClass('open');
-            } else {
-                $(this).addClass('open');
-            }
-        });
-
-        $('.navbar-toggle').click(function () {
-            $('#app-navbar-collapse').toggle();
-        });
-
     });
 </script>
 

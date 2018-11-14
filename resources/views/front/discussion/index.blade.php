@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="PJ Blog,blog,pigjian,laravel,vuejs">
     <meta name="description" content="Nothing is impossible in PJ Blog">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
     <link rel="shortcut icon" href="/img/io.jpg">
@@ -73,26 +72,15 @@
                 <h3 class="text-center">Nothing in here...</h3>
             @endif
         </div>
-
-
     </div>
     @include('footer')
 </div>
 
 <!-- Scripts -->
 <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/home.js"></script>
 <script>
-    $('.dropdown').click(function () {
-        if ($(this).hasClass('open')) {
-            $(this).removeClass('open');
-        } else {
-            $(this).addClass('open');
-        }
-    });
 
-    $('.navbar-toggle').click(function () {
-        $('#app-navbar-collapse').toggle();
-    });
 </script>
 </body>
 </html>
