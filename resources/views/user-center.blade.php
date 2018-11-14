@@ -87,6 +87,7 @@
 </div>
 
 <!-- Scripts -->
+<script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/home.js"></script>
 <script>
     $(function () {
