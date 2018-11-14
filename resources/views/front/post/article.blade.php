@@ -99,7 +99,8 @@
 </div>
 
 <!-- Scripts -->
-<script src="/js/home.7bc569eaa262b6a3caa5.js"></script>
+<script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/home.js"></script>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
