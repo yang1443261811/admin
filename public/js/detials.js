@@ -65,7 +65,7 @@ $('body').on('click', '.editor .btn', function () {
         '_token':token,
         'content':text,
         'comment_id':data.id,
-        'to_user':data.username,
+        'to_user':data.from_user,
         'commentable_id':article_id,
         'commentable_type':commentable_type,
     };
