@@ -3,13 +3,13 @@
 namespace App;
 
 //use App\Tools\Markdowner;
-//use Jcc\LaravelVote\CanBeVoted;
+use Jcc\LaravelVote\CanBeVoted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-//    use SoftDeletes, CanBeVoted;
+    use SoftDeletes, CanBeVoted;
 
     protected $vote = User::class;
 
@@ -19,7 +19,7 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'commentable_id', 'commentable_type', 'content'
+        'user_id', 'commentable_id', 'commentable_type', 'content', 'to_user', 'from_user'
     ];
 
     /**
@@ -54,14 +54,25 @@ class Comment extends Model
      *
      * @param $value
      */
-    public function setContentAttribute($value)
-    {
-        $data = [
-            'raw'  => $value,
-            'html' => (new Markdowner)->convertMarkdownToHtml($value)
-        ];
+//    public function setContentAttribute($value)
+//    {
+//        $data = [
+//            'raw'  => $value,
+//            'html' => (new Markdowner)->convertMarkdownToHtml($value)
+//        ];
+//
+//        $this->attributes['content'] = json_encode($data);
+//    }
 
-        $this->attributes['content'] = json_encode($data);
+    /**
+     * Get the created at attribute.
+     *
+     * @param $value
+     * @return string
+     */
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->diffForHumans();
     }
 
     /**

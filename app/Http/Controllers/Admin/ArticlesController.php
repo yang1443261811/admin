@@ -96,13 +96,18 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validator($request);
+
         $input = $request->all();
         $input = array_merge($input, [
             'is_draft'    => isset($input['is_draft']),
             'is_original' => isset($input['is_original'])
         ]);
+
         $model = Article::find($id);
+
         $result = $model->fill($input)->save();
+
         $model->tags()->sync($input['tags']);
 
         return response()->json($result);

@@ -3,14 +3,15 @@
  * @type {string}
  */
 var requestUri = '/comment/show/' + article_id;
+console.log(requestUri);
 $.post(requestUri, {"type": commentable_type, "_token": token}, function (response) {
+    console.log(response);
     var html, data = response['data'];
     if (data.length > 0) {
         html = makeHtml(data);
         $('.form-horizontal').before(html);
     }
 }, 'json');
-
 
 /**
  * 文章评论
@@ -64,7 +65,7 @@ $('body').on('click', '.editor .btn', function () {
         '_token':token,
         'content':text,
         'comment_id':data.id,
-        'to_uid':data.user_id,
+        'to_user':data.username,
         'commentable_id':article_id,
         'commentable_type':commentable_type,
     };
@@ -112,7 +113,7 @@ $('body').on('click', '.edit .btn', function () {
         '_token':token,
         'content':text,
         'comment_id':content.id,
-        'to_uid':content.user_id,
+        'to_user':content.username,
         'commentable_id':article_id,
         'commentable_type':commentable_type,
     };
@@ -121,7 +122,7 @@ $('body').on('click', '.edit .btn', function () {
             layer.msg('评论成功');
             var res = response['data'];
             var attr= JSON.stringify(res);
-            var html = "<li><a href=''>"+res.username+"</a>:回复<a href=''>&nbsp;"+content.username+"</a>:"+text+"" +
+            var html = "<li><a href='/user/center/'"+res.username+">"+res.username+"</a>:回复<a href='/user/center/"+res.username+"'>&nbsp;"+content.username+"</a>:"+text+"" +
                        "<p class='created'>"+res.created_at+"<span class='child-reply' data='"+attr+"'>&nbsp;&nbsp;回复</span></p>" +
                        "</li>";
             self.parents('ul').append(html);
@@ -173,9 +174,9 @@ function makeHtml(data) {
                 var data = JSON.stringify(value);
                 childNode +=
                     "<li>" +
-                    "<a href=''>"+value.username+"</a>:回复" +
-                    "<a href=''>&nbsp;"+value.reply_name+"</a>:" +value.content+
-                    "<p class='created'>"+value.created+"<span class='child-reply' data='"+data+"'>&nbsp;&nbsp;回复</span></p>" +
+                    "<a href='/user/center/"+value.username+"'>"+value.username+"</a>:回复" +
+                    "<a href='/user/center/"+value.to_user+"'>&nbsp;"+value.to_user+"</a>:" +value.content+
+                    "<p class='created'>"+value.created_at+"<span class='child-reply' data='"+data+"'>&nbsp;&nbsp;回复</span></p>" +
                     "</li>";
             });
         }

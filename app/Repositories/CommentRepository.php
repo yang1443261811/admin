@@ -35,7 +35,7 @@ class CommentRepository
         return $this->model
                     ->where('commentable_id', $commentableId)
                     ->where('commentable_type', $commentableType)
-                    ->whereNull('to_uid')
+                    ->whereNull('to_user')
                     ->get();
     }
 
@@ -44,7 +44,7 @@ class CommentRepository
         return $this->model
                     ->where('commentable_id', $commentableId)
                     ->where('commentable_type', $commentableType)
-                    ->whereNotNull('to_uid')
+                    ->whereNotNull('to_user')
                     ->where('path', 'like', "{$path}%")
                     ->get();
     }

@@ -26,8 +26,10 @@ class CommentController extends ApiController
      */
     public function create(Request $request)
     {
-        $input = $request->all();
-        $input['user_id'] = \Auth()->id();
+        $input = array_merge($request->all(), [
+           'user_id'   => \Auth()->id(),
+           'from_user' => \Auth()->user()->name,
+        ]);
 
         $comment = $this->comment->store($input);
         $path = $comment->id . '/';
@@ -67,7 +69,7 @@ class CommentController extends ApiController
      * 获取文章的所有评论
      *
      * @param Request $request
-     * @param $id
+     * @param int $id
      * @return response
      */
     public function show(Request $request, $id)
@@ -75,7 +77,7 @@ class CommentController extends ApiController
         $type = $request->input('type');
 
         $comments = $this->comment->getParentComments($id, $type);
-
+//p($comments->toArray());
         $this->prepareData($comments, $id, $type);
 
         return $this->response->collection($comments);
@@ -94,25 +96,10 @@ class CommentController extends ApiController
         if ($data->isEmpty()) {
             return $data;
         }
+
         foreach ($data as &$item) {
             $child = $this->comment->getChildComments($id, $type, $item['path']);
-            $node = array();
-            foreach ($child as $k => $row) {
-                $reply = User::find($row->to_uid);
-                $node[$k] = array(
-                    'id'          => $row->id,
-                    'path'        => $row->path,
-                    'user_id'     => $row->user_id,
-                    'content'     => $row->content,
-                    'reply_name'  => $reply['name'],
-                    'reply_avatar'=> $reply['avatar'],
-                    'username'    => $row->user->name,
-                    'avatar'      => $row->user->avatar,
-                    'created'     => $row->created_at->diffForHumans(),
-                );
-            }
-
-            $item['child'] = $node;
+            $item['child'] = $child->toArray();
          }
     }
 

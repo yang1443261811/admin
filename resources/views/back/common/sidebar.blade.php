@@ -9,8 +9,8 @@
                 <p data-v-0abac408="">1443261811@qq.com</p>
             </div>
             <div data-v-0abac408="" class="buttons">
-                <a data-v-0abac408="" href="/"><i data-v-0abac408="" class="fas fa-home"></i></a>
-                <a data-v-0abac408="" href="/user/yqm"><i data-v-0abac408="" class="fas fa-user"></i></a>
+                <a data-v-0abac408="" href="/post"><i data-v-0abac408="" class="fas fa-home"></i></a>
+                <a data-v-0abac408="" href="/user/center/14"><i data-v-0abac408="" class="fas fa-user"></i></a>
                 <a data-v-0abac408="" href="/setting"><i data-v-0abac408="" class="fas fa-cog"></i></a>
             </div>
         </div>
