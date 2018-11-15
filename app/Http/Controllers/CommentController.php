@@ -77,7 +77,7 @@ class CommentController extends ApiController
         $type = $request->input('type');
 
         $comments = $this->comment->getParentComments($id, $type);
-//p($comments->toArray());
+p($comments->toArray());
         $this->prepareData($comments, $id, $type);
 
         return $this->response->collection($comments);
