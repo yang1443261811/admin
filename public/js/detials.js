@@ -47,7 +47,7 @@ $('body').on('click', '.reply', function () {
     data = JSON.parse($(this).attr('value'));
     var editor = $(this).parents('.heading').siblings('.editor');
     editor.toggle();
-    editor.children('input').attr('placeholder', '回复'+data.username+'：');
+    editor.children('input').attr('placeholder', '回复'+data.from_user+'：');
 });
 
 
@@ -76,7 +76,7 @@ $('body').on('click', '.editor .btn', function () {
             var res = response['data'];
             var attr = JSON.stringify(res);
             var comment = self.parents('.editor').siblings('.markdown').find('ul');
-            var html = "<li><a href=''>"+res.username+"</a>:回复<a href=''>&nbsp;"+data.username+"</a>:"+text+"" +
+            var html = "<li><a href=''>"+res.from_user+"</a>:回复<a href=''>&nbsp;"+data.from_user+"</a>:"+text+"" +
                        "<p class='created'>"+res.created_at+"<span class='child-reply' data='"+attr+"'>&nbsp;&nbsp;回复</span></p>" +
                        "</li>";
             comment.append(html);
@@ -97,7 +97,7 @@ $('body').on('click', '.child-reply', function () {
     content = JSON.parse($(this).attr('data'));
     var edit = $(this).parent().siblings('.edit');
     var html = '<p class="edit">' +
-        '<input type="text" class="c_reply" placeholder="回复：'+content.username+'"><span class="btn">发表</span>' +
+        '<input type="text" class="c_reply" placeholder="回复：'+content.to_user+'"><span class="btn">发表</span>' +
         '</p>';
     $(this).parent().after(html);
 });
@@ -113,7 +113,7 @@ $('body').on('click', '.edit .btn', function () {
         '_token':token,
         'content':text,
         'comment_id':content.id,
-        'to_user':content.username,
+        'to_user':content.from_user,
         'commentable_id':article_id,
         'commentable_type':commentable_type,
     };
@@ -122,7 +122,7 @@ $('body').on('click', '.edit .btn', function () {
             layer.msg('评论成功');
             var res = response['data'];
             var attr= JSON.stringify(res);
-            var html = "<li><a href='/user/center/'"+res.username+">"+res.username+"</a>:回复<a href='/user/center/"+res.username+"'>&nbsp;"+content.username+"</a>:"+text+"" +
+            var html = "<li><a href='/user/center/'"+res.from_user+">"+res.from_user+"</a>:回复<a href='/user/center/"+res.from_user+"'>&nbsp;"+content.from_user+"</a>:"+text+"" +
                        "<p class='created'>"+res.created_at+"<span class='child-reply' data='"+attr+"'>&nbsp;&nbsp;回复</span></p>" +
                        "</li>";
             self.parents('ul').append(html);
@@ -174,7 +174,7 @@ function makeHtml(data) {
                 var data = JSON.stringify(value);
                 childNode +=
                     "<li>" +
-                    "<a href='/user/center/"+value.username+"'>"+value.username+"</a>:回复" +
+                    "<a href='/user/center/"+value.from_user+"'>"+value.from_user+"</a>:回复" +
                     "<a href='/user/center/"+value.to_user+"'>&nbsp;"+value.to_user+"</a>:" +value.content+
                     "<p class='created'>"+value.created_at+"<span class='child-reply' data='"+data+"'>&nbsp;&nbsp;回复</span></p>" +
                     "</li>";
@@ -190,7 +190,7 @@ function makeHtml(data) {
                 "<div class='media-body box-body'>" +
                     "<div class='heading'>" +
                         "<i class='ion-person'></i>" +
-                        "<a href='/user/center/"+data[i]["user_id"]+"'>" + data[i]["username"] + "</a>&nbsp;&nbsp;&nbsp;&nbsp; " +
+                        "<a href='/user/center/"+data[i]["user_id"]+"'>" + data[i]["from_user"] + "</a>&nbsp;&nbsp;&nbsp;&nbsp; " +
                         "<i class='ion-clock'></i>" + data[i]["created_at"]+""+
                         "<span class='pull-right operate'><span class='vote-button'>" +
                         "<a class='up' value='" + data[i]["id"] + "'>" +

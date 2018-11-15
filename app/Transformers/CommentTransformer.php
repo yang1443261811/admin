@@ -15,7 +15,7 @@ class CommentTransformer extends TransformerAbstract
             'id'            => $comment->id,
             'user_id'       => $comment->user_id,
             'child'         => $comment->child,
-            'username'      => isset($comment->user) ? $comment->user->name : 'Null',
+            'from_user'     => $comment->from_user,
             'avatar'        => isset($comment->user) ? $comment->user->avatar : config('blog.default_avatar'),
             'commentable'   => isset($comment->commentable) ? $comment->commentable->title : 'Be Forbidden!',
             'type'          => $comment->commentable_type,
