@@ -22,9 +22,9 @@ class UserController extends Controller
      *
      * @return mixed
      */
-    public function center($id)
+    public function center($name)
     {
-        $user = $this->user->getById($id);
+        $user = $this->user->getByName($name);
 
         return view('user-center', compact('user'));
     }
