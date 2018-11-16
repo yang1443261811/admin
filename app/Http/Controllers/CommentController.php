@@ -78,7 +78,9 @@ class CommentController extends ApiController
 
         $comments = $this->comment->getParentComments($id, $type);
 
-        $this->prepareData($comments, $id, $type);
+        foreach ($comments as &$item) {
+            $item['child'] = $this->comment->getChildComments($id, $type, $item['path'])->toArray();
+        }
 
         return $this->response->collection($comments);
     }
@@ -98,8 +100,7 @@ class CommentController extends ApiController
         }
 
         foreach ($data as &$item) {
-            $child = $this->comment->getChildComments($id, $type, $item['path']);
-            $item['child'] = $child->toArray();
+            $item['child'] = $this->comment->getChildComments($id, $type, $item['path'])->toArray();
          }
     }
 
