@@ -2,10 +2,7 @@
  * 获取文章评论
  * @type {string}
  */
-var requestUri = '/comment/show/' + article_id;
-console.log(requestUri);
-$.post(requestUri, {"type": commentable_type, "_token": token}, function (response) {
-    console.log(response);
+$.post('/comment/show/' + article_id, {"type": commentable_type, "_token": token}, function (response) {
     var html, data = response['data'];
     if (data.length > 0) {
         html = makeHtml(data);
@@ -46,7 +43,7 @@ var data = '';
 $('body').on('click', '.reply', function () {
     data = JSON.parse($(this).attr('value'));
     var editor = $(this).parents('.heading').siblings('.editor');
-    editor.toggle();
+    editor.toggle('slow');
     editor.children('input').attr('placeholder', '回复'+data.from_user+'：');
 });
 
@@ -132,26 +129,27 @@ $('body').on('click', '.edit .btn', function () {
 })
 
 
+
 /**
  * vote投票
  */
 $('.comment').on('click', '.up, .down', function () {
     var self = $(this);
     var type = self.attr('class');
-    var id = self.attr('value');
     var url = '/comment/vote/' + type;
     $.post(url, {'id': self.attr('value'), '_token': token}, function () {
         if (type == 'up') {
             self.children('i').replaceWith('<i class="ion-happy text-success"></i>');
             self.siblings('.down').children('i').replaceWith('<i class="ion-sad-outline"></i>');
             var count = self.children('small').html();
-            count = parseInt(count) + 1;
+            count = count == '' ? 1 : parseInt(count) + 1;
             self.children('small').html(count);
         } else {
             self.children('i').replaceWith('<i class="ion-sad text-danger"></i>');
             self.siblings('.up').children('i').replaceWith('<i class="ion-happy-outline"></i>');
             var total = self.siblings('.up').children('small').html();
             total = parseInt(total) - 1;
+            total = total <= 0 ? '' : total;
             self.siblings('.up').children('small').html(total);
         }
     }, 'json');
@@ -167,6 +165,9 @@ function makeHtml(data) {
     var html = '';
     for (var i = 0; i < data.length; i++) {
         var user = JSON.stringify(data[i]);
+        data[i]['vote_count'] = parseInt(data[i]['vote_count']) === 0 ? '' : data[i]['vote_count'];
+        var vote_up = Boolean(data[i]['is_up_voted']) === true ? 'ion-happy text-success' : 'ion-happy-outline';
+        var vote_down = Boolean(data[i]['is_down_voted']) === true ? 'ion-sad text-danger' : 'ion-sad-outline';
         var childNode = '';
         if (data[i]['child']) {
             var child = data[i]['child'];
@@ -194,10 +195,10 @@ function makeHtml(data) {
                         "<i class='ion-clock'></i>" + data[i]["created_at"]+""+
                         "<span class='pull-right operate'><span class='vote-button'>" +
                         "<a class='up' value='" + data[i]["id"] + "'>" +
-                            "<i class='ion-happy-outline'></i> " +
+                            "<i class='"+vote_up+"'></i> " +
                             "<small>" + data[i]['vote_count'] + "</small>" +
                         "</a> " +
-                        "<a class='down' value='" + data[i]["id"] + "'><i class='ion-sad-outline'></i></a>" +
+                        "<a class='down' value='" + data[i]["id"] + "'><i class='"+vote_down+"'></i></a>" +
                         // "</span> <a class="reply">回復<i class="ion-ios-undo"></i></a></span>" +
                         "</span> <a class='reply' value='"+user+"'>回復</a></span>" +
                     "</div>" +
