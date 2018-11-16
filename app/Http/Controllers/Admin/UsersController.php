@@ -6,11 +6,15 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
+use  App\Repositories\UserRepository;
 
 class UsersController extends Controller
 {
-    public function __construct()
+    protected $user;
+
+    public function __construct(UserRepository $user)
     {
+        $this->user = $user;
     }
 
     /**
@@ -21,7 +25,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
-        $users = User::pageWithRequest($request);
+        $users = $this->user->pageWithRequest($request);
 
         return view('back.user.index', compact('users', 'keyword'));
     }
@@ -49,7 +53,7 @@ class UsersController extends Controller
             'confirm_code' => str_random(64)
         ]);
 
-        (new User)->fill($data)->save();
+        $this->user->store($data);
 
         return response()->json(true);
     }
@@ -74,10 +78,9 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = User::find($id);
-        $result = $model->fill($request->all())->save();
+        $this->user->update($id, $request->all());
 
-        return response()->json($result);
+        return response()->json(true);
     }
 
     /**
@@ -102,9 +105,8 @@ class UsersController extends Controller
      */
     public function status(Request $request, $id)
     {
-        $input = $request->input();
-        $result = User::where('id', $id)->update($input);
+        $this->user->update($id, $request->all());
 
-        return response()->json($result);
+        return response()->json(true);
     }
 }

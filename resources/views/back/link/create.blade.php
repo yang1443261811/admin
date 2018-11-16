@@ -153,11 +153,11 @@
         },
         done: function (e, data) {
             $('.mask').hide();
-            $('.cover').val(data.result.file);
+            $('.cover').val(data.result.url);
             if($(".upload-box").find("img").length == 0){
-                $('.link-image').replaceWith('<img data-v-4cfc7054="" src="'+data.result.file+'" width="100" height="100" class="img-circle image" />');
+                $('.link-image').replaceWith('<img data-v-4cfc7054="" src="/'+data.result.url+'" width="100" height="100" class="img-circle image" />');
             } else {
-                $(".upload-box").find("img").attr('src', data.result.file);
+                $(".upload-box").find("img").attr('src', '/'+data.result.file);
             }
         }
     });

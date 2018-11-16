@@ -6,9 +6,17 @@ use App\Tag;
 use App\Discussion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  App\Repositories\DiscussionRepository;
 
 class DiscussionsController extends Controller
 {
+    protected $discussion;
+
+    public function __construct(DiscussionRepository $discussion)
+    {
+        $this->discussion = $discussion;
+    }
+
     /**
      * 首页
      *
@@ -17,7 +25,7 @@ class DiscussionsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
-        $discussions = Discussion::pageWithRequest($request);
+        $discussions =  $this->discussion->pageWithRequest($request);
 
         return view('back.discussion.index', compact('discussions', 'keyword'));
     }
@@ -41,10 +49,10 @@ class DiscussionsController extends Controller
     public function store(Request $request)
     {
         $this->validator($request);
+
         $input = $request->all() + ['user_id' => 1, 'last_user_id' => 1];
-        $discussion = new Discussion();
-        $discussion->fill($input)->save();
-        $discussion->tags()->sync($input['tags']);
+
+        $this->discussion->store($input);
 
         return response()->json(true);
     }
@@ -73,10 +81,8 @@ class DiscussionsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validator($request);
-        $input = $request->all();
-        $model = Discussion::find($id);
-        $model->fill($input)->save();
-        $model->tags()->sync($input['tags']);
+
+        $this->discussion->update($id, $request->all());
 
         return response()->json(true);
     }

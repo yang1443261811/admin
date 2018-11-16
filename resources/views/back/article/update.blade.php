@@ -116,7 +116,7 @@
                                             <input data-v-8181b19c="" type="text" id="page_image" name="page_image" placeholder="ex: /uploads/default_avatar.png" class="form-control" value="{{$article->page_image}}"/>
                                         </div>
                                         <div data-v-8181b19c="" class="col-sm-5 cover-box">
-                                            <img src="{{$article->page_image}}" width="35" height="35"/>
+                                            <img src="{{asset($article->page_image)}}" width="35" height="35"/>
                                             <div data-v-8181b19c="" class="cover-upload pull-right">
                                                 <a data-v-8181b19c="" href="javascript:;" class="btn btn-success file">
                                                     <span data-v-8181b19c="">Upload New File</span>
@@ -263,11 +263,11 @@
             }
         },
         done: function (e, data) {
-            $('#page_image').val(data.result.file);
+            $('#page_image').val(data.result.url);
             if($(".cover-box").find("img").length==0){
-                $('.cover-upload').before('<img src="'+data.result.file+'"width="35" height="35"/>');
+                $('.cover-upload').before('<img src="/'+data.result.url+'"width="35" height="35"/>');
             } else {
-                $(".cover-box").find("img").attr('src', data.result.file);
+                $(".cover-box").find("img").attr('src', '/'+data.result.url);
             }
         }
     });

@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => '/admin', 'namespace' => 'admin'], function () {
+Route::group(['prefix' => '/admin', 'namespace' => 'admin', 'middleware' => ['admin', 'auth']], function () {
     Route::get('dashboard', 'HomeController@dashboard');
     Route::get('users', 'UsersController@index');
     Route::get('users/create', 'UsersController@create');

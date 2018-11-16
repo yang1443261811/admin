@@ -2,15 +2,14 @@
 
 namespace App;
 
-//use App\Scopes\DraftScope;
+use App\Scopes\DraftScope;
 //use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
-
-//use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
-//    use SoftDeletes;
+    use SoftDeletes;
 
     /**
      * 与模型关联的数据表
@@ -55,12 +54,12 @@ class Article extends Model
      *
      * @return void
      */
-//    public static function boot()
-//    {
-//        parent::boot();
-//
-//        static::addGlobalScope(new DraftScope());
-//    }
+    public static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new DraftScope());
+    }
 
     /**
      * Get the user for the blog article.
@@ -157,55 +156,4 @@ class Article extends Model
         $this->attributes['slug'] = $slug;
     }
 
-    /**
-     * Set the content attribute.
-     *
-     * @param $value
-     */
-//    public function setContentAttribute($value)
-//    {
-//        $data = [
-//            'raw'  => $value,
-//            'html' => (new Markdowner)->convertMarkdownToHtml($value)
-//        ];
-//
-//        $this->attributes['content'] = json_encode($data);
-//    }
-
-    /**
-     * 分页获取数据
-     *
-     * @param $request
-     * @param int $number
-     * @param string $sort
-     * @param string $sortColumn
-     * @return mixed
-     */
-    public static function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
-    {
-        $keyword = $request->get('keyword');
-
-        return static::when($keyword, function ($query) use ($keyword) {
-            $query->where('title', 'like', "%{$keyword}%")
-                ->orWhere('subtitle', 'like', "%{$keyword}%");
-        })
-            ->orderBy($sortColumn, $sort)->paginate($number);
-    }
-
-    /**
-     * 获取文章并记录访问日志
-     *
-     * @param int $article_id
-     * @return mixed
-     */
-    public function browseArticles($article_id)
-    {
-        $model = static::find($article_id);
-
-        $model->increment('view_count');
-
-        $this->visitor->log($article_id);
-
-        return $model;
-    }
 }

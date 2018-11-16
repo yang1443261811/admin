@@ -7,9 +7,17 @@ use App\Article;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  App\Repositories\ArticleRepository;
 
 class ArticlesController extends Controller
 {
+    protected $article;
+
+    public function __construct(ArticleRepository $article)
+    {
+        $this->article = $article;
+    }
+
     /**
      * 首页
      *
@@ -18,7 +26,7 @@ class ArticlesController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
-        $articles = Article::pageWithRequest($request);
+        $articles = $this->article->pageWithRequest($request);
 
         return view('back.article.index', compact('articles', 'keyword'));
     }
@@ -46,15 +54,16 @@ class ArticlesController extends Controller
     {
         $this->validator($request);
         $input = $request->all();
+
         $input = array_merge($input, [
             'user_id'     => 1,
             'last_user_id'=> 1,
             'is_draft'    => isset($input['is_draft']),
             'is_original' => isset($input['is_original'])
         ]);
-        $article = new Article();
-        $article->fill($input)->save();
-        $article->tags()->sync($input['tags']);
+
+        $this->article->store($input);
+        $this->article->syncTag($input['tags']);
 
         return response()->json(true);
     }
@@ -104,13 +113,10 @@ class ArticlesController extends Controller
             'is_original' => isset($input['is_original'])
         ]);
 
-        $model = Article::find($id);
+        $this->article->update($id, $input);
+        $this->article->syncTag($input['tags']);
 
-        $result = $model->fill($input)->save();
-
-        $model->tags()->sync($input['tags']);
-
-        return response()->json($result);
+        return response()->json(true);
     }
 
     /**

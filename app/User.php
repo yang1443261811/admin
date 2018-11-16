@@ -3,6 +3,7 @@
 namespace App;
 
 use Jcc\LaravelVote\Vote;
+use App\Scopes\StatusScope;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,22 +33,14 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get number of the records
+     * The "booting" method of the model.
      *
-     * @param  Request $request
-     * @param  int $number
-     * @param  string $sort
-     * @param  string $sortColumn
-     * @return mixed
+     * @return void
      */
-    public static function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    public static function boot()
     {
-        $keyword = $request->get('keyword');
+        parent::boot();
 
-        return static::when($keyword, function ($query) use ($keyword) {
-                $query->where('name', 'like', "%{$keyword}%");
-            })
-            ->orderBy($sortColumn, $sort)
-            ->paginate($number);
+        static::addGlobalScope(new StatusScope());
     }
 }

@@ -29,6 +29,28 @@ class DiscussionRepository
     }
 
     /**
+     * Get number of the records.
+     *
+     * @param  Request $request
+     * @param  integer $number
+     * @param  string  $sort
+     * @param  string  $sortColumn
+     * @return collection
+     */
+    public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        $keyword = $request->get('keyword');
+
+        return $this->model->when($keyword, function ($query) use ($keyword) {
+            $query->where('title', 'like', "%{$keyword}%")
+                ->orWhereHas('user', function ($query) use ($keyword) {
+                    $query->where('name', 'like', "%{$keyword}%");
+                });
+        })
+            ->orderBy($sortColumn, $sort)->paginate($number);
+    }
+
+    /**
      * Store a new discussion.
      * @param  array $data
      * @return Model
@@ -40,21 +62,32 @@ class DiscussionRepository
         if (is_array($data['tags'])) {
             $this->syncTag($discussion, $data['tags']);
         } else {
-            $this->syncTag($discussion, json_decode($data['tags']));
+            $this->syncTag($discussion, $data['tags']);
         }
 
         return $discussion;
     }
 
     /**
-     * Sync the tags for the discussion.
+     * Update a record by id.
      *
-     * @param  int $number
-     * @return Paginate
+     * @param  int $id
+     * @param  array $data
+     * @return boolean
      */
-    public function syncTag(Discussion $discussion, array $tags)
+    public function update(int $id, array $data)
     {
-        return $discussion->tags()->sync($tags);
+//        $this->model = $this->checkAuthScope();
+
+        $discussion = $this->model->findOrFail($id);
+
+        if (is_array($data['tags'])) {
+            $this->syncTag($discussion, $data['tags']);
+        } else {
+            $this->syncTag($discussion, $data['tags']);
+        }
+
+        return $discussion->update($data);
     }
 
 }

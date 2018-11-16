@@ -2,13 +2,15 @@
  * 获取文章评论
  * @type {string}
  */
-$.post('/comment/show/' + article_id, {"type": commentable_type, "_token": token}, function (response) {
-    var html, data = response['data'];
-    if (data.length > 0) {
-        html = makeHtml(data);
-        $('.form-horizontal').before(html);
-    }
-}, 'json');
+if (hasLogin) {
+    $.post('/comment/show/' + article_id, {"type": commentable_type, "_token": token}, function (response) {
+        var html, data = response['data'];
+        if (data.length > 0) {
+            html = makeHtml(data);
+            $('.form-horizontal').before(html);
+        }
+    }, 'json');
+}
 
 /**
  * 文章评论

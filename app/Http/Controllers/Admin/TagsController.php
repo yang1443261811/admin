@@ -6,9 +6,17 @@ use App\Tag;
 use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  App\Repositories\TagRepository;
 
 class TagsController extends Controller
 {
+    protected $tag;
+
+    public function __construct(TagRepository $tag)
+    {
+        $this->tag = $tag;
+    }
+
     /**
      * 主页
      *
@@ -17,7 +25,7 @@ class TagsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
-        $tags = Tag::pageWithRequest($request);
+        $tags = $this->tag->pageWithRequest($request);
 
         return view('back.tag.index', compact('tags', 'keyword'));
     }
@@ -36,9 +44,10 @@ class TagsController extends Controller
     public function store(Request $request)
     {
         $this->validator($request);
-        $result = (new Tag())->fill($request->all())->save();
 
-        return response()->json($result);
+        $this->tag->store($request->all());
+
+        return response()->json(true);
     }
 
     /**
@@ -63,13 +72,12 @@ class TagsController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->method() == 'GET') {
-            $tag = Tag::find($id);
-            return view('back.tag.update', compact('tag'));
+            return view('back.tag.update', ['tag' => Tag::find($id)]);
         } else {
             $input = $request->only('tag', 'title', 'meta_description');
-            $result = Tag::where('id', $id)->update($input);
+            $this->tag->update($id, $input);
 
-            return response()->json($result);
+            return response()->json(true);
         }
     }
 

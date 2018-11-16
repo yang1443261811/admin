@@ -5,9 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  App\Repositories\CommentRepository;
 
 class CommentsController extends Controller
 {
+    protected $comment;
+
+    public function __construct(CommentRepository $comment)
+    {
+        $this->comment = $comment;
+    }
+
     /**
      * 首页
      *
@@ -16,7 +24,7 @@ class CommentsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
-        $comments = Comment::pageWithRequest($request);
+        $comments = $this->comment->pageWithRequest($request);
 
         return view('back.comment.index', compact('comments', 'keyword'));
     }
@@ -41,10 +49,9 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $content = $request->only('content');
-        $result  = Comment::where('id', $id)->update($content);
+        $this->comment->update($id, $request->only('content'));
 
-        return response()->json($result);
+        return response()->json(true);
     }
 
     /**

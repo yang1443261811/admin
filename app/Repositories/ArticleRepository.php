@@ -73,23 +73,33 @@ class ArticleRepository
     }
 
     /**
-     * 搜索文章
+     * Sync the tags for the article.
      *
-     * @param mixed $request
+     * @param  array $tags
+     * @return mixed
+     */
+    public function syncTag(array $tags)
+    {
+        $this->model->tags()->sync($tags);
+    }
+
+    /**
+     * 分页获取数据
+     *
+     * @param $request
      * @param int $number
      * @param string $sort
      * @param string $sortColumn
      * @return mixed
      */
-    public function search($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
     {
-        $keyword = $request->get('q');
+        $keyword = $request->get('keyword');
 
-        return $this->model
-            ->when($keyword, function ($query) use ($keyword) {
-                $query->where('title', 'like', "%{$keyword}%")
-                    ->orWhere('subtitle', 'like', "%{$keyword}%");
-            })
+        return $this->model->when($keyword, function ($query) use ($keyword) {
+            $query->where('title', 'like', "%{$keyword}%")
+                ->orWhere('subtitle', 'like', "%{$keyword}%");
+        })
             ->orderBy($sortColumn, $sort)->paginate($number);
     }
 

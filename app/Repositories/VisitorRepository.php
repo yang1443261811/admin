@@ -18,6 +18,28 @@ class VisitorRepository
     }
 
     /**
+     * Get number of the records.
+     *
+     * @param  Request $request
+     * @param  integer $number
+     * @param  string  $sort
+     * @param  string  $sortColumn
+     * @return collection
+     */
+    public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        $keyword = $request->get('keyword');
+
+        return $this->model->when($keyword, function ($query) use ($keyword) {
+            $query->where('ip', $keyword)
+                ->orWhereHas('article', function ($query) use ($keyword) {
+                    $query->where('title', 'like', "%{$keyword}%");
+                });
+        })
+            ->orderBy($sortColumn, $sort)->paginate($number);
+    }
+
+    /**
      * 记录访问日志
      *
      * @param $article_id
@@ -30,8 +52,8 @@ class VisitorRepository
         if ($this->hasArticleIp($article_id, $ip)) {
 
             $this->model->where('article_id', $article_id)
-                ->where('ip', $ip)
-                ->increment('clicks');
+                        ->where('ip', $ip)
+                        ->increment('clicks');
 
         } else {
             $data = [
@@ -53,8 +75,8 @@ class VisitorRepository
     public function hasArticleIp($article_id, $ip)
     {
         return $this->model
-            ->where('article_id', $article_id)
-            ->where('ip', $ip)
-            ->count() ? true : false;
+                    ->where('article_id', $article_id)
+                    ->where('ip', $ip)
+                    ->count() ? true : false;
     }
 }
