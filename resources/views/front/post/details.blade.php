@@ -113,7 +113,7 @@
                     <form action='/comment/create' method='post' class="form-horizontal comments" style="margin-top: 30px;">
                         {{csrf_field()}}
                         <input type="hidden" name="commentable_id" value="{{$articles->id}}"/>
-                        <input type="hidden" name="commentable_type" value="App\\Article"/>
+                        <input type="hidden" name="commentable_type" value="App\Article"/>
                         <div class="form-group">
                             <label class="col-sm-2 control-label own-avatar">
                                 <a href="/user/yqm"><img src="{{(\Auth::user())->avatar}}" class="img-circle"></a>
@@ -141,11 +141,9 @@
 
 @section('js')
     <script>
-        window.Language = 'zh_cn';
-        window.Laravel = {"csrfToken": "{{csrf_token()}}"};
-        var article_id = '{{$articles->id}}';
-        var commentable_type = 'App\\Article';
-        var token = '{{csrf_token()}}';
+        window.article_id = '{{$articles->id}}';
+        window.commentable_type = 'App\\Article';
+        window.token = '{{csrf_token()}}';
     </script>
     <script src="/js/highlight.pack.js"></script>
     <script src="/js/layer/layer.js"></script>
