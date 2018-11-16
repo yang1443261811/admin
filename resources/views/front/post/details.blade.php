@@ -141,6 +141,7 @@
 
 @section('js')
     <script>
+        window.hasLogin = '{{Auth::check()}}';
         window.article_id = '{{$articles->id}}';
         window.commentable_type = 'App\\Article';
         window.token = '{{csrf_token()}}';

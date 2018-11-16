@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Link;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  App\Repositories\LinkRepository;
 
 class LinksController extends Controller
 {
-    public function __construct()
+    protected $link;
+
+    public function __construct(LinkRepository $link)
     {
+        $this->link = $link;
     }
 
     /**
@@ -20,7 +24,7 @@ class LinksController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
-        $links = Link::pageWithRequest($request);
+        $links = $this->link->pageWithRequest($request);
 
         return view('back.link.index', compact('links', 'keyword'));
     }
@@ -38,9 +42,10 @@ class LinksController extends Controller
         }
 
         $this->validator($request);
-        $result = (new Link)->fill($request->all())->save();
 
-        return response()->json($result);
+        $this->link->store($request->all());
+
+        return response()->json(true);
     }
 
     /**
@@ -64,10 +69,10 @@ class LinksController extends Controller
     public function update(Request $request, $id)
     {
         $this->validator($request);
-        $model = Link::find($id);
-        $res = $model->fill($request->all())->save();
 
-        return response()->json($res);
+        $this->link->update($id, $request->all());
+
+        return response()->json(true);
     }
 
     /**
@@ -92,10 +97,9 @@ class LinksController extends Controller
      */
     public function status(Request $request, $id)
     {
-        $input = $request->input();
-        $result = Link::where('id', $id)->update($input);
+        $this->link->update($id, $request->input());
 
-        return response()->json($result);
+        return response()->json(true);
     }
 
     /**

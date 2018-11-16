@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Visitor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  App\Repositories\VisitorRepository;
 
 class VisitorsController extends Controller
 {
-    public function __construct()
+    protected $visitor;
+
+    public function __construct(VisitorRepository $visitor)
     {
+        $this->visitor = $visitor;
     }
 
     /**
@@ -20,7 +24,7 @@ class VisitorsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
-        $visitors = Visitor::pageWithRequest($request);
+        $visitors = $this->visitor->pageWithRequest($request);
 
         return view('back.visitor.index', compact('visitors', 'keyword'));
     }

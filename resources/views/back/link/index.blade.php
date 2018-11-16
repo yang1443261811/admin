@@ -72,7 +72,7 @@
                                 @foreach($links as $link)
                                     <tr data-v-6750c142="">
                                         <td data-v-6750c142="" class="text-center"> {{$link->id}} </td>
-                                        <td data-v-6750c142=""> <img src="{{$link->image}}" width="50" height="50" class="rounded-circle" /> </td>
+                                        <td data-v-6750c142=""> <img src="{{asset($link->image)}}" width="50" height="50" class="rounded-circle" /> </td>
                                         <td data-v-6750c142=""> {{$link->name}} </td>
                                         <td data-v-6750c142=""> {{$link->link}} </td>
                                         <td data-v-6750c142="" class="component text-center">

@@ -6,9 +6,16 @@ use App\Category;
 use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  App\Repositories\CategoryRepository;
 
 class CategoriesController extends Controller
 {
+    protected $category;
+
+    public function __construct(CategoryRepository $category)
+    {
+        $this->category = $category;
+    }
 
     /**
      * 分类主页
@@ -18,7 +25,7 @@ class CategoriesController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
-        $categories = Category::pageWithRequest($request);
+        $categories =  $this->category->pageWithRequest($request);
 
         return view('back.category.index', compact('categories', 'keyword'));
     }
@@ -42,9 +49,10 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validator($request);
-        $result = (new Category())->fill($request->all())->save();
 
-        return response()->json($result);
+        $this->category->store($request->all());
+
+        return response()->json(true);
     }
 
     /**
@@ -76,12 +84,9 @@ class CategoriesController extends Controller
             return view('back.category.update', ['category' =>  Category::find($id)]);
         } else {
             $this->validator($request);
+            $this->category->update($id, $request->only('name', 'description'));
 
-            $input = $request->only('name', 'description');
-
-            $result = Category::where('id', $id)->update($input);
-
-            return response()->json($result);
+            return response()->json(true);
         }
     }
 

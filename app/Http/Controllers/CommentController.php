@@ -22,7 +22,7 @@ class CommentController extends ApiController
      * 添加评论
      *
      * @param Request $request
-     * @return response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function create(Request $request)
     {
@@ -70,7 +70,7 @@ class CommentController extends ApiController
      *
      * @param Request $request
      * @param int $id
-     * @return response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Request $request, $id)
     {
@@ -103,12 +103,4 @@ class CommentController extends ApiController
             $item['child'] = $this->comment->getChildComments($id, $type, $item['path'])->toArray();
          }
     }
-
-    public function test()
-    {
-        $comments = $this->comment->getParentComments(49, 'App\Article');
-        $this->prepareData($comments, 49, 'App\Article');
-        p($comments);
-    }
-
 }
