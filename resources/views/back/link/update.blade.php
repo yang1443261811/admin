@@ -60,14 +60,7 @@
             font-size: 20px;
         }
     </style>
-    <script>
-        window.Laravel = {
-            csrfToken: "sPDZRuK5vRPfdIpyrKEDS10HjBI1LstYX5C4l1TB"
-        }
-        window.Language = "en"
-    </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
 </head>
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
@@ -102,7 +95,7 @@
                                     <label data-v-4cfc7054="" for="image">Image</label>
                                     <div data-v-4cfc7054="" class="upload-box">
                                         <input data-v-4cfc7054="" type="file" id="image" name="image" class="form-control fileupload" data-url="/files/upload" />
-                                        <input type="hidden" value="{{$link->image}}" name="image" class="cover">
+                                        <input type="hidden" value="{{$link->image}}" name="cover" class="cover">
                                         {{--<i data-v-4cfc7054="" class="fas fa-image link-image"></i>--}}
                                         <img data-v-4cfc7054="" src="{{$link->image}}" width="100" height="100" class="img-circle image" />
                                         <div data-v-4cfc7054="" class="mask">
@@ -113,7 +106,10 @@
                                 <div data-v-4cfc7054="" class="form-group">
                                     <label data-v-4cfc7054="">Is Enable</label>
                                     <div data-v-4cfc7054="" class="togglebutton" style="margin-top: 6px;">
-                                        <label data-v-4cfc7054=""><input data-v-4cfc7054="" type="checkbox" name="status" /> <span data-v-4cfc7054="" class="toggle"></span></label>
+                                        <label data-v-4cfc7054="">
+                                            <input data-v-4cfc7054="" type="checkbox" name="status" {{$link->status == 1 ? 'checked' : ''}}/>
+                                            <span data-v-4cfc7054="" class="toggle"></span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div data-v-4cfc7054="" class="form-group">
@@ -178,9 +174,19 @@
     //ajax 提交表单数据
     $('form').on('submit', function (e) {
         e.preventDefault();
+
         var self = $(this);
-        $.post(self.attr('action'), self.serialize(), function (res) {
-            toastr.info('添加成功');
+
+        var data = {
+            image: $('.cover').val(),
+            name: $('input[name=name]').val(),
+            link:  $('input[name=link]').val(),
+            status: $('input[name=status]').is(':checked') ? 1 : 0,
+            _token: '{{csrf_token()}}'
+        };
+
+        $.post(self.attr('action'), data, function (res) {
+            toastr.info('更新成功');
             window.setTimeout(function(){
                 window.location.href = '/admin/links';
             }, 1500);

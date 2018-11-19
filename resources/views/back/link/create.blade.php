@@ -66,8 +66,6 @@
         }
         window.Language = "en"
     </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 </head>
 <body class="" style="padding-right: 0px;">
 <div id="wrapper" class="">
