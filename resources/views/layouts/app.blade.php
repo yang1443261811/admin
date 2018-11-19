@@ -27,7 +27,7 @@
 <body>
 <div id="app">
     {{--导航栏--}}
-    @include('navbar')
+    @include('layouts.navbar')
 
     <div class="main">
 
@@ -36,7 +36,7 @@
     </div>
 
     {{--页脚--}}
-    @include('footer')
+    @include('layouts.footer')
 </div>
 
 <!-- Scripts -->

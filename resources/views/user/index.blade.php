@@ -26,11 +26,11 @@
                                 <a href="https://pigjian.com/user/yqm/following" class="text">关注数</a>
                             </div>
                             <div class="col-xs-4">
-                                <a href="https://pigjian.com/user/yqm/discussions" class="counter">0</a>
+                                <a href="https://pigjian.com/user/yqm/discussions" class="counter">{{$user->discussions->count()}}</a>
                                 <a href="https://pigjian.com/user/yqm/discussions" class="text">讨论数</a>
                             </div>
                             <div class="col-xs-4">
-                                <a href="https://pigjian.com/user/yqm/comments" class="counter">0</a>
+                                <a href="https://pigjian.com/user/yqm/comments" class="counter">{{$user->comments->count()}}</a>
                                 <a href="https://pigjian.com/user/yqm/comments" class="text">评论数</a>
                             </div>
                         </div>
