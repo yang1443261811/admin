@@ -27,7 +27,7 @@ class DiscussionController extends Controller
     {
         $discussions = $this->discussion->page();
 
-        return view('front.discussion.index', compact('discussions'));
+        return view('discussion.index', compact('discussions'));
     }
 
     /**
@@ -37,7 +37,7 @@ class DiscussionController extends Controller
      */
     public function create()
     {
-        return view('front.discussion.create', ['tags' => Tag::all()]);
+        return view('discussion.create', ['tags' => Tag::all()]);
     }
 
     /**
@@ -67,7 +67,7 @@ class DiscussionController extends Controller
     {
         $discussion = $this->discussion->getById($id);
 
-        return view('front.discussion.show', compact('discussion'));
+        return view('discussion.show', compact('discussion'));
     }
 
     /**

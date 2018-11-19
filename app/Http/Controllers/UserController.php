@@ -31,7 +31,7 @@ class UserController extends Controller
         $discussions = $user->discussions->take(10);
         $comments = $user->comments->take(10);
 
-        return view('user-center', compact('user', 'discussions', 'comments'));
+        return view('user.index', compact('user', 'discussions', 'comments'));
     }
 
     /**
@@ -56,13 +56,13 @@ class UserController extends Controller
             $this->user->update(\Auth::id(), $request->all());
             return redirect()->back();
         } else {
-            return view('profile', $this->user->getById(\Auth::id()));
+            return view('user.profile', $this->user->getById(\Auth::id()));
         }
     }
 
     public function notification()
     {
-        return view('notify');
+        return view('user.notify');
     }
 
     /**
@@ -72,7 +72,7 @@ class UserController extends Controller
      */
     public function link()
     {
-        return view('link', ['links' => Link::all()]);
+        return view('user.link', ['links' => Link::all()]);
     }
 
     /**

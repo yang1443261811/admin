@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('front.post.article', ['articles' =>  $this->article->page()]);
+        return view('post.article', ['articles' =>  $this->article->page()]);
     }
 
     /**
@@ -39,7 +39,7 @@ class PostController extends Controller
     {
         $articles = $this->article->browseArticles($id);
 
-        return view('front.post.details', compact('articles'));
+        return view('post.details', compact('articles'));
     }
 
     /**
@@ -52,7 +52,7 @@ class PostController extends Controller
     {
         $articles = $this->article->findByTag($tag);
 
-        return view('tag', compact('articles', 'tag'));
+        return view('post.tag', compact('articles', 'tag'));
     }
 
     /**
@@ -66,7 +66,7 @@ class PostController extends Controller
         $articles = $this->article->search($request);
         $keyword  = $request->input('q');
 
-        return view('front.post.search', compact('articles', 'keyword'));
+        return view('post.search', compact('articles', 'keyword'));
     }
 
 }
