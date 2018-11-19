@@ -91,7 +91,7 @@ class ArticlesController extends Controller
     {
         $tags = Tag::all();
         $categories = Category::all();
-        $article = Article::find($id);
+        $article = $this->article->getById($id);
 
         return view('back.article.update', compact('article', 'categories', 'tags'));
     }

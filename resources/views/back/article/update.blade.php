@@ -163,7 +163,10 @@
                                         </div>
                                         <div data-v-8181b19c="" class="col-sm-2">
                                             <div data-v-8181b19c="" class="togglebutton" style="margin-top: 6px;">
-                                                <label data-v-8181b19c=""><input data-v-8181b19c="" type="checkbox" name="is_draft" /> <span data-v-8181b19c="" class="toggle"></span></label>
+                                                <label data-v-8181b19c="">
+                                                    <input data-v-8181b19c="" type="checkbox" name="is_draft" {{$article->is_draft == 1 ? 'checked' : ''}}/>
+                                                    <span data-v-8181b19c="" class="toggle"></span>
+                                                </label>
                                             </div>
                                         </div>
                                         <div data-v-8181b19c="" class="col-sm-2 col-form-label">
@@ -171,7 +174,10 @@
                                         </div>
                                         <div data-v-8181b19c="" class="col-sm-2">
                                             <div data-v-8181b19c="" class="togglebutton" style="margin-top: 6px;">
-                                                <label data-v-8181b19c=""><input data-v-8181b19c="" type="checkbox" name="is_original" /> <span data-v-8181b19c="" class="toggle"></span></label>
+                                                <label data-v-8181b19c="">
+                                                    <input data-v-8181b19c="" type="checkbox" name="is_original" {{$article->is_original == 1 ? 'checked' : ''}}/>
+                                                    <span data-v-8181b19c="" class="toggle"></span>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>

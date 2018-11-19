@@ -42,12 +42,6 @@
             z-index: 1000000;
         }
     </style>
-    <script>
-        window.Laravel = {
-            csrfToken: "sPDZRuK5vRPfdIpyrKEDS10HjBI1LstYX5C4l1TB"
-        }
-        window.Language = "en"
-    </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 </head>
 <body class="" style="padding-right: 0px;">
@@ -80,7 +74,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Tag</label>
                                     <div class="col-sm-10">
-                                        <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                                        <select class="js-example-basic-multiple form-control tags" name="tags[]" multiple="multiple">
                                             @foreach($tags as $tag)
                                                 <option value="{{$tag->id}}">{{$tag->tag}}</option>
                                             @endforeach
@@ -97,7 +91,10 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="togglebutton" style="margin-top: 6px;">
-                                            <label><input type="checkbox" name="status" value="1" /> <span class="toggle"></span></label>
+                                            <label>
+                                                <input type="checkbox" name="status" value="1" {{$discussion->status == 1 ? 'checked' : ''}}/>
+                                                <span class="toggle"></span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -159,9 +156,18 @@
         //ajax 提交表单数据
         $('form').on('submit', function (e) {
             e.preventDefault();
+
             var self = $(this);
-            var params =  $.param({'content':editor.txt.html()})+'&'+self.serialize();
-            $.post(self.attr('action'), params, function (res) {
+
+            var data = {
+                title:$('input[name=title]').val(),
+                tags:$('.tags').val(),
+                status:$('input[name=status]').is(':checked') ? 1 : 0,
+                content:editor.txt.html(),
+                _token:'{{csrf_token()}}'
+            };
+
+            $.post(self.attr('action'), data, function (res) {
                 toastr.info('更新成功');
                 window.setTimeout(function(){
                     window.location.href = '/admin/discussions';
