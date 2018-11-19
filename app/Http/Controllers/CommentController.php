@@ -39,7 +39,7 @@ class CommentController extends ApiController
             $path = sprintf('%s%s/', $parent->path, $comment->id);
         }
 
-        $comment->where('id', $comment->id)->update(['path' => $path]);
+        $this->comment->update($comment->id, ['path' => $path]);
 
         return $this->response->item($comment);
     }
@@ -85,22 +85,4 @@ class CommentController extends ApiController
         return $this->response->collection($comments);
     }
 
-    /**
-     * 获取子评论
-     *
-     * @param mixed  $data 顶级评论
-     * @param int    $id   文章ID
-     * @param string $type 评论类型
-     * @return mixed
-     */
-    public function prepareData($data, $id, $type)
-    {
-        if ($data->isEmpty()) {
-            return $data;
-        }
-
-        foreach ($data as &$item) {
-            $item['child'] = $this->comment->getChildComments($id, $type, $item['path'])->toArray();
-         }
-    }
 }

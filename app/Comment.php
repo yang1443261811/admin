@@ -74,5 +74,4 @@ class Comment extends Model
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->diffForHumans();
     }
-
 }

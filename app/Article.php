@@ -156,4 +156,5 @@ class Article extends Model
         $this->attributes['slug'] = $slug;
     }
 
+
 }
