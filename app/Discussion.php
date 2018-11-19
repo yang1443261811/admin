@@ -2,7 +2,7 @@
 
 namespace App;
 
-//use App\Scopes\StatusScope;
+use App\Scopes\StatusScope;
 //use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -36,12 +36,12 @@ class Discussion extends Model
      *
      * @return void
      */
-//    public static function boot()
-//    {
-//        parent::boot();
-//
-//        static::addGlobalScope(new StatusScope());
-//    }
+    public static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new StatusScope());
+    }
 
     /**
      * Get the user for the discussion.

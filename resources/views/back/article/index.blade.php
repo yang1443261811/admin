@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
     <style>
         [v-cloak] { display: none; }
+        td a {color:#636b6f !important}
     </style>
     <script>
         window.Laravel = {
@@ -68,7 +69,7 @@
                                 @foreach($articles as $article)
                                 <tr data-v-6750c142="">
                                     <td data-v-6750c142="" class="text-center"> {{$article->id}} </td>
-                                    <td data-v-6750c142=""> {{$article->title}} </td>
+                                    <td data-v-6750c142=""><a href="/post/show/{{$article->id}}" target="_blank" title="查看">{{$article->title}}</a> </td>
                                     <td data-v-6750c142=""> {{$article->subtitle}} </td>
                                     <td data-v-6750c142=""> {{$article->created_at}} </td>
                                     <td data-v-6750c142="" class="actions text-center">

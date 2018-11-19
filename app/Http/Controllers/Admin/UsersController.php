@@ -66,7 +66,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        return view('back.user.update', ['user' => User::find($id)]);
+        return view('back.user.update', ['user' =>  $this->user->getById($id)]);
     }
 
     /**

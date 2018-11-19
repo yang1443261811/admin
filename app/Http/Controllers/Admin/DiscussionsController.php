@@ -50,7 +50,9 @@ class DiscussionsController extends Controller
     {
         $this->validator($request);
 
-        $input = $request->all() + ['user_id' => 1, 'last_user_id' => 1];
+        $input = array_merge($request->all(), [
+            'user_id' => \Auth()->id(), 'last_user_id' => \Auth()->id()
+        ]);
 
         $this->discussion->store($input);
 
@@ -66,7 +68,7 @@ class DiscussionsController extends Controller
     public function edit($id)
     {
         $tags = Tag::all();
-        $discussion = Discussion::find($id);
+        $discussion = $this->discussion->getById($id);
 
         return view('back.discussion.update', compact('tags', 'discussion'));
     }
@@ -102,8 +104,7 @@ class DiscussionsController extends Controller
 
     public function status(Request $request, $id)
     {
-        $input = $request->input();
-        $result = Discussion::where('id', $id)->update($input);
+        $result =  $this->discussion->updateWithoutTags($id, $request->all());;
 
         return response()->json($result);
     }

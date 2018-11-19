@@ -8,7 +8,7 @@
     <meta name="description" content="Nothing is impossible in PJ Blog">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <link rel="shortcut icon" href="/image/io.jpg">
+    <link rel="shortcut icon" href="/images/favicon.ico" />
     <title>Yang Blog</title>
     <link rel="stylesheet" href="/css/home.css">
     {{--css文件--}}

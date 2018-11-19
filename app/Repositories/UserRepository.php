@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\User;
+use App\Scopes\StatusScope;
 
 class UserRepository
 {
@@ -32,6 +33,19 @@ class UserRepository
     }
 
     /**
+     * 根据ID获取数据
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function getById($id)
+    {
+        $this->model = $this->checkAuthScope();
+
+        return $this->model->findOrFail($id);
+    }
+
+    /**
      * Get number of the records
      *
      * @param  Request $request
@@ -42,6 +56,8 @@ class UserRepository
      */
     public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
     {
+        $this->model = $this->checkAuthScope();
+
         $keyword = $request->get('keyword');
 
         return $this->model->when($keyword, function ($query) use ($keyword) {
@@ -49,6 +65,34 @@ class UserRepository
         })
             ->orderBy($sortColumn, $sort)
             ->paginate($number);
+    }
+
+    /**
+     * Update the article record without draft scope.
+     *
+     * @param  int $id
+     * @param  array $input
+     * @return mixed
+     */
+    public function update($id, $input)
+    {
+        $this->model = $this->model->withoutGlobalScope(StatusScope::class)->findOrFail($id);
+
+        return $this->save($this->model, $input);
+    }
+
+    /**
+     * Check the auth and the model without global scope when user is the admin.
+     *
+     * @return Model
+     */
+    public function checkAuthScope()
+    {
+        if (auth()->check() && auth()->user()->is_admin) {
+            $this->model = $this->model->withoutGlobalScope(StatusScope::class);
+        }
+
+        return $this->model;
     }
 
 }
