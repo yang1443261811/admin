@@ -43,4 +43,24 @@ class User extends Authenticatable
 
         static::addGlobalScope(new StatusScope());
     }
+
+    /**
+     * Get the discussions for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function discussions()
+    {
+        return $this->hasMany(Discussion::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get the comments for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+    }
 }

@@ -22,11 +22,16 @@ class UserController extends Controller
      *
      * @return mixed
      */
-    public function center($name)
+    public function center($username)
     {
-        $user = $this->user->getByName($name);
+        $user = $this->user->getByName($username);
 
-        return view('user-center', compact('user'));
+        if (!isset($user)) abort(404);
+
+        $discussions = $user->discussions->take(10);
+        $comments = $user->comments->take(10);
+
+        return view('user-center', compact('user', 'discussions', 'comments'));
     }
 
     /**

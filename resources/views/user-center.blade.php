@@ -46,16 +46,42 @@
                     <div class="panel-heading">最近的讨论</div>
 
                     <ul class="list-group">
-                        <li class="nothing">Nothing in here...</li>
+                        @if($discussions->isEmpty())
+                            <li class="nothing">Nothing in here...</li>
+                        @else
+                            @foreach($discussions as $discussion)
+                                <li class="list-group-item">
+                                    <a href="/discussion/show/{{$discussion->id}}">{{$discussion->title}}</a>
+                                    <span class="meta">in <span class="timeago">{{$discussion->created_at->diffForHumans()}}</span></span>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">最近的评论</div>
-
                     <ul class="list-group">
-                        <li class="nothing">Nothing in here...</li>
+                        @if($comments->isEmpty())
+                            <li class="nothing">Nothing in here...</li>
+                        @else
+
+                            @foreach($comments as $comment)
+                                <li class="list-group-item">
+
+                                    @if($comment->commentable_type == 'App\Article')
+                                        <a href="/post/show/{{$comment->commentable_id}}">{{$comment->commentable->title}}</a>
+                                    @else
+                                        <a href="/discussion/show/{{$comment->commentable_id}}">{{$comment->commentable->title}}</a>
+                                    @endif
+
+                                    <span class="meta">in <span class="timeago">{{$comment->created_at}}</span></span>
+                                    <div class="markdown"><p>{{$comment->content}}</p></div>
+                                </li>
+                            @endforeach
+
+                        @endif
                     </ul>
                 </div>
             </div>
