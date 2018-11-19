@@ -19,6 +19,7 @@ class LinksController extends Controller
     /**
      * 首页
      *
+     * @param Request $request
      * @return mixed
      */
     public function index(Request $request)
@@ -56,7 +57,7 @@ class LinksController extends Controller
      */
     public function edit($id)
     {
-        return view('back.link.update', ['link' =>  Link::find($id)]);
+        return view('back.link.update', ['link' =>  $this->link->getById($id)]);
     }
 
     /**

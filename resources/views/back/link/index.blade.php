@@ -17,10 +17,6 @@
         }
     </style>
     <script>
-        window.Laravel = {
-            csrfToken: "sPDZRuK5vRPfdIpyrKEDS10HjBI1LstYX5C4l1TB"
-        }
-        window.Language = "en"
     </script>
 </head>
 <body class="" style="padding-right: 0px;">
