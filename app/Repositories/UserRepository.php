@@ -46,6 +46,19 @@ class UserRepository
     }
 
     /**
+     * Get the user by name.
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function getByName($name)
+    {
+        return $this->model
+                    ->where('name', $name)
+                    ->first();
+    }
+
+    /**
      * Get number of the records
      *
      * @param  Request $request

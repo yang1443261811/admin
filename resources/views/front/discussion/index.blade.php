@@ -42,7 +42,7 @@
                                     <a href="/discussion/show/{{$item->id}}">0</a>回复
                                 </div>
                             </div>
-                            {{$item->user->nickname}}
+                            {{empty($item->user) ? '--' : $item->user->nickname}}
                         </div>
                     </div>
                 @endforeach
