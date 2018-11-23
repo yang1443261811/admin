@@ -80,7 +80,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Tag</label>
                                     <div class="col-sm-10">
-                                        <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                                        <select class="js-example-basic-multiple form-control select2-hidden-accessible" style="width:100%" name="tags[]" multiple="multiple">
                                             @foreach($tags as $tag)
                                                 <option value="{{$tag->id}}">{{$tag->tag}}</option>
                                             @endforeach

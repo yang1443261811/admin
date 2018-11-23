@@ -44,11 +44,13 @@ class DiscussionController extends Controller
      * 存储讨论内容
      *
      * @param Request $request
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $input = $request->all() + ['user_id' => \Auth()->id(), 'last_user_id' => \Auth()->id()];
+        $input = array_merge($request->all(), [
+            'user_id' => \Auth()->id(), 'last_user_id' => \Auth()->id()
+        ]);
 
         $this->validator($input)->validate();
 

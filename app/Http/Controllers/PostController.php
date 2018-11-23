@@ -63,8 +63,9 @@ class PostController extends Controller
      */
     public function search(Request $request)
     {
-        $articles = $this->article->search($request);
-        $keyword  = $request->input('q');
+        $keyword = trim($request->get('q'));
+
+        $articles = $this->article->search($keyword);
 
         return view('post.search', compact('articles', 'keyword'));
     }
