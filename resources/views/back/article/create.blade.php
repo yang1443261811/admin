@@ -126,7 +126,7 @@
                                     <div data-v-8181b19c="" class="form-group row">
                                         <label data-v-8181b19c="" class="col-sm-2 col-form-label">Tag</label>
                                         <div data-v-8181b19c="" class="col-sm-10">
-                                            <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                                            <select class="form-control js-example-basic-multiple select2-hidden-accessible" name="tags[]" style="width:100%" multiple="multiple" >
                                                 @foreach($tags as $tag)
                                                     <option value="{{$tag->id}}">{{$tag->tag}}</option>
                                                 @endforeach
@@ -250,11 +250,11 @@
             }
         },
         done: function (e, data) {
-            $('#page_image').val(data.result.file);
+            $('#page_image').val(data.result.url);
             if(parseInt($(".cover-box").find("img").length) === 0){
-                $('.cover-upload').before('<img src="'+data.result.file+'"width="35" height="35"/>');
+                $('.cover-upload').before('<img src="/'+data.result.url+'"width="35" height="35"/>');
             } else {
-                $(".cover-box").find("img").attr('src', data.result.file);
+                $(".cover-box").find("img").attr('src', '/'+data.result.url);
             }
         }
     });

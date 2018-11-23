@@ -125,6 +125,24 @@ class ArticleRepository
     }
 
     /**
+     * Search the articles by the keyword.
+     *
+     * @param  string $key
+     * @return collection
+     */
+    public function search($key)
+    {
+        $key = trim($key);
+
+        return $this->model
+            ->where('title', 'like', "%{$key}%")
+            ->orderBy('published_at', 'desc')
+            ->get();
+
+    }
+
+
+    /**
      * Check the auth and the model without global scope when user is the admin.
      *
      * @return Model

@@ -55,11 +55,7 @@
         </div>
     </div>
     <div class="text-center">
-        @if($articles->count() > 0)
-            <div class="pagination pagination-minimal">
-                {{ $articles->links('vendor.pagination.new') }}
-            </div>
-        @else
+        @if($articles->isEmpty())
             <h3 class="text-center">Nothing in here...</h3>
         @endif
     </div>
