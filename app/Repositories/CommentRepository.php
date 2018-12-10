@@ -81,7 +81,6 @@ class CommentRepository
     public function toggleVote($id, $isUpVote = true)
     {
         $user = \auth()->user();
-
         $comment = $this->getById($id);
 
         if($comment == null) {

@@ -4,13 +4,14 @@ namespace App;
 
 use Jcc\LaravelVote\Vote;
 use App\Scopes\StatusScope;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, Vote;
+    use Notifiable, Vote, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.

@@ -149,6 +149,7 @@
     <script src="/js/highlight.pack.js"></script>
     <script src="/js/layer/layer.js"></script>
     <script src="/js/home.js"></script>
+    <script src="/js/axios.min.js"></script>
     <script src="/js/detials.js"></script>
     <script>
         hljs.initHighlightingOnLoad();

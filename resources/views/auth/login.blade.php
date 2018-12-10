@@ -26,7 +26,8 @@
 </head>
 <body>
 <div id="app">
-   @include('navbar')
+    {{--导航栏--}}
+    @include('layouts.navbar')
     <div class="main">
         <div class="container">
             <div class="row">
@@ -39,7 +40,7 @@
                                 <div class="form-group">
                                     <div class="col-md-10 col-md-offset-1">
                                         <label class="control-label" for="email">邮箱地址</label>
-                                        <input id="email" type="email" class="form-control" name="email" value="" placeholder="请输入邮箱" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="请输入邮箱" required autofocus>
 
                                     </div>
                                 </div>
@@ -95,7 +96,7 @@
             </div>
         </div>
     </div>
-    @include('footer')
+    @include('layouts.footer')
 </div>
 
 <!-- Scripts -->
