@@ -15,7 +15,7 @@ $('.navbar-toggler').click(function () {
 var current_uri = window.location.href;
 var uri_map = ['users', 'articles', 'discussions', 'comments', 'files', 'tags', 'categories', 'links', 'visitors', 'system'];
 $.each(uri_map, function (key, value) {
-    if (current_uri.indexOf(value) != -1) {
+    if (current_uri.indexOf(value) !== -1) {
         $('.sidebar-nav li a').removeClass('active');
         $('.sidebar-nav .nav-' + value + ' a').addClass('active');
     }

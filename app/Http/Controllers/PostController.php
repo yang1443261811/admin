@@ -37,7 +37,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $articles = $this->article->browseArticles($id);
+        $articles = $this->article->browseArticles((int) $id);
 
         return view('post.details', compact('articles'));
     }

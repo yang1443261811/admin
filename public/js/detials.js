@@ -1,9 +1,14 @@
+var http = axios.create();
+http.defaults.headers.common = {
+    'X-CSRF-TOKEN': token,
+    'X-Requested-With': 'XMLHttpRequest'
+};
 /**
  * 获取文章评论
  * @type {string}
  */
 if (hasLogin) {
-    $.post('/comment/show/' + article_id, {"type": commentable_type, "_token": token}, function (response) {
+    $.post('/api/comment/show/' + article_id, {"type": commentable_type, "_token": token}, function (response) {
         var html, data = response['data'];
         if (data.length > 0) {
             html = makeHtml(data);
@@ -21,7 +26,7 @@ $('.comments').submit(function (e) {
         layer.msg('请输入评论');
         return false;
     }
-    self = $(this);
+    var self = $(this);
     $.post(self.attr("action"), self.serialize(), function (result) {
         var data = new Array(result['data']);
         if (data.length > 0) {
@@ -137,33 +142,34 @@ $('body').on('click', '.edit .btn', function () {
 $('.comment').on('click', '.up, .down', function () {
     var self = $(this);
     var type = self.attr('class');
-    var url = '/comment/vote/' + type;
-    $.post(url, {'id': self.attr('value'), '_token': token}, function () {
-        if (type == 'up') {
-            var count = self.children('small').html();
-            if (self.children('i').hasClass('ion-happy')) {
-                count = (count == '' || count == 1) ? null : parseInt(count) - 1;
-                self.children('i').attr('class', 'ion-happy-outline')
-            } else {
-                count = count == '' ? 1 : parseInt(count) + 1;
-                self.children('i').attr('class', 'ion-happy text-success')
-            }
+    var url = '/api/comment/vote/' + type;
+    http.post(url, {'id': self.attr('value'), '_token': token})
+        .then(function(data) {
+            if (type == 'up') {
+                var count = self.children('small').html();
+                if (self.children('i').hasClass('ion-happy')) {
+                    count = (count == '' || count == 1) ? null : parseInt(count) - 1;
+                    self.children('i').attr('class', 'ion-happy-outline')
+                } else {
+                    count = count == '' ? 1 : parseInt(count) + 1;
+                    self.children('i').attr('class', 'ion-happy text-success')
+                }
 
-            self.siblings('.down').children('i').attr('class', 'ion-sad-outline');
-            self.children('small').html(count);
-        } else {
-            var total = self.siblings('.up').children('small').html();
-            if (self.children('i').hasClass('ion-sad')) {
-                self.children('i').attr('class', 'ion-sad-outline');
+                self.siblings('.down').children('i').attr('class', 'ion-sad-outline');
+                self.children('small').html(count);
             } else {
-                total = parseInt(total) - 1;
-                self.children('i').attr('class', 'ion-sad text-danger');
+                var total = self.siblings('.up').children('small').html();
+                if (self.children('i').hasClass('ion-sad')) {
+                    self.children('i').attr('class', 'ion-sad-outline');
+                } else {
+                    total = parseInt(total) - 1;
+                    self.children('i').attr('class', 'ion-sad text-danger');
+                }
+                self.siblings('.up').children('i').attr('class', 'ion-happy-outline');
+                total = total <= 0 ? '' : total;
+                self.siblings('.up').children('small').html(total);
             }
-            self.siblings('.up').children('i').attr('class', 'ion-happy-outline');
-            total = total <= 0 ? '' : total;
-            self.siblings('.up').children('small').html(total);
-        }
-    }, 'json');
+        });
 });
 
 
