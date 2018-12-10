@@ -104,7 +104,13 @@
             </div>
         </div>
     </div>
-    <comment title="评论" commentable-type="articles" commentable-id="{{$articles->id}}"></comment>
+    <comment
+            title="评论"
+            commentable_type="App\\Article"
+            commentable_id="{{$articles->id}}"
+            username="{{Auth()->user()->name}}"
+            avatar="{{Auth()->user()->avatar}}"
+    ></comment>
     <div class="container">
         <div class="row comment">
             <div class="col-md-8 col-md-offset-2"><h5>评论</h5></div>
