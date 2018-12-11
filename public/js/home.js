@@ -47656,8 +47656,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-//    import VoteButton from 'components/VoteButton.vue';
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
@@ -47848,9 +47846,9 @@ var render = function() {
       _c(
         "a",
         {
-          attrs: { href: "javascript:;" },
           on: {
             click: function($event) {
+              $event.preventDefault()
               _vm.upVote()
             }
           }
@@ -47871,9 +47869,9 @@ var render = function() {
       _c(
         "a",
         {
-          attrs: { href: "javascript:;" },
           on: {
             click: function($event) {
+              $event.preventDefault()
               _vm.downVote()
             }
           }
