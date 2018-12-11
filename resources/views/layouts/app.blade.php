@@ -23,6 +23,7 @@
         window.Language = 'zh_cn';
         window.Laravel = {"csrfToken":"{{csrf_token()}}"}
     </script>
+
 </head>
 <body>
 <div id="app">
@@ -38,10 +39,9 @@
     {{--页脚--}}
     @include('layouts.footer')
 </div>
-
 <!-- Scripts -->
-<script src="{{ mix('js/home.js') }}"></script>
-
+<script type="text/javascript" src="{{ asset('js/home.js') }}"></script>
+{{--<script src="{{ mix('js/home.js') }}"></script>--}}
 {{--js文件--}}
 @yield('js')
 

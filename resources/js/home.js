@@ -16,4 +16,4 @@ Vue.use(httpPlugin);
 
 Vue.component('comment', require('./components/comment.vue'));
 
-new Vue().$mount('#app');
+new Vue({}).$mount('#app');

@@ -17,41 +17,47 @@
         .editor {
             width: 100%;
             padding: 10px 20px;
-            background:#ECF0F1;
-            display:none;
+            background: #ECF0F1;
+            display: none;
         }
 
         .editor input {
             width: 90%;
             height: 40px;
-            text-indent:10px;
+            text-indent: 10px;
             cursor: auto;
             overflow: hidden auto;
             border: 2px solid #d6dffa;
         }
+
         .created {
-            font-size:10px;
-            color:#7F8C8D;
+            font-size: 10px;
+            color: #7F8C8D;
             text-align: right;
             margin: 0 !important;
         }
+
         .comment-body ul li {
             border-bottom: 1px solid #eee;
         }
+
         .comment-body ul li a {
-            font-size:14px;
+            font-size: 14px;
         }
+
         .comment-body ul li span {
-            cursor:pointer;
+            cursor: pointer;
         }
+
         .edit {
             margin-top: 0 !important;
-            margin-bottom:10px;
+            margin-bottom: 10px;
         }
+
         .edit input {
             width: 90%;
             height: 40px;
-            text-indent:10px;
+            text-indent: 10px;
             cursor: auto;
             overflow: hidden auto;
             border: 2px solid #d6dffa;
@@ -104,45 +110,51 @@
             </div>
         </div>
     </div>
-    <comment
-            title="评论"
-            commentable_type="App\\Article"
-            commentable_id="{{$articles->id}}"
-            username="{{Auth()->user()->name}}"
-            avatar="{{Auth()->user()->avatar}}"
-    ></comment>
-    <div class="container">
-        <div class="row comment">
-            <div class="col-md-8 col-md-offset-2"><h5>评论</h5></div>
-            <div class="col-md-8 col-md-offset-2">
-                @if(\Auth()->check())
-                    <form action='/comment/create' method='post' class="form-horizontal comments" style="margin-top: 30px;">
-                        {{csrf_field()}}
-                        <input type="hidden" name="commentable_id" value="{{$articles->id}}"/>
-                        <input type="hidden" name="commentable_type" value="App\Article"/>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label own-avatar">
-                                <a href="/user/yqm"><img src="{{(\Auth::user())->avatar}}" class="img-circle"></a>
-                            </label>
-                            <div class="col-sm-10">
-                                <div data-v-49ec89dc="" class="complete-box" id="content">
-                                    <textarea data-v-49ec89dc="" id="v-textcomplete-txh7wu83" placeholder="Markdown" rows="7" name="content" class="form-control text" style="line-height: 20px;"></textarea>
-                                    <div data-v-49ec89dc="" id="autocomplete-txh7wu83" class="autocomplete transition" style="display: none;">
-                                        <ul data-v-49ec89dc=""></ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <button type="submit" class="btn btn-success pull-right publish">发布评论</button>
-                            </div>
-                        </div>
-                    </form>
-                @endif
-            </div>
-        </div>
-    </div>
+    @if(\Auth()->check())
+        <comment
+                title="评论"
+                commentable_type="App\\Article"
+                commentable_id="{{$articles->id}}"
+                username="{{Auth()->user()->name}}"
+                avatar="{{Auth()->user()->avatar}}"
+        ></comment>
+    @endif
+    {{--<div class="container">--}}
+        {{--<div class="row comment">--}}
+            {{--<div class="col-md-8 col-md-offset-2"><h5>评论</h5></div>--}}
+            {{--<div class="col-md-8 col-md-offset-2">--}}
+                {{--@if(\Auth()->check())--}}
+                    {{--<form action='/comment/create' method='post' class="form-horizontal comments"--}}
+                          {{--style="margin-top: 30px;">--}}
+                        {{--{{csrf_field()}}--}}
+                        {{--<input type="hidden" name="commentable_id" value="{{$articles->id}}"/>--}}
+                        {{--<input type="hidden" name="commentable_type" value="App\Article"/>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<label class="col-sm-2 control-label own-avatar">--}}
+                                {{--<a href="/user/yqm"><img src="{{(\Auth::user())->avatar}}" class="img-circle"></a>--}}
+                            {{--</label>--}}
+                            {{--<div class="col-sm-10">--}}
+                                {{--<div data-v-49ec89dc="" class="complete-box" id="content">--}}
+                                    {{--<textarea data-v-49ec89dc="" id="v-textcomplete-txh7wu83" placeholder="Markdown"--}}
+                                              {{--rows="7" name="content" class="form-control text"--}}
+                                              {{--style="line-height: 20px;"></textarea>--}}
+                                    {{--<div data-v-49ec89dc="" id="autocomplete-txh7wu83" class="autocomplete transition"--}}
+                                         {{--style="display: none;">--}}
+                                        {{--<ul data-v-49ec89dc=""></ul>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<div class="col-sm-12">--}}
+                                {{--<button type="submit" class="btn btn-success pull-right publish">发布评论</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</form>--}}
+                {{--@endif--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 @endsection
 
 @section('js')
@@ -154,8 +166,6 @@
     </script>
     <script src="/js/highlight.pack.js"></script>
     <script src="/js/layer/layer.js"></script>
-    <script src="/js/home.js"></script>
-    <script src="/js/axios.min.js"></script>
     <script src="/js/detials.js"></script>
     <script>
         hljs.initHighlightingOnLoad();

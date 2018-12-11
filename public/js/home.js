@@ -47347,7 +47347,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_plugins_http__["a" /* default */]);
 
 Vue.component('comment', __webpack_require__(44));
 
-new Vue().$mount('#app');
+new Vue({}).$mount('#app');
 
 /***/ }),
 /* 42 */
@@ -47607,6 +47607,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['title', 'commentable_type', 'commentable_id', 'username', 'avatar'],
@@ -47621,8 +47639,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var url = 'comment/show/' + this.commentable_id;
         this.$http.post(url, { "type": this.commentable_type }).then(function (response) {
             _this.comments = response.data.data;
-            console.log(_this.comments);
+            console.log(_this.comments.length);
         });
+    },
+
+
+    methods: {
+        demo: function demo() {
+            alert(this.comments.length);
+        }
     }
 });
 
@@ -47635,57 +47660,91 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "row comment" },
-      [
-        _vm.comments.length == 0
-          ? _c("div", [_vm._v("hello world")])
-          : _vm._l(_vm.comments, function(comment, key) {
-              return _c("div", { staticClass: "media" }, [
-                _c("div", { staticClass: "media-left" }, [
-                  _c(
-                    "a",
-                    { attrs: { href: "/user/center/" + comment.from_user } },
-                    [
-                      _c("img", {
-                        staticClass: "media-object img-circle",
-                        attrs: { src: comment.avatar }
-                      })
-                    ]
-                  )
+    _c("div", { staticClass: "row comment" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-8 col-md-offset-2" },
+        [
+          _vm._l(_vm.comments, function(comment, key) {
+            return _c("div", { staticClass: "media" }, [
+              _c("div", { staticClass: "media-left" }, [
+                _c(
+                  "a",
+                  { attrs: { href: "/user/center/" + comment.from_user } },
+                  [
+                    _c("img", {
+                      staticClass: "media-object img-circle",
+                      attrs: {
+                        src: comment.avatar
+                          ? comment.avatar
+                          : "/images/default.png"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "media-body box-body" }, [
+                _c("div", { staticClass: "heading" }, [
+                  _c("i", { staticClass: "ion-person" }),
+                  _c("a", { attrs: { href: "/user/" + comment.from_user } }, [
+                    _vm._v(_vm._s(comment.from_user))
+                  ]),
+                  _vm._v(
+                    "\n                            \n                        "
+                  ),
+                  _c("i", { staticClass: "ion-clock" }),
+                  _vm._v(
+                    _vm._s(comment.created_at) + "\n                        "
+                  ),
+                  _vm._m(1, true)
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "media-body box-body" }, [
-                  _c("div", { staticClass: "heading" }, [
-                    _c("i", { staticClass: "ion-person" }),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      { attrs: { href: "/user/center/" + comment.from_user } },
-                      [_vm._v(_vm._s(comment.from_user))]
-                    ),
-                    _vm._v("    \n                    "),
-                    _c("i", { staticClass: "ion-clock" }),
-                    _vm._v(
-                      _vm._s(comment.created_at) + "\n                    "
-                    ),
-                    _vm._m(0, true)
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(1, true),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "comment-body markdown" }, [
-                    _c("h2", [_vm._v(_vm._s(comment.content_raw))]),
-                    _vm._v(" "),
-                    _c("ul")
-                  ])
+                _c("div", { staticClass: "comment-body markdown" }, [
+                  _c("p", [_vm._v(_vm._s(comment.content_raw))])
                 ])
               ])
-            })
-      ],
-      2
-    )
+            ])
+          }),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass: "form-horizontal comments",
+              staticStyle: { "margin-top": "30px" },
+              attrs: { action: "/comment/create", method: "post" }
+            },
+            [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  { staticClass: "col-sm-2 control-label own-avatar" },
+                  [
+                    _c(
+                      "a",
+                      { attrs: { href: "/user/center/" + _vm.username } },
+                      [
+                        _c("img", {
+                          staticClass: "img-circle",
+                          attrs: { src: _vm.avatar }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(2)
+              ]),
+              _vm._v(" "),
+              _vm._m(3)
+            ]
+          )
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -47693,32 +47752,84 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "pull-right operate" }, [
-      _c("span", { staticClass: "vote-button" }, [
-        _c("a", { staticClass: "up", attrs: { value: "45" } }, [
-          _c("i", { staticClass: "ion-happy-outline" }),
-          _vm._v(" "),
-          _c("small")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "down", attrs: { value: "45" } }, [
-          _c("i", { staticClass: "ion-sad-outline" })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "reply", attrs: { value: "" } }, [_vm._v("回復")])
+    return _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
+      _c("h5", [_vm._v("评论")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "editor" }, [
-      _c("input", {
-        staticClass: "reply-text",
-        attrs: { type: "text", placeholder: "" }
-      }),
-      _c("span", { staticClass: "btn" }, [_vm._v("发表")])
+    return _c("span", { staticClass: "pull-right operate" }, [
+      _c("span", { staticClass: "vote-button" }, [
+        _c("a", { attrs: { href: "javascript:;" } }, [
+          _c("i", { staticClass: "ion-happy-outline" }),
+          _vm._v(" "),
+          _c("small", [_vm._v("1")])
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "javascript:;" } }, [
+          _c("i", { staticClass: "ion-sad-outline" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "javascript:;" } }, [
+        _c("i", { staticClass: "ion-ios-undo" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-10" }, [
+      _c(
+        "div",
+        {
+          staticClass: "complete-box",
+          attrs: { "data-v-49ec89dc": "", id: "content" }
+        },
+        [
+          _c("textarea", {
+            staticClass: "form-control text",
+            staticStyle: { "line-height": "20px" },
+            attrs: {
+              "data-v-49ec89dc": "",
+              id: "v-textcomplete-txh7wu83",
+              placeholder: "Markdown",
+              rows: "7",
+              name: "content"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "autocomplete transition",
+              staticStyle: { display: "none" },
+              attrs: { "data-v-49ec89dc": "", id: "autocomplete-txh7wu83" }
+            },
+            [_c("ul", { attrs: { "data-v-49ec89dc": "" } })]
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success pull-right publish",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("发布评论")]
+        )
+      ])
     ])
   }
 ]
