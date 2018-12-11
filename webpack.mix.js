@@ -15,6 +15,7 @@ const path = require('path');
 let config = {
     resolve: {
         alias: {
+            'components':'js/components',
             'config': 'js/config',
             'plugins': 'js/plugins',
             'home': 'js/home',

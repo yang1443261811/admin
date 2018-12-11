@@ -14,11 +14,7 @@
                                 :href="'/user/'+comment.from_user">{{comment.from_user}}</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <i class="ion-clock"></i>{{comment.created_at}}
-                            <span class="pull-right operate"><span class="vote-button">
-                                    <a href="javascript:;"><i class="ion-happy-outline"></i> <small>1</small></a>
-                                    <a href="javascript:;"><i class="ion-sad-outline"></i></a></span>
-                                <a href="javascript:;"><i class="ion-ios-undo"></i></a>
-                            </span>
+                            <vote-button :username="username" :item="comment"></vote-button>
                         </div>
                         <div class="comment-body markdown">
                             <p>{{comment.content_raw}}</p>
@@ -57,8 +53,14 @@
 <script>
     import {default as toastr} from 'toastr/build/toastr.min.js';
     import toastrConfig from 'config/toastr';
+    import VoteButton from 'components/VoteButton.vue';
+//    import VoteButton from 'components/VoteButton.vue';
+
 
     export default {
+        components:{
+            VoteButton
+        },
         props: ['title', 'commentable_type', 'commentable_id', 'username', 'avatar'],
         data(){
             return {
@@ -71,7 +73,6 @@
             var url = 'comment/show/' + this.commentable_id;
             this.$http.post(url, {"type": this.commentable_type}).then((response) => {
                 this.comments = response.data.data;
-                console.log(this.comments.length);
             });
 
             //配置toastr插件
@@ -82,10 +83,9 @@
             //创建文章评论
             createComment () {
                 if (!this.content) {
-                    toastr.warning('Uploaded Failed!');
+                    toastr.warning('请输入评论内容!');
                     return false;
                 }
-                ;
 
                 const data = {
                     content: this.content,
@@ -95,10 +95,13 @@
 
                 this.$http.post('comment/create', data)
                     .then((response) => {
-                        console.log(response);
+                        toastr.success('You publish the comment success!');
+                        let comment = response.data.data;
+                        this.comments.push(comment);
+                        this.content = '';
 
                     }).catch((response) => {
-                    console.log(response);
+                        toastr.error('评论失败!');
                 })
             }
         }
