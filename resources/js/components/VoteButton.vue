@@ -1,10 +1,10 @@
 <template>
      <span class="pull-right operate">
          <span class="vote-button">
-             <a href="javascript:;" @click="upVote()">
+             <a @click.prevent="upVote()">
                  <i :class="item.is_up_voted ? 'ion-happy text-success' : 'ion-happy-outline'"></i> <small>{{item.vote_count > 0 ? item.vote_count : ''}}</small>
              </a>
-             <a href="javascript:;" @click="downVote()">
+             <a @click.prevent="downVote()">
                  <i :class="item.is_down_voted ? 'ion-sad text-danger' : 'ion-sad-outline'"></i>
              </a>
          </span>
@@ -15,13 +15,6 @@
 <script>
     export default{
         props: ['username', 'item'],
-        data() {
-            return {
-                isUpVoted: false,
-                isDownVoted: false,
-            }
-        },
-
         methods: {
             upVote(){
                 this.$http.post('/comment/vote/up', {id: this.item.id})

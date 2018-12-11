@@ -54,8 +54,6 @@
     import {default as toastr} from 'toastr/build/toastr.min.js';
     import toastrConfig from 'config/toastr';
     import VoteButton from 'components/VoteButton.vue';
-//    import VoteButton from 'components/VoteButton.vue';
-
 
     export default {
         components:{
