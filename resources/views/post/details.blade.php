@@ -113,7 +113,7 @@
     @if(\Auth()->check())
         <comment
                 title="评论"
-                commentable_type="App\\Article"
+                commentable_type="App\Article"
                 commentable_id="{{$articles->id}}"
                 username="{{Auth()->user()->name}}"
                 avatar="{{Auth()->user()->avatar}}"
@@ -166,7 +166,7 @@
     </script>
     <script src="/js/highlight.pack.js"></script>
     <script src="/js/layer/layer.js"></script>
-    <script src="/js/detials.js"></script>
+    {{--<script src="/js/detials.js"></script>--}}
     <script>
         hljs.initHighlightingOnLoad();
     </script>
