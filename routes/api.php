@@ -19,5 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Api'], function () {
     Route::post('/comment/show/{id}', 'CommentController@show')->middleware('auth:api');
+    Route::post('/comment/create', 'CommentController@create')->middleware('auth:api');
     Route::post('/comment/vote/{type}', 'CommentController@postVoteComment')->middleware('auth:api');
 });
