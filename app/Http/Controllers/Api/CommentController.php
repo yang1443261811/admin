@@ -14,8 +14,6 @@ class CommentController extends ApiController
     {
         parent::__construct();
 
-        Carbon::setLocale('zh');
-
         $this->comment = $comment;
     }
 
