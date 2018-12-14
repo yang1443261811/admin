@@ -16,14 +16,7 @@
         <div class="row">
             <div class="col-md-2 col-md-offset-1">
                 <avatar src="{{(\Auth::user())->avatar}}"></avatar>
-                {{--<div class="cover-avatar text-center">--}}
-                    {{--<img src="{{(\Auth::user())->avatar}}" class="avatar">--}}
-                    {{--<a href="javascript:;" class="btn btn-success file" style="position: relative; cursor: pointer">--}}
-                        {{--<span data-toggle="tooltip" style=" cursor: pointer">修改头像</span>--}}
-                        {{--<input type="file" id="fileupload" data-url="/files/upload" accept="image/png,image/gif,image/jpeg,image/jpg,image/tiff" name="image" multiple/>--}}
-                    {{--</a>--}}
-                </div>
-
+            </div>
             <div class="col-md-7">
                 <form action="/user/profile" method="POST" class="form-horizontal">
                     {{csrf_field()}}
@@ -91,67 +84,67 @@
 @endsection
 
 @section('js')
-    <script src="/js/cropper.min.js"></script>
-    <script src="/js/sweetalert2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-    <script src="/js/jquery.ui.widget.js"></script>
-    <script src="/js/jquery.iframe-transport.js"></script>
-    <script src="/js/jquery.fileupload.js"></script>
-    <script src="/js/jquery.fileupload-process.js"></script>
-    <script src="/js/jquery.fileupload-validate.js"></script>
+    {{--<script src="/js/cropper.min.js"></script>--}}
+    {{--<script src="/js/sweetalert2.min.js"></script>--}}
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>--}}
+    {{--<script src="/js/jquery.ui.widget.js"></script>--}}
+    {{--<script src="/js/jquery.iframe-transport.js"></script>--}}
+    {{--<script src="/js/jquery.fileupload.js"></script>--}}
+    {{--<script src="/js/jquery.fileupload-process.js"></script>--}}
+    {{--<script src="/js/jquery.fileupload-validate.js"></script>--}}
     <script>
-        $(function () {
-            //初始化图片剪切插件cropper
-            $('#image').cropper({
-                aspectRatio: 16 / 9,
-                viewMode: 1,
-                crop: function (e) {
-                    console.log(e);
-                }
-            });
+        {{--$(function () {--}}
+            {{--//初始化图片剪切插件cropper--}}
+            {{--$('#image').cropper({--}}
+                {{--aspectRatio: 16 / 9,--}}
+                {{--viewMode: 1,--}}
+                {{--crop: function (e) {--}}
+                    {{--console.log(e);--}}
+                {{--}--}}
+            {{--});--}}
 
-            //配置sweetalert2插件
-            var config = {
-                title: '<div><h4>Crop Avatar</h4></div>',
-                html: '<img src="" id="image" style="width: 100%;">',
-                showCloseButton: true,
-                showCancelButton: true,
-                confirmButtonText: '<i class="fa fa-thumbs-up"></i>Ok',
-                cancelButtonText: '<i class="fa fa-thumbs-down"></i> Cancel'
-            };
+            {{--//配置sweetalert2插件--}}
+            {{--var config = {--}}
+                {{--title: '<div><h4>Crop Avatar</h4></div>',--}}
+                {{--html: '<img src="" id="image" style="width: 100%;">',--}}
+                {{--showCloseButton: true,--}}
+                {{--showCancelButton: true,--}}
+                {{--confirmButtonText: '<i class="fa fa-thumbs-up"></i>Ok',--}}
+                {{--cancelButtonText: '<i class="fa fa-thumbs-down"></i> Cancel'--}}
+            {{--};--}}
 
-            //图片上传插件初始化
-            $('#fileupload').fileupload({
-                dataType: 'json',
-                maxFileSize: 2000000,//文件不超过2M
-                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,//文件格式限制
-                messages: {
-                    maxFileSize: '图片太大',
-                    acceptFileTypes: '只能上传图片'
-                },
-                processfail: function (e, data) {
-                    var currentFile = data.files[data.index];
-                    if (data.files.error && currentFile.error) {
-                        // there was an error, do something about it
-                        toastr.warning(currentFile.error);
-                    }
-                },
-                done: function (e, res) {
-                    swal(config).then(function (isConfirm) {
-                        if (isConfirm.value) {
-                            //获取图片剪裁数据
-                            var data = $('#image').cropper('getData');
-                            var image = res.result;
-                            $.post('/user/cropAvatar', {data: data, image: image, _token: '{{csrf_token()}}'
-                            }, function (response) {
-                                window.location.reload();
-                            }, 'json');
-                        }
-                    });
-                    //初始化需要剪裁的图片
-                    $('#image').cropper('replace', '/' + res.result.url, false);
-                }
-            });
-        });
+            {{--//图片上传插件初始化--}}
+            {{--$('#fileupload').fileupload({--}}
+                {{--dataType: 'json',--}}
+                {{--maxFileSize: 2000000,//文件不超过2M--}}
+                {{--acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,//文件格式限制--}}
+                {{--messages: {--}}
+                    {{--maxFileSize: '图片太大',--}}
+                    {{--acceptFileTypes: '只能上传图片'--}}
+                {{--},--}}
+                {{--processfail: function (e, data) {--}}
+                    {{--var currentFile = data.files[data.index];--}}
+                    {{--if (data.files.error && currentFile.error) {--}}
+                        {{--// there was an error, do something about it--}}
+                        {{--toastr.warning(currentFile.error);--}}
+                    {{--}--}}
+                {{--},--}}
+                {{--done: function (e, res) {--}}
+                    {{--swal(config).then(function (isConfirm) {--}}
+                        {{--if (isConfirm.value) {--}}
+                            {{--//获取图片剪裁数据--}}
+                            {{--var data = $('#image').cropper('getData');--}}
+                            {{--var image = res.result;--}}
+                            {{--$.post('/user/cropAvatar', {data: data, image: image, _token: '{{csrf_token()}}'--}}
+                            {{--}, function (response) {--}}
+                                {{--window.location.reload();--}}
+                            {{--}, 'json');--}}
+                        {{--}--}}
+                    {{--});--}}
+                    {{--//初始化需要剪裁的图片--}}
+                    {{--$('#image').cropper('replace', '/' + res.result.url, false);--}}
+                {{--}--}}
+            {{--});--}}
+        {{--});--}}
     </script>
 @endsection
