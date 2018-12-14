@@ -15,15 +15,15 @@
     <div class="container profile">
         <div class="row">
             <div class="col-md-2 col-md-offset-1">
-                <div data-v-2b878978="" class="cover-avatar text-center">
-                    <img data-v-2b878978="" src="{{(\Auth::user())->avatar}}" class="avatar">
-                    <a data-v-2b878978="" href="javascript:;" class="btn btn-success file"
-                       style="position: relative; cursor: pointer">
-                        <span data-v-2b878978="" data-toggle="tooltip" style=" cursor: pointer">修改头像</span>
-                        <input data-v-8181b19c="" type="file" id="fileupload" data-url="/files/upload" accept="image/png,image/gif,image/jpeg,image/jpg,image/tiff" name="image" multiple/>
-                    </a>
+                <avatar src="{{(\Auth::user())->avatar}}"></avatar>
+                {{--<div class="cover-avatar text-center">--}}
+                    {{--<img src="{{(\Auth::user())->avatar}}" class="avatar">--}}
+                    {{--<a href="javascript:;" class="btn btn-success file" style="position: relative; cursor: pointer">--}}
+                        {{--<span data-toggle="tooltip" style=" cursor: pointer">修改头像</span>--}}
+                        {{--<input type="file" id="fileupload" data-url="/files/upload" accept="image/png,image/gif,image/jpeg,image/jpg,image/tiff" name="image" multiple/>--}}
+                    {{--</a>--}}
                 </div>
-            </div>
+
             <div class="col-md-7">
                 <form action="/user/profile" method="POST" class="form-horizontal">
                     {{csrf_field()}}
@@ -43,15 +43,13 @@
                         <div class="form-group">
                             <label for="Nickname" class="col-md-3 control-label">昵称</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="Nickname" name="nickname"
-                                       value="{{$nickname}}">
+                                <input type="text" class="form-control" id="Nickname" name="nickname" value="{{$nickname}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="Website" class="col-md-3 control-label">网站</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="Website" name="website"
-                                       value="{{$website}}">
+                                <input type="text" class="form-control" id="Website" name="website" value="{{$website}}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -64,22 +62,19 @@
                         <div class="form-group">
                             <label for="Weibo" class="col-md-3 control-label">微博主页</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="Weibo" name="weibo_link"
-                                       value="{{$weibo_link}}">
+                                <input type="text" class="form-control" id="Weibo" name="weibo_link" value="{{$weibo_link}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="GitHub" class="col-md-3 control-label">GitHub</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="GitHub" name="github_url"
-                                       value="{{$github_url}}">
+                                <input type="text" class="form-control" id="GitHub" name="github_url" value="{{$github_url}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="Description" class="col-md-3 control-label">个人简叙</label>
                             <div class="col-md-9">
-                                <textarea class="form-control" rows="3" name="description"
-                                          id="Description">{{$description}}</textarea>
+                                <textarea class="form-control" rows="3" name="description" id="Description">{{$description}}</textarea>
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -144,6 +139,7 @@
                 done: function (e, res) {
                     swal(config).then(function (isConfirm) {
                         if (isConfirm.value) {
+                            //获取图片剪裁数据
                             var data = $('#image').cropper('getData');
                             var image = res.result;
                             $.post('/user/cropAvatar', {data: data, image: image, _token: '{{csrf_token()}}'

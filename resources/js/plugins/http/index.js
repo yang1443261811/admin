@@ -24,7 +24,7 @@ http.defaults.headers.common = {
 http.interceptors.response.use(function(response) {
     return response;
 }, function(error) {
-    const { response } = error
+    const { response } = error;
 
     if ([401].indexOf(response.status) >= 0) {
         if (response.status == 401 && response.data.error.message != 'Unauthorized') {

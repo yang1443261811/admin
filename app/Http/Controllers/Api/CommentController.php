@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Repositories\CommentRepository;
 
@@ -12,6 +13,8 @@ class CommentController extends ApiController
     public function __construct(CommentRepository $comment)
     {
         parent::__construct();
+
+        Carbon::setLocale('zh');
 
         $this->comment = $comment;
     }
@@ -74,7 +77,7 @@ class CommentController extends ApiController
     {
         $type = $request->input('type');
 
-        $comments = $this->comment->getParentComments(30, 'App\\Article');
+        $comments = $this->comment->getParentComments($id, $type);
 
         foreach ($comments as &$item) {
             $item['child'] = $this->comment->getChildComments($id, $type, $item['path'])->toArray();

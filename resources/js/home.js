@@ -16,5 +16,7 @@ Vue.use(httpPlugin);
 
 
 Vue.component('comment', require('./components/comment.vue'));
+Vue.component('avatar', require('./components/AvatarUpload.vue'));
+
 
 new Vue({}).$mount('#app');
