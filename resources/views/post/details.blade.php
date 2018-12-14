@@ -119,42 +119,7 @@
                 avatar="{{Auth()->user()->avatar}}"
         ></comment>
     @endif
-    {{--<div class="container">--}}
-        {{--<div class="row comment">--}}
-            {{--<div class="col-md-8 col-md-offset-2"><h5>评论</h5></div>--}}
-            {{--<div class="col-md-8 col-md-offset-2">--}}
-                {{--@if(\Auth()->check())--}}
-                    {{--<form action='/comment/create' method='post' class="form-horizontal comments"--}}
-                          {{--style="margin-top: 30px;">--}}
-                        {{--{{csrf_field()}}--}}
-                        {{--<input type="hidden" name="commentable_id" value="{{$articles->id}}"/>--}}
-                        {{--<input type="hidden" name="commentable_type" value="App\Article"/>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label class="col-sm-2 control-label own-avatar">--}}
-                                {{--<a href="/user/yqm"><img src="{{(\Auth::user())->avatar}}" class="img-circle"></a>--}}
-                            {{--</label>--}}
-                            {{--<div class="col-sm-10">--}}
-                                {{--<div data-v-49ec89dc="" class="complete-box" id="content">--}}
-                                    {{--<textarea data-v-49ec89dc="" id="v-textcomplete-txh7wu83" placeholder="Markdown"--}}
-                                              {{--rows="7" name="content" class="form-control text"--}}
-                                              {{--style="line-height: 20px;"></textarea>--}}
-                                    {{--<div data-v-49ec89dc="" id="autocomplete-txh7wu83" class="autocomplete transition"--}}
-                                         {{--style="display: none;">--}}
-                                        {{--<ul data-v-49ec89dc=""></ul>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<div class="col-sm-12">--}}
-                                {{--<button type="submit" class="btn btn-success pull-right publish">发布评论</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</form>--}}
-                {{--@endif--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
+
 @endsection
 
 @section('js')

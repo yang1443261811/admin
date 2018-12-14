@@ -5,13 +5,10 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="media" v-for="(comment, key) in comments">
                     <div class="media-left">
-                        <a :href="'/user/center/'+comment.from_user"><img
-                                :src="comment.avatar ? comment.avatar : '/images/default.png'"
-                                class="media-object img-circle"></a>
+                        <a :href="'/user/center/'+comment.from_user"><img :src="comment.avatar ? comment.avatar : '/images/default.png'" class="media-object img-circle"></a>
                     </div>
                     <div class="media-body box-body">
-                        <div class="heading"><i class="ion-person"></i><a
-                                :href="'/user/'+comment.from_user">{{comment.from_user}}</a>
+                        <div class="heading"><i class="ion-person"></i><a :href="'/user/center/'+comment.from_user">{{comment.from_user}}</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <i class="ion-clock"></i>{{comment.created_at}}
                             <vote-button :username="username" :item="comment"></vote-button>
@@ -21,16 +18,14 @@
                         </div>
                     </div>
                 </div>
-                <form method='post' class="form-horizontal comments" @submit.prevent="createComment()"
-                      style="margin-top: 30px;">
+                <form method='post' class="form-horizontal comments" @submit.prevent="createComment()" style="margin-top: 30px;">
                     <div class="form-group">
                         <label class="col-sm-2 control-label own-avatar">
                             <a :href="'/user/center/'+username"><img :src="avatar" class="img-circle"></a>
                         </label>
                         <div class="col-sm-10">
                             <div class="complete-box" id="content">
-                                <textarea id="v-textcomplete-txh7wu83" placeholder="Markdown" rows="7" name="content"
-                                          class="form-control text" style="line-height: 20px;" v-model="content">
+                                <textarea id="v-textcomplete-txh7wu83" placeholder="Markdown" rows="7" name="content" class="form-control text" style="line-height: 20px;" v-model="content">
 
                                 </textarea>
                                 <div id="autocomplete-txh7wu83" class="autocomplete transition" style="display: none;">
