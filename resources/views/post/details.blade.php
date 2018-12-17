@@ -93,19 +93,12 @@
                 <div>{!! $articles->content !!}</div>
                 <div class="publishing alert alert-dismissible alert-info">
                     <button type="button" class="close" data-dismiss="alert">×</button>
-                    由 <a xmlns:cc="http://creativecommons.org/ns#" href="https://pigjian.com"
-                         property="cc:attributionName" rel="cc:attributionURL">Yang</a> 创作，采用
-                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
-                        知识共享署名-非商业性使用 4.0 国际 许可协议</a>进行许可。<br/>基于
+                    由 <a xmlns:cc="http://creativecommons.org/ns#" href="https://pigjian.com" property="cc:attributionName" rel="cc:attributionURL">Yang</a> 创作，采用
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际 许可协议</a>进行许可。<br/>基于
                     <a xmlns:dct="http://purl.org/dc/terms/" href="https://pigjian.com" rel="dct:source">https://pigjian.com</a>上的作品创作。
                 </div>
                 <div class="footing">
-                    <div class="social-share"
-                         data-title="Redis 五种结构及命令"
-                         data-description="Redis 五种结构及命令"
-                         data-sites=google,twitter,weibo,qq,wechat
-                         data-mobile-sites=google,twitter,weibo,qq,wechat
-                         initialized></div>
+                    <div class="social-share"></div>
                 </div>
             </div>
         </div>

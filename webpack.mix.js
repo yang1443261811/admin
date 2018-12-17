@@ -16,6 +16,7 @@ let config = {
     resolve: {
         alias: {
             'components':'js/components',
+            'dashboard':'js/dashboard',
             'config': 'js/config',
             'plugins': 'js/plugins',
             'home': 'js/home',
@@ -31,5 +32,6 @@ let config = {
 mix.webpackConfig(config);
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .js('resources/js/home.js', 'public/js');
+    .sass('resources/sass/base.scss', 'public/css')
+    .js('resources/js/home.js', 'public/js')
+    .js('resources/js/base.js', 'public/js');
