@@ -87,3 +87,8 @@ Route::post('files/upload', 'FilesController@upload');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* Dashboard Index */
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], function () {
+    Route::get('{path?}', 'HomeController@dashboard')->where('path', '[\/\w\.-]*');
+});
