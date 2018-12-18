@@ -32,6 +32,6 @@ let config = {
 mix.webpackConfig(config);
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/base.scss', 'public/css')
+    .sass('resources/sass/base.scss', 'public/css/base.css')
     .js('resources/js/home.js', 'public/js')
     .js('resources/js/base.js', 'public/js');

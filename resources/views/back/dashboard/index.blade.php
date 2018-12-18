@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/app.css?id=8f841e10d99c3fdf0293" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/common.css">
     <style>
         [v-cloak] { display: none; }

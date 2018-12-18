@@ -15,8 +15,10 @@
                     <a href="/setting"><i class="fa fa-cog"></i></a>
                 </div>
             </div>
-            <li class="nav-index"><a href="/admin/dashboard" class="active">
-                <i class="fa fa-dashboard"></i> Dashboard </a></li>
+            <li class="nav-index">
+                <router-link :to="{name : 'home'}"><i class="fa fa-dashboard"></i> Dashboard </router-link>
+                <!--<a href="/admin/dashboard" class="active">/a>-->
+            </li>
             <li class="nav-users"><a href="/admin/users" class="">
                 <i class="fa fa-users"></i> Users </a></li>
             <li class="nav-articles"><a href="/admin/articles" class="">
