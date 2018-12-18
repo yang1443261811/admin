@@ -67,7 +67,7 @@ class UserRepository
      * @param  string $sortColumn
      * @return mixed
      */
-    public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
+    public function pageWithRequest($request, $number = 3, $sort = 'desc', $sortColumn = 'created_at')
     {
         $this->model = $this->checkAuthScope();
 

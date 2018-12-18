@@ -19,6 +19,15 @@ class UserController extends ApiController
         $this->user = $user;
     }
 
+    public function index(Request $request)
+    {
+//        $data = $this->user->pageWithRequest($request);
+
+        return $this->response->collection($this->user->pageWithRequest($request));
+
+//        echo $data->toJson();
+    }
+
     /**
      * 头像剪裁
      *

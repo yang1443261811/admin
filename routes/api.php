@@ -24,4 +24,5 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('/files/upload', 'FilesController@upload')->middleware('auth:api');
     Route::post('/crop/avatar', 'UserController@cropAvatar')->middleware('auth:api');
     Route::get('/statistics', 'HomeController@statistics')->middleware('auth:api');
+    Route::get('/users', 'UserController@index')->middleware('auth:api');
 });
