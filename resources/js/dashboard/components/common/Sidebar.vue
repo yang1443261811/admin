@@ -19,8 +19,10 @@
                 <router-link :to="{name : 'home'}"><i class="fa fa-dashboard"></i> Dashboard </router-link>
                 <!--<a href="/admin/dashboard" class="active">/a>-->
             </li>
-            <li class="nav-users"><a href="/admin/users" class="">
-                <i class="fa fa-users"></i> Users </a></li>
+            <li class="nav-users">
+                <!--<a href="/admin/users" class=""><i class="fa fa-users"></i> Users </a>-->
+                <router-link :to="{name:'users'}"> <i class="fa fa-users"></i> Users </router-link>
+            </li>
             <li class="nav-articles"><a href="/admin/articles" class="">
                 <i class="fa fa-book"></i> Articles </a></li>
             <li class="nav-discussions"><a href="/admin/discussions/" class="">

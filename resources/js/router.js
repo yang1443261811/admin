@@ -12,7 +12,12 @@ export default new vueRouter({
                 {
                     path: 'home',
                     name: 'home',
-                    component:Vue.component('home', require('dashboard/pages/home/Home.vue'))
+                    component: Vue.component('home', require('dashboard/pages/home/Home.vue'))
+                },
+                {
+                    path: 'users',
+                    name: 'users',
+                    component: Vue.component('users', require('dashboard/pages/user/user.vue'))
                 }
             ],
             linkActiveClass: 'active',
