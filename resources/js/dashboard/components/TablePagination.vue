@@ -1,15 +1,15 @@
 <template>
     <nav class="d-flex justify-content-center">
         <ul class="pagination" v-if="content">
-            <li class="page-item" :class="isFirstPage ? 'disabled' : ''">
-                <a class="page-link"><i class="fa fa-chevron-left"></i></a>
+            <li class="page-item" :class="isOnFirstPage ? 'disabled' : ''">
+                <a class="page-link" @click="loadData('prev')"><i class="fa fa-chevron-left"></i></a>
             </li>
             <template v-for="n in content.total_pages">
                 <li class="page-item" :class="isActive(n) ? 'active' : ''">
-                    <a class="page-link">{{n}} </a></li>
+                    <a class="page-link" @click="loadData(n)">{{n}} </a></li>
             </template>
-            <li class="page-item" :class="isLastPage ? 'disabled' : ''">
-                <a class="page-link"><i class="fa fa-chevron-right"></i></a>
+            <li class="page-item" :class="isOnLastPage ? 'disabled' : ''">
+                <a class="page-link" @click="loadData('next')"><i class="fa fa-chevron-right"></i></a>
             </li>
         </ul>
     </nav>
@@ -23,10 +23,10 @@
             }
         },
         computed: {
-            isFirstPage(){
+            isOnFirstPage(){
                 return this.content.current_page === 1;
             },
-            isLastPage(){
+            isOnLastPage(){
                 return this.content.current_page === this.content.total_pages;
             }
         },
@@ -35,9 +35,14 @@
             console.log(123);
         },
         methods: {
-            page(num){
-                console.log(this.pagination.current_page);
-                console.log(num);
+            loadData(params){
+               if(params === 'next') {
+                   this.$emit('loadPage', this.content.current_page + 1);
+               } else if (params === 'prev') {
+                   this.$emit('loadPage', this.content.current_page - 1);
+               } else {
+                   this.$emit('loadPage', params)
+               }
             },
 
             isActive(n){

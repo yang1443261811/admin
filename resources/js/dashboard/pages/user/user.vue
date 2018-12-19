@@ -16,12 +16,13 @@
             <div class="box-title d-flex">
                 <h5 class="align-self-center font-weight-normal"> Users</h5>
                 <small class="ml-auto d-flex flex-row" style="height:31px;">
-                    <form method="get" style="display: inherit;">
+                    <form style="display: inherit;">
                         <div class="input-group input-group-sm mr-2">
-                            <input type="text" name="keyword" placeholder="" class="form-control" v-model="keyword"/>
+                            <input type="text" placeholder="" class="form-control" v-model="keyword"/>
                             <div class="input-group-append">
-                                <button @click.pervent="search()" class="btn btn-outline-secondary"><span
-                                        class="fa fa-search"></span></button>
+                                <button @click.pervent="search()" class="btn btn-outline-secondary">
+                                    <span class="fa fa-search"></span>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -47,8 +48,10 @@
                     </tr>
                     <tr v-for="(item, key) in content">
                         <td class="text-center"> {{item.id}} </td>
-                        <td class="text-center"><img :src="item.avatar ? item.avatar : '/images/default.png'"
-                                                     class="avatar img-fluid rounded-circle"/></td>
+                        <td class="text-center">
+                            <img :src="item.avatar ? item.avatar : '/images/default.png'"
+                                 class="avatar img-fluid rounded-circle"/>
+                        </td>
                         <td> {{item.name}} </td>
                         <td> {{item.email}} </td>
                         <td class="component text-center">
@@ -64,7 +67,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <table-pagination :pagination="meta"></table-pagination>
+                <table-pagination :pagination="meta" v-on:loadPage="loadPage"></table-pagination>
             </div>
         </div>
     </div>
@@ -80,27 +83,53 @@
             return {
                 content: {},
                 meta: null,
-                keyword: ''
+                keyword: '',
+                currentPage: ''
+            }
+        },
+
+        watch: {
+            $route() {
+                let pageNum = 1;
+
+                if (this.$route.query.page) {
+                    pageNum = this.$route.query.page
+                }
+
+                this.loadPage(pageNum);
             }
         },
 
         methods: {
-            get(keyword){
-                let url = keyword ? 'users' + '?keyword=' + keyword : 'users';
-                this.$http.get(url).then((response) => {
-                    this.content = response.data.data;
-                    this.meta = response.data.meta.pagination;
-                    console.log(this.meta.current_page);
-                })
+            loadPage(page){
+                this.currentPage = page;
+                this.loadData();
             },
 
             search(){
-                this.get(this.keyword);
+                this.loadData();
+            },
+
+            loadData(){
+                let params = '';
+
+                if (this.currentPage) {
+                    params = {page: this.currentPage, keyword: this.keyword};
+                } else {
+                    params = {keyword: this.keyword};
+                }
+
+                this.$router.push({ name: this.$route.name, query: params });
+
+                this.$http.get('users', {params: params}).then((response) => {
+                    this.content = response.data.data;
+                    this.meta = response.data.meta.pagination;
+                })
             }
         },
 
         mounted(){
-            this.get('');
+            this.loadPage(this.$route.query.page);
         }
     }
 </script>
