@@ -81,10 +81,11 @@
         },
         data(){
             return {
-                content: {},
                 meta: null,
+                content: {},
                 keyword: '',
-                currentPage: ''
+                totalPage: '',
+                currentPage: '',
             }
         },
 
@@ -102,8 +103,10 @@
 
         methods: {
             loadPage(page){
-                this.currentPage = page;
-                this.loadData();
+                if (page !== this.currentPage && (page > 0 && page <= this.totalPage)) {
+                    this.currentPage = page;
+                    this.loadData()
+                }
             },
 
             search(){
@@ -121,15 +124,18 @@
 
                 this.$router.push({ name: this.$route.name, query: params });
 
-                this.$http.get('users', {params: params}).then((response) => {
-                    this.content = response.data.data;
-                    this.meta = response.data.meta.pagination;
+                this.$http.get('users', {params: params})
+                    .then((response) => {
+                        this.content = response.data.data;
+                        this.meta = response.data.meta.pagination;
+                        this.totalPage = response.data.meta.pagination.total_pages;
+                        this.currentPage = response.data.meta.pagination.current_page;
                 })
             }
         },
 
         mounted(){
-            this.loadPage(this.$route.query.page);
+            this.loadData();
         }
     }
 </script>
