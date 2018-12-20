@@ -20,8 +20,8 @@ export default new vueRouter({
                     component: Vue.component('users', require('dashboard/pages/user/user.vue'))
                 }
             ],
-            linkActiveClass: 'active',
-            linkExactActiveClass: 'active',
+            // linkActiveClass: 'active',
+            // linkExactActiveClass: 'active',
             mode: 'history',
 
         }

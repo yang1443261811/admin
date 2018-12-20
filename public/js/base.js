@@ -51589,8 +51589,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
             name: 'users',
             component: __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('users', __webpack_require__(102))
         }],
-        linkActiveClass: 'active',
-        linkExactActiveClass: 'active',
+        // linkActiveClass: 'active',
+        // linkExactActiveClass: 'active',
         mode: 'history'
 
     }]
@@ -51810,7 +51810,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n.sidebar-nav[data-v-54538930] {\n  position: absolute;\n  top: 0;\n  width: 250px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n.sidebar-nav i[data-v-54538930] {\n    font-size: .9rem;\n}\n.sidebar-nav li[data-v-54538930] {\n  text-indent: 20px;\n  line-height: 40px;\n}\n.sidebar-nav li i[data-v-54538930] {\n    font-size: .6rem;\n}\n.navbar[data-v-54538930] {\n  margin-bottom: 0;\n}\n.sidebar-nav li .user[data-v-54538930] {\n  display: block;\n  text-align: center;\n  width: 100%;\n  background-color: #3d4e60;\n  padding-top: 20px;\n  padding-bottom: 10px;\n  color: #fff;\n}\n.user[data-v-54538930] {\n  text-align: center;\n  padding-top: 15px;\n}\n.user .avatar[data-v-54538930] {\n  width: 80px;\n  margin: 10px auto;\n}\n.nickname[data-v-54538930] {\n  color: #fff;\n}\n.buttons[data-v-54538930] {\n  height: 50px;\n}\n.buttons a[data-v-54538930] {\n  display: inline-block;\n  font-size: 20px;\n  width: 40px;\n  height: 40px;\n  line-height: 40px;\n  margin-right: 5px;\n  color: #fff;\n  opacity: .5;\n}\n.buttons a[data-v-54538930]:hover {\n  opacity: 1;\n}\n.sidebar-nav li a[data-v-54538930] {\n  display: block;\n  text-decoration: none;\n  color: #999999;\n}\n.sidebar-nav li a[data-v-54538930]:hover {\n  text-decoration: none;\n  color: #fff;\n  background: rgba(255, 255, 255, 0.2);\n}\n.sidebar-nav li .active[data-v-54538930] {\n  color: #fff !important;\n}\n.sidebar-nav li a i[data-v-54538930] {\n  padding-right: 10px;\n}\n.sidebar-nav li a[data-v-54538930]:active,\n.sidebar-nav li a[data-v-54538930]:focus {\n  text-decoration: none;\n}\n.active[data-v-54538930] {\n  background-color: #3d4e60;\n  border-right: 4px solid #647f9d;\n}\n.active a[data-v-54538930] {\n  color: #fff !important;\n}\n", ""]);
+exports.push([module.i, "\n.sidebar-nav[data-v-54538930] {\n  position: absolute;\n  top: 0;\n  width: 250px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n.sidebar-nav i[data-v-54538930] {\n    font-size: .9rem;\n}\n.sidebar-nav li[data-v-54538930] {\n  text-indent: 20px;\n  line-height: 40px;\n}\n.sidebar-nav li i[data-v-54538930] {\n    font-size: .6rem;\n}\n.navbar[data-v-54538930] {\n  margin-bottom: 0;\n}\n.sidebar-nav li .user[data-v-54538930] {\n  display: block;\n  text-align: center;\n  width: 100%;\n  background-color: #3d4e60;\n  padding-top: 20px;\n  padding-bottom: 10px;\n  color: #fff;\n}\n.user[data-v-54538930] {\n  text-align: center;\n  padding-top: 15px;\n}\n.user .avatar[data-v-54538930] {\n  width: 80px;\n  margin: 10px auto;\n}\n.nickname[data-v-54538930] {\n  color: #fff;\n}\n.buttons[data-v-54538930] {\n  height: 50px;\n}\n.buttons a[data-v-54538930] {\n  display: inline-block;\n  font-size: 20px;\n  width: 40px;\n  height: 40px;\n  line-height: 40px;\n  margin-right: 5px;\n  color: #fff;\n  opacity: .5;\n}\n.buttons a[data-v-54538930]:hover {\n  opacity: 1;\n}\n.sidebar-nav li a[data-v-54538930] {\n  display: block;\n  text-decoration: none;\n  color: #999999;\n}\n.sidebar-nav li a[data-v-54538930]:hover {\n  text-decoration: none;\n  color: #fff;\n  background: rgba(255, 255, 255, 0.2);\n}\n.sidebar-nav li .active[data-v-54538930] {\n  color: #fff !important;\n}\n.sidebar-nav li a i[data-v-54538930] {\n  padding-right: 10px;\n}\n.sidebar-nav li a[data-v-54538930]:active,\n.sidebar-nav li a[data-v-54538930]:focus {\n  text-decoration: none;\n}\n.router-link-active[data-v-54538930] {\n  color: #fff !important;\n  background-color: #3d4e60;\n  border-right: 4px solid #647f9d;\n}\n.router-link-active a[data-v-54538930] {\n  color: #fff !important;\n}\n", ""]);
 
 // exports
 
@@ -52729,11 +52729,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            content: {},
             meta: null,
+            content: {},
             keyword: '',
-            currentPage: '',
-            totalPage: ''
+            totalPage: '',
+            currentPage: ''
         };
     },
 

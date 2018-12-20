@@ -154,12 +154,13 @@
         text-decoration: none;
     }
 
-    .active {
+    .router-link-active {
+        color: #fff !important;
         background-color: #3d4e60;
         border-right: 4px solid #647f9d;
     }
 
-    .active a {
+    .router-link-active a {
         color: #fff !important;
     }
 </style>
