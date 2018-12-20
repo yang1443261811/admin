@@ -25,5 +25,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('/crop/avatar', 'UserController@cropAvatar')->middleware('auth:api');
     Route::get('/statistics', 'HomeController@statistics')->middleware('auth:api');
     Route::get('/users', 'UserController@index')->middleware('auth:api');
-    Route::get('/user/status/{id}', 'UserController@status')->middleware('auth:api');
+    Route::get('/user/status', 'UserController@status')->middleware('auth:api');
+    Route::get('/user/delete/{id}', 'UserController@delete')->middleware('auth:api');
+    Route::get('/user/{id}/edit', 'UserController@edit')->middleware('auth:api');
+    Route::post('/user/update/{id}', 'UserController@update')->middleware('auth:api');
 });

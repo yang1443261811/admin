@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +20,7 @@
     <script>
         window.Language = 'zh_cn';
 
-        window.Laravel = {"csrfToken":"{{csrf_token()}}"}    </script>
+        window.Laravel = {"csrfToken": "{{csrf_token()}}"}    </script>
 
 </head>
 <body>
@@ -41,21 +40,30 @@
                                     <div class="col-md-10 col-md-offset-1">
                                         <label class="control-label" for="email">邮箱地址</label>
                                         <input id="email" type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="请输入邮箱" required autofocus>
-
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-10 col-md-offset-1">
                                         <label class="control-label" for="password">密码</label>
                                         <input id="password" type="password" class="form-control" name="password" placeholder="请输入密码" required>
-
+                                        @if ($errors->has('password'))
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                             </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8 col-md-offset-1">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 记住我
+                                                <input type="checkbox"
+                                                       name="remember" {{ old('remember') ? 'checked' : '' }}> 记住我
                                             </label>
                                         </div>
                                     </div>
@@ -110,10 +118,17 @@
 </script>
 
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-81634754-1', 'auto');
     ga('send', 'pageview');

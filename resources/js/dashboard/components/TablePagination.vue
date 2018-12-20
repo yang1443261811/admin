@@ -30,10 +30,7 @@
                 return this.content.current_page === this.content.total_pages;
             }
         },
-        mounted(){
-            console.log(this.content);
-            console.log(123);
-        },
+
         methods: {
             loadData(params){
                if(params === 'next') {

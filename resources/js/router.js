@@ -18,10 +18,13 @@ export default new vueRouter({
                     path: 'users',
                     name: 'users',
                     component: Vue.component('users', require('dashboard/pages/user/User.vue'))
+                },
+                {
+                    path: 'user/edit/:id',
+                    name: 'user.edit',
+                    component: Vue.component('users', require('dashboard/pages/user/Edit.vue'))
                 }
             ],
-            // linkActiveClass: 'active',
-            // linkExactActiveClass: 'active',
             mode: 'history',
 
         }

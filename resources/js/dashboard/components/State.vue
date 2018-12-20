@@ -1,20 +1,20 @@
 <template>
-       <span :class="userStatus == 1 ? 'red' : 'gray'" @click="setState()">
+       <span :class="state == 1 ? 'red' : 'gray'" @click="setState()">
            <i class="fa fa-circle"></i>
        </span>
 </template>
 <script>
     export default{
-        props: ['uid', 'status'],
+        props: ['itemID', 'itemStatus', 'url'],
         data(){
             return {
-                userID: '',
-                userStatus: '',
+                ID: '',
+                state: '',
             }
         },
         mounted(){
-            this.userID = this.uid;
-            this.userStatus = this.status;
+            this.ID = this.itemID;
+            this.state = this.itemStatus;
         },
         methods: {
             setState(){
@@ -29,11 +29,12 @@
                     cancelButtonText: "NO！",
                 }).then(function (isConfirm) {
                     if (isConfirm.value) {
-                        that.userStatus = (that.userStatus === 1) ? 0 : 1;
-                        let url = 'user/status/' + that.userID + '?status=' + that.userStatus;
-                        that.$http.get(url).then(function (response) {
-                            swal({title: "成功！", text: "用户状态设置成功.", type: "success", timer: 2000});
-                        })
+                        that.state = (that.state === 1) ? 0 : 1;
+                        let params = {id: that.ID, status: that.state};
+                        that.$http.get(that.url, {params: params})
+                            .then(function (response) {
+                                swal({title: "成功！", text: "用户状态设置成功.", type: "success", timer: 2000});
+                            })
                     }
                 })
             }

@@ -56,15 +56,12 @@
                         <td> {{item.name}} </td>
                         <td> {{item.email}} </td>
                         <td class="component text-center">
-                            <!--<span :class="item.status == 1 ? 'red' : 'gray'" @click="setState(item.id, item.status)">-->
-                                <!--<i class="fa fa-circle"></i>-->
-                            <!--</span>-->
-                            <state :status="item.status" :uid="item.id"></state>
+                            <state :itemStatus="item.status" :itemID="item.id" :url="'user/status'"></state>
                         </td>
                         <td> {{item.created_at}} </td>
                         <td class="actions text-center">
-                            <a class="btn btn-info" href="/admin/users/edit/"><i class="fa fa-pencil"></i> </a>
-                            <a class="btn btn-danger" href="/admin/users/delete/"><i class="fa fa-trash"></i> </a>
+                            <a class="btn btn-info" @click.prevent="edit(item)"><i class="fa fa-pencil"></i> </a>
+                            <delete :itemID="item.id" :url="'user/delete'" v-on:reload="reload"></delete>
                         </td>
                     </tr>
                     </tbody>
@@ -78,9 +75,11 @@
 <script>
     import TablePagination from 'dashboard/components/TablePagination.vue'
     import State from 'dashboard/components/State.vue'
+    import Delete from 'dashboard/components/Delete.vue'
     export default{
         components: {
             State,
+            Delete,
             TablePagination
         },
         data(){
@@ -137,25 +136,12 @@
                     })
             },
 
-            setState(id, state){
-                let that = this;
-                swal({
-                    title: "Are you sure？",
-                    text: "The action may affect some data, Please think twice！",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "YES！",
-                    cancelButtonText: "NO！",
-                }).then(function (isConfirm) {
-                    if (isConfirm.value) {
-                        let status = (state === 1) ? 0 : 1;
-                        let url = 'user/status/' + id + '?status=' + status;
-                        that.$http.get(url).then(function (response) {
-                            swal({title: "成功！", text: "用户状态设置成功.", type: "success", timer: 2000});
-                        })
-                    }
-                })
+            reload(){
+                this.loadData();
+            },
+
+            edit(data){
+                this.$router.push({name: 'user.edit', params: {id: data.id}})
             }
         },
 

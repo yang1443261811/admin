@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Filesystem\Filesystem;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use App\User;
 use App\Link;
 use Image;
 
@@ -56,7 +57,49 @@ class UserController extends ApiController
      * @param int int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function status(Request $request, $id)
+    public function status(Request $request)
+    {
+        $id = $request->input('id');
+        $status = $request->only('status');
+        $this->user->update($id, $status);
+
+        return response()->json(true);
+    }
+
+    /**
+     * 删除
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
+    {
+        $result = User::destroy($id);
+
+        return response()->json($result);
+    }
+
+    /**
+     * 编辑
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function edit($id)
+    {
+        $user =  $this->user->getById($id);
+
+        return response()->json($user);
+    }
+
+    /**
+     * 更新
+     *
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(Request $request, $id)
     {
         $this->user->update($id, $request->all());
 
