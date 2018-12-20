@@ -2,7 +2,7 @@
     <div class="row">
         <div class="box">
             <div class="box-title">
-                <small class="float-right"><a href="/admin/users" class="btn btn-sm btn-secondary">Back</a></small>
+                <small class="float-right"><a @click.prevent="back" class="btn btn-sm btn-secondary" style="color:white">Back</a></small>
                 <h5>Edit User</h5>
             </div>
             <div class="box-content">
@@ -69,6 +69,9 @@
                             that.$router.push({name: 'users'});
                         }, 1500)
                 })
+            },
+            back(){
+                this.$router.back();
             }
         }
     }

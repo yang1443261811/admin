@@ -23,6 +23,11 @@ export default new vueRouter({
                     path: 'user/edit/:id',
                     name: 'user.edit',
                     component: Vue.component('users', require('dashboard/pages/user/Edit.vue'))
+                },
+                {
+                    path: 'user/create',
+                    name: 'user.create',
+                    component: Vue.component('users', require('dashboard/pages/user/Create.vue'))
                 }
             ],
             mode: 'history',

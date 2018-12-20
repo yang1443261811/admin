@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Filesystem\Filesystem;
-use App\Repositories\UserRepository;
-use Illuminate\Http\Request;
-use App\User;
-use App\Link;
 use Image;
+use App\User;
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Repositories\UserRepository;
+use Illuminate\Filesystem\Filesystem;
 
 class UserController extends ApiController
 {
@@ -24,6 +24,24 @@ class UserController extends ApiController
     {
         return $this->response->collection($this->user->pageWithRequest($request));
 
+    }
+
+    /**
+     * 存储用户数据
+     *
+     * @param UserRequest $request
+     * @return mixed
+     */
+    public function create(UserRequest $request)
+    {
+        $data = array_merge($request->all(), [
+            'password' => bcrypt($request->get('password')),
+            'confirm_code' => str_random(64)
+        ]);
+
+        $this->user->store($data);
+
+        return response()->json(true);
     }
 
     /**

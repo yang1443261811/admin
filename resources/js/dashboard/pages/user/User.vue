@@ -21,13 +21,14 @@
                         <div class="input-group input-group-sm mr-2">
                             <input type="text" placeholder="" class="form-control" v-model="keyword"/>
                             <div class="input-group-append">
-                                <button @click.pervent="search()" class="btn btn-outline-secondary">
+                                <button @click.pervent="search" class="btn btn-outline-secondary">
                                     <span class="fa fa-search"></span>
                                 </button>
                             </div>
                         </div>
                     </form>
-                    <a href="/admin/users/create" class="btn btn-sm btn-success" style="height:31px;">Create</a>
+                    <router-link :to="{name:'user.create'}" class="btn btn-sm btn-success" style="height:31px;">Create</router-link>
+                    <!--<a href="/admin/users/create" class="btn btn-sm btn-success" style="height:31px;">Create</a>-->
                 </small>
             </div>
             <div class="box-content no-padding table-responsive">
