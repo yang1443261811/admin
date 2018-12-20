@@ -9,6 +9,7 @@
         margin-left: 5px;
         margin-right: 5px;
     }
+
 </style>
 <template>
     <div class="row">
@@ -55,9 +56,10 @@
                         <td> {{item.name}} </td>
                         <td> {{item.email}} </td>
                         <td class="component text-center">
-                            <span v-if="item.status == 1" style="color: rgb(142, 180, 203);"><i
-                                    class="fa fa-circle"></i></span>
-                            <span v-if="item.status == 0" style="color: rgb(191, 83, 41);"><i class="fa fa-circle"></i></span>
+                            <!--<span :class="item.status == 1 ? 'red' : 'gray'" @click="setState(item.id, item.status)">-->
+                                <!--<i class="fa fa-circle"></i>-->
+                            <!--</span>-->
+                            <state :status="item.status" :uid="item.id"></state>
                         </td>
                         <td> {{item.created_at}} </td>
                         <td class="actions text-center">
@@ -75,8 +77,10 @@
 
 <script>
     import TablePagination from 'dashboard/components/TablePagination.vue'
+    import State from 'dashboard/components/State.vue'
     export default{
         components: {
+            State,
             TablePagination
         },
         data(){
@@ -122,7 +126,7 @@
                     params = {keyword: this.keyword};
                 }
 
-                this.$router.push({ name: this.$route.name, query: params });
+                this.$router.push({name: this.$route.name, query: params});
 
                 this.$http.get('users', {params: params})
                     .then((response) => {
@@ -130,6 +134,27 @@
                         this.meta = response.data.meta.pagination;
                         this.totalPage = response.data.meta.pagination.total_pages;
                         this.currentPage = response.data.meta.pagination.current_page;
+                    })
+            },
+
+            setState(id, state){
+                let that = this;
+                swal({
+                    title: "Are you sure？",
+                    text: "The action may affect some data, Please think twice！",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "YES！",
+                    cancelButtonText: "NO！",
+                }).then(function (isConfirm) {
+                    if (isConfirm.value) {
+                        let status = (state === 1) ? 0 : 1;
+                        let url = 'user/status/' + id + '?status=' + status;
+                        that.$http.get(url).then(function (response) {
+                            swal({title: "成功！", text: "用户状态设置成功.", type: "success", timer: 2000});
+                        })
+                    }
                 })
             }
         },

@@ -17,7 +17,7 @@ export default new vueRouter({
                 {
                     path: 'users',
                     name: 'users',
-                    component: Vue.component('users', require('dashboard/pages/user/user.vue'))
+                    component: Vue.component('users', require('dashboard/pages/user/User.vue'))
                 }
             ],
             // linkActiveClass: 'active',

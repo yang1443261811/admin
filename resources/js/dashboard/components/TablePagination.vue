@@ -59,6 +59,9 @@
 </script>
 
 <style lang="scss" scoped>
+    a:hover {
+        background-color: rgba(0, 0, 0, 0.05)
+    }
     .active {
         background-color: #3d4e60;
         border-right: none;

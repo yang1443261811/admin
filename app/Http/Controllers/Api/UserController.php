@@ -21,11 +21,8 @@ class UserController extends ApiController
 
     public function index(Request $request)
     {
-//        $data = $this->user->pageWithRequest($request);
-
         return $this->response->collection($this->user->pageWithRequest($request));
 
-//        echo $data->toJson();
     }
 
     /**
@@ -50,5 +47,19 @@ class UserController extends ApiController
         $this->user->saveAvatar(\Auth::id(), '/' . $currentImage['url']);
 
         return response()->json($currentImage);
+    }
+
+    /**
+     * 更改用户状态
+     *
+     * @param Request $request
+     * @param int int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function status(Request $request, $id)
+    {
+        $this->user->update($id, $request->all());
+
+        return response()->json(true);
     }
 }

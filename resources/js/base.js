@@ -8,6 +8,7 @@ import router from './router'
 
 window.$ = window.jquery = require('jquery');
 window.Vue = require('vue');
+window.swal = require('sweetalert2');
 window.toastr = require('toastr/build/toastr.min.js');
 
 window.toastr.options = {
