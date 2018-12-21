@@ -1,6 +1,8 @@
 window.$ = window.jQuery = require('jquery');
 window.Vue = require('vue');
 window.toastr = require('toastr/build/toastr.min.js');
+window.marked = require('marked');
+window.hljs = require('vendor/highlight.min.js');
 
 import httpPlugin from 'plugins/http';
 
@@ -17,6 +19,6 @@ Vue.use(httpPlugin);
 
 Vue.component('comment', require('./components/comment.vue'));
 Vue.component('avatar', require('./components/AvatarUpload.vue'));
-
+Vue.component('parse', require('./components/Parse.vue'));
 
 new Vue({}).$mount('#app');

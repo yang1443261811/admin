@@ -21,7 +21,9 @@
     },
     "dependencies": {
         "cropperjs": "^1.4.3",
+        "emojione": "^4.0.0",
         "fine-uploader": "^5.16.2",
+        "marked": "^0.5.2",
         "simplemde": "^1.11.2",
         "sweetalert2": "^7.32.4",
         "toastr": "^2.1.4",

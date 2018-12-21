@@ -16,6 +16,7 @@ let config = {
     resolve: {
         alias: {
             'components':'js/components',
+            'vendor': 'js/vendor',
             'dashboard':'js/dashboard',
             'config': 'js/config',
             'plugins': 'js/plugins',

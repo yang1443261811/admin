@@ -90,7 +90,8 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 {{--<parse content="{!! $articles->content !!}"></parse>--}}
-                <div>{!! $articles->content !!}</div>
+                <parse content="{{ $articles->content['raw'] }}"></parse>
+                {{--<div>{!! $articles->content['raw'] !!}</div>--}}
                 <div class="publishing alert alert-dismissible alert-info">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     由 <a xmlns:cc="http://creativecommons.org/ns#" href="https://pigjian.com" property="cc:attributionName" rel="cc:attributionURL">Yang</a> 创作，采用

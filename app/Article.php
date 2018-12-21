@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Scopes\DraftScope;
-//use App\Tools\Markdowner;
+use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -45,9 +45,9 @@ class Article extends Model
         'published_at',
     ];
 
-//    protected $casts = [
-//        'content' => 'array'
-//    ];
+    protected $casts = [
+        'content' => 'array'
+    ];
 
     /**
      * The "booting" method of the model.
@@ -154,6 +154,21 @@ class Article extends Model
         }
 
         $this->attributes['slug'] = $slug;
+    }
+
+    /**
+     * Set the content attribute.
+     *
+     * @param $value
+     */
+    public function setContentAttribute($value)
+    {
+        $data = [
+            'raw'  => $value,
+            'html' => (new Markdowner)->convertMarkdownToHtml($value)
+        ];
+
+        $this->attributes['content'] = json_encode($data);
     }
 
 

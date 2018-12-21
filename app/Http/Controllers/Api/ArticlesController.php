@@ -41,11 +41,13 @@ class ArticlesController extends ApiController
         $input = $request->all();
 
         $input = array_merge($input, [
-            'user_id'     => 1,
-            'last_user_id'=> 1,
-            'is_draft'    => isset($input['is_draft']),
-            'is_original' => isset($input['is_original'])
+            'user_id'      => \Auth::id(),
+            'last_user_id' => \Auth::id(),
+            'is_draft'     => isset($input['is_draft']),
+            'is_original'  => isset($input['is_original']),
         ]);
+
+        $input['content'] = $input['content'];
 
         $this->article->store($input);
         $this->article->syncTag(json_decode($request->get('tags')));

@@ -129,15 +129,25 @@
                 placeholder: 'Please input article content.',
                 autoDownloadFontAwesome: true,
                 forceSync: true,
-//                previewRender(plainText, preview) {
-//                    preview.className += ' markdown';
-//
-//                    return self.parse(plainText)
-//                },
+                previewRender(plainText, preview) {
+                    preview.className += ' markdown';
+
+                    return self.parse(plainText)
+                },
             });
 
         },
         methods: {
+            parse(content) {
+                marked.setOptions({
+                    highlight: (code) => {
+                        return hljs.highlightAuto(code).value
+                    },
+                    sanitize: true
+                });
+
+                return emojione.toImage(marked(content))
+            },
             onSubmit(){
                 if (!this.tags || !this.selected) {
                     toastr.error('Category and Tag must select one or more.');
@@ -149,12 +159,13 @@
                 for (var i = 0; i < this.tags.length; i++) {
                     tagIDs[i] = this.tags[i].id
                 }
-                this.article.content = this.simplemde.value();
+
+                //将simplemde语法的文本内容转换成html格式的
+                this.article.content = this.simplemde.markdown(this.simplemde.value());
                 this.article.category_id = this.selected.id;
                 this.article.tags = JSON.stringify(tagIDs);
                 this.article.publish_at = this.startTime.time;
                 this.article.page_image = this.page_image;
-                console.log(this.article);
 
                 this.$http.post('article/create', this.article)
                     .then((response) => {
@@ -180,7 +191,6 @@
                         toastr.success('You upload a file success!');
 
                         this.page_image = '/' + response.data.url;
-                        console.log(this.page_image)
                 })
             }
         }
