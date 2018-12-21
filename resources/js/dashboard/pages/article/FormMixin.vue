@@ -42,8 +42,8 @@ export default {
     this.option.placeholder = 'published_at';
   },
   created() {
-    this.loadCategories()
-    this.loadTags()
+    this.loadCategories();
+    this.loadTags();
   },
   methods: {
     loadCategories() {

@@ -30,25 +30,12 @@ class ArticlesController extends ApiController
     }
 
     /**
-     * 创建新文章
-     *
-     * @return mixed
-     */
-    public function create()
-    {
-        $tags = Tag::all();
-        $categories = Category::all();
-
-        return view('back.article.create', compact('tags', 'categories'));
-    }
-
-    /**
      * 存储文章内容
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $this->validator($request);
         $input = $request->all();
@@ -61,7 +48,7 @@ class ArticlesController extends ApiController
         ]);
 
         $this->article->store($input);
-        $this->article->syncTag($input['tags']);
+        $this->article->syncTag(json_decode($request->get('tags')));
 
         return response()->json(true);
     }
@@ -139,7 +126,7 @@ class ArticlesController extends ApiController
             'subtitle.required'    => '副标题必填',
             'subtitle.min'         => '副标题至少三个字符',
             'content.required'     => '文章内容必填',
-            'category_id.required' => '文章分类必填',
+            'category_id.required' => '文章分类必选',
             'tags.required'        => '文章标签必填',
             'page_image.required'  => '文章封面必填',
         ];

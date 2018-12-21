@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api']], function () {
     Route::post('/user/update/{id}', 'UserController@update');
     Route::post('/user/create', 'UserController@create');
     Route::get('/articles', 'ArticlesController@index');
+    Route::post('/article/create', 'ArticlesController@create');
     Route::get('/article/delete/{id}', 'ArticlesController@delete');
     Route::get('/categories', 'CategoryController@getList');
     Route::get('/tags', 'TagController@getList');
