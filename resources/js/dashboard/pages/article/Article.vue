@@ -9,59 +9,50 @@
         margin-left: 5px;
         margin-right: 5px;
     }
-
 </style>
 <template>
     <div class="row">
         <div class="box">
             <div class="box-title d-flex">
-                <h5 class="align-self-center font-weight-normal"> Users</h5>
+                <h5 class="align-self-center font-weight-normal">Articles</h5>
                 <small class="ml-auto d-flex flex-row" style="height:31px;">
-                    <form style="display: inherit;">
+                    <form @submit.prevent="search" style="display: inherit;">
                         <div class="input-group input-group-sm mr-2">
-                            <input type="text" placeholder="" class="form-control" v-model="keyword"/>
+                            <input type="text" name="keyword" placeholder="" class="form-control" v-model="keyword"/>
                             <div class="input-group-append">
-                                <button @click.pervent="search" class="btn btn-outline-secondary">
-                                    <span class="fa fa-search"></span>
-                                </button>
+                                <button type="submit" class="btn btn-outline-secondary"><span
+                                        class="fa fa-search"></span></button>
                             </div>
                         </div>
                     </form>
-                    <router-link :to="{name:'user.create'}" class="btn btn-sm btn-success" style="height:31px;">Create</router-link>
+                    <a href="/admin/articles/create" class="btn btn-sm btn-success" style="height:31px;">Create</a>
                 </small>
             </div>
             <div class="box-content no-padding table-responsive">
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th class="width-5-percent text-center"> ID</th>
-                        <th class="text-center"> Avatar</th>
-                        <th> User Name</th>
-                        <th> E-Mail Address</th>
-                        <th class="text-center"> Status</th>
-                        <th> Created At</th>
-                        <th class="text-center"> Actions</th>
+                        <th class="width-5-percent text-center"> ID </th>
+                        <th> Title </th>
+                        <th> Sub Title </th>
+                        <th class="width-10-percent"> Published At </th>
+                        <th class="text-center"> Actions </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-if="content.length == 0">
-                        <td class="text-center" colspan="7"> no Content</td>
+                    <tr v-if="items.length == 0">
+                        <td class="text-center" colspan="5"> 没有数据 </td>
                     </tr>
-                    <tr v-for="(item, key) in content">
+                    <tr v-for="(item, key) in items">
                         <td class="text-center"> {{item.id}} </td>
-                        <td class="text-center">
-                            <img :src="item.avatar ? item.avatar : '/images/default.png'"
-                                 class="avatar img-fluid rounded-circle"/>
+                        <td><a href="" title="查看">{{item.title}}</a>
                         </td>
-                        <td> {{item.name}} </td>
-                        <td> {{item.email}} </td>
-                        <td class="component text-center">
-                            <state :itemStatus="item.status" :itemID="item.id" :url="'user/status'"></state>
-                        </td>
+                        <td> {{item.subtitle}} </td>
                         <td> {{item.created_at}} </td>
                         <td class="actions text-center">
-                            <a class="btn btn-info" @click.prevent="edit(item)"><i class="fa fa-pencil"></i> </a>
-                            <delete :itemID="item.id" :url="'user/delete'" v-on:reload="reload"></delete>
+                            <a class="btn btn-success" href="/"><i class="fa fa-eye"></i> </a>
+                            <a class="btn btn-info" href=""><i class="fa fa-pencil"></i> </a>
+                            <delete :itemID="item.id" :url="'article/delete'" v-on:reload="reload"></delete>
                         </td>
                     </tr>
                     </tbody>
@@ -71,7 +62,6 @@
         </div>
     </div>
 </template>
-
 <script>
     import TablePagination from 'dashboard/components/TablePagination.vue'
     import State from 'dashboard/components/State.vue'
@@ -84,14 +74,13 @@
         },
         data(){
             return {
-                meta: null,
-                content: {},
+                items: {},
+                meta: '',
                 keyword: '',
                 totalPage: '',
                 currentPage: '',
             }
         },
-
         watch: {
             $route() {
                 let pageNum = 1;
@@ -103,7 +92,6 @@
                 this.loadPage(pageNum);
             }
         },
-
         methods: {
             loadPage(page){
                 if (page !== this.currentPage && (page > 0 && page <= this.totalPage)) {
@@ -111,11 +99,9 @@
                     this.loadData()
                 }
             },
-
             search(){
                 this.loadData();
             },
-
             loadData(){
                 let params = '';
 
@@ -127,24 +113,21 @@
 
                 this.$router.push({name: this.$route.name, query: params});
 
-                this.$http.get('users', {params: params})
+                this.$http.get('articles', {params: params})
                     .then((response) => {
-                        this.content = response.data.data;
+                        this.items = response.data.data;
                         this.meta = response.data.meta.pagination;
                         this.totalPage = response.data.meta.pagination.total_pages;
                         this.currentPage = response.data.meta.pagination.current_page;
                     })
             },
-
             reload(){
                 this.loadData();
             },
-
             edit(data){
-                this.$router.push({name: 'user.edit', params: {id: data.id}})
+                this.$router.push({name: 'article.edit', params: {id: data.id}})
             }
         },
-
         mounted(){
             this.loadData();
         }

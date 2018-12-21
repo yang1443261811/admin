@@ -39,11 +39,14 @@
                         </div>
                         <div class="form-group">
                             <label for="password">password</label>
-                            <input type="password" class="form-control" id="password" placeholder="password" name="password" v-model="user.password">
+                            <input type="password" class="form-control" id="password" placeholder="password"
+                                   name="password" v-model="user.password">
                         </div>
                         <div class="form-group">
                             <label for="password_confirmation">confirm_password</label>
-                            <input type="password" class="form-control" id="password_confirmation" placeholder="confirm_password" name="password_confirmation" v-model="user.password_confirmation">
+                            <input type="password" class="form-control" id="password_confirmation"
+                                   placeholder="confirm_password" name="password_confirmation"
+                                   v-model="user.password_confirmation">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Create</button>
@@ -72,7 +75,6 @@
         },
 
         methods: {
-
             onSubmit(){
                 let that = this;
                 this.$http.post('user/create', this.user)
@@ -87,10 +89,6 @@
                         let errors = response.data.errors;
                         let keys = Object.keys(errors);
                         toastr.warning(errors[keys[0]]);
-//                        Object.keys(errors).map(function(key, index){
-//                            toastr.warning(errors[key]);
-//                        });
-//                        console.log(Object.keys(errors));
                     })
             },
             back(){

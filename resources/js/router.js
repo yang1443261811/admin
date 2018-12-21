@@ -28,6 +28,11 @@ export default new vueRouter({
                     path: 'user/create',
                     name: 'user.create',
                     component: Vue.component('users', require('dashboard/pages/user/Create.vue'))
+                },
+                {
+                    path: 'articles',
+                    name: 'articles',
+                    component: Vue.component('articles', require('dashboard/pages/article/Article.vue'))
                 }
             ],
             mode: 'history',

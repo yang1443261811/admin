@@ -20,11 +20,11 @@
                 <!--<a href="/admin/dashboard" class="active">/a>-->
             </li>
             <li class="nav-users">
-                <!--<a href="/admin/users" class=""><i class="fa fa-users"></i> Users </a>-->
                 <router-link :to="{name:'users'}"> <i class="fa fa-users"></i> Users </router-link>
             </li>
-            <li class="nav-articles"><a href="/admin/articles" class="">
-                <i class="fa fa-book"></i> Articles </a></li>
+            <li class="nav-articles">
+                <router-link :to="{name:'articles'}"> <i class="fa fa-book"></i> Articles </router-link>
+            </li>
             <li class="nav-discussions"><a href="/admin/discussions/" class="">
                 <i class="fa fa-question-circle"></i> Discussion </a></li>
             <li class="nav-comments"><a href="/admin/comments" class="">
