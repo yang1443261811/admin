@@ -33,6 +33,11 @@ export default new vueRouter({
                     path: 'articles',
                     name: 'articles',
                     component: Vue.component('articles', require('dashboard/pages/article/Article.vue'))
+                },
+                {
+                    path: 'article/create',
+                    name: 'article.create',
+                    component: Vue.component('articles', require('dashboard/pages/article/Create.vue'))
                 }
             ],
             mode: 'history',

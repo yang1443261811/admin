@@ -32,4 +32,6 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api']], function () {
     Route::post('/user/create', 'UserController@create');
     Route::get('/articles', 'ArticlesController@index');
     Route::get('/article/delete/{id}', 'ArticlesController@delete');
+    Route::get('/categories', 'CategoryController@getList');
+    Route::get('/tags', 'TagController@getList');
 });

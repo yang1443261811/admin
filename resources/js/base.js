@@ -3,6 +3,7 @@ require('./bootstrap');
 import httpPlugin from 'plugins/http';
 import VueRouter from 'vue-router';
 import store from './store.js';
+import 'vue-multiselect/dist/vue-multiselect.min.css';
 
 import router from './router'
 

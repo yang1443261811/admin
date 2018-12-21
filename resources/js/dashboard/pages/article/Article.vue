@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="/admin/articles/create" class="btn btn-sm btn-success" style="height:31px;">Create</a>
+                    <router-link :to="{name:'article.create'}" class="btn btn-sm btn-success" style="height:31px;">Create</router-link>
                 </small>
             </div>
             <div class="box-content no-padding table-responsive">
