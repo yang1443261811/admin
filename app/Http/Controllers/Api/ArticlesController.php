@@ -40,14 +40,11 @@ class ArticlesController extends ApiController
         $this->validator($request);
         $input = $request->all();
 
-        $input = array_merge($input, [
-            'user_id'      => \Auth::id(),
-            'last_user_id' => \Auth::id(),
-            'is_draft'     => isset($input['is_draft']),
-            'is_original'  => isset($input['is_original']),
-        ]);
-
+        $input['user_id'] = \Auth::id();
+        $input['last_user_id'] = \Auth::id();
         $input['content'] = $input['content'];
+        $input['is_draft'] = isset($input['is_draft']);
+        $input['is_original'] = isset($input['is_original']);
 
         $this->article->store($input);
         $this->article->syncTag(json_decode($request->get('tags')));
@@ -76,11 +73,9 @@ class ArticlesController extends ApiController
      */
     public function edit($id)
     {
-        $tags = Tag::all();
-        $categories = Category::all();
         $article = $this->article->getById($id);
 
-        return view('back.article.update', compact('article', 'categories', 'tags'));
+        return $this->response->item($article);
     }
 
     /**
@@ -95,13 +90,13 @@ class ArticlesController extends ApiController
         $this->validator($request);
 
         $input = $request->all();
-        $input = array_merge($input, [
-            'is_draft'    => isset($input['is_draft']),
-            'is_original' => isset($input['is_original'])
-        ]);
+
+        $input['is_draft'] = isset($input['is_draft']);
+        $input['is_original'] = isset($input['is_original']);
+        $input['content'] = $input['content'];
 
         $this->article->update($id, $input);
-        $this->article->syncTag($input['tags']);
+        $this->article->syncTag(json_decode($input['tags'], true));
 
         return response()->json(true);
     }

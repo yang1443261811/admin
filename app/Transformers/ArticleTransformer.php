@@ -20,15 +20,14 @@ class ArticleTransformer extends TransformerAbstract
             'subtitle'          => $article->subtitle,
             'user'              => $article->user,
             'slug'              => $article->slug,
-            'content'           => $article->content,
+            'content'           => $article->content['raw'],
             'page_image'        => $article->page_image,
             'meta_description'  => $article->meta_description,
             'is_original'       => $article->is_original,
             'is_draft'          => $article->is_draft,
             'visitors'          => $article->view_count,
-//            'created_at'        => $article->created_at->diffForHumans(),
-//            'created_at'        => $article->created_at->toDateTimeString(),
-            'created_at'        => $article->created_at,
+            'published_at'      => $article->published_at->diffForHumans(),
+            'published_time'    => $article->published_at->toDateTimeString(),
         ];
     }
 

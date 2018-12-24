@@ -25,7 +25,9 @@
                             </div>
                         </div>
                     </form>
-                    <router-link :to="{name:'article.create'}" class="btn btn-sm btn-success" style="height:31px;">Create</router-link>
+                    <router-link :to="{name:'article.create'}" class="btn btn-sm btn-success" style="height:31px;">
+                        Create
+                    </router-link>
                 </small>
             </div>
             <div class="box-content no-padding table-responsive">
@@ -48,10 +50,11 @@
                         <td><a href="" title="查看">{{item.title}}</a>
                         </td>
                         <td> {{item.subtitle}} </td>
-                        <td> {{item.created_at}} </td>
+                        <td> {{item.published_at}} </td>
                         <td class="actions text-center">
                             <a class="btn btn-success" href="/"><i class="fa fa-eye"></i> </a>
-                            <a class="btn btn-info" href=""><i class="fa fa-pencil"></i> </a>
+                            <!--<a class="btn btn-info" href=""><i class="fa fa-pencil"></i> </a>-->
+                            <router-link :to="{name:'article.edit', params:{id: item.id}}" class="btn btn-info"><i class="fa fa-pencil"></i></router-link>
                             <delete :itemID="item.id" :url="'article/delete'" v-on:reload="reload"></delete>
                         </td>
                     </tr>

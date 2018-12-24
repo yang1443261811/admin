@@ -109,6 +109,7 @@
     import DatePicker from 'vue-datepicker';
     import Multiselect from 'vue-multiselect';
     import {default as SimpleMDE} from 'simplemde/dist/simplemde.min';
+    import emojione from 'emojione';
     export default{
         mixins: [FormMixin],
         data(){
@@ -129,11 +130,11 @@
                 placeholder: 'Please input article content.',
                 autoDownloadFontAwesome: true,
                 forceSync: true,
-//                previewRender(plainText, preview) {
-//                    preview.className += ' markdown';
-//
-//                    return self.parse(plainText)
-//                },
+                previewRender(plainText, preview) {
+                    preview.className += ' markdown';
+
+                    return self.parse(plainText)
+                },
             });
 
         },
@@ -163,7 +164,7 @@
                 this.article.content = this.simplemde.value();
                 this.article.category_id = this.selected.id;
                 this.article.tags = JSON.stringify(tagIDs);
-                this.article.publish_at = this.startTime.time;
+                this.article.published_at = this.startTime.time;
                 this.article.page_image = this.page_image;
 
                 this.$http.post('article/create', this.article)

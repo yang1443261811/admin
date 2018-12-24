@@ -11,6 +11,7 @@ window.$ = window.jquery = require('jquery');
 window.Vue = require('vue');
 window.swal = require('sweetalert2');
 window.toastr = require('toastr/build/toastr.min.js');
+window.marked = require('marked');
 
 window.toastr.options = {
     positionClass: "toast-bottom-right",

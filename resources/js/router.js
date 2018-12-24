@@ -38,6 +38,11 @@ export default new vueRouter({
                     path: 'article/create',
                     name: 'article.create',
                     component: Vue.component('articles', require('dashboard/pages/article/Create.vue'))
+                },
+                {
+                    path: 'article/edit/:id',
+                    name: 'article.edit',
+                    component: Vue.component('articles', require('dashboard/pages/article/Edit.vue'))
                 }
             ],
             mode: 'history',
