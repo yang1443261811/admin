@@ -89,8 +89,8 @@
     <div class="article container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                {{--<parse content="{!! $articles->content !!}"></parse>--}}
-                <parse content="{{ $articles->content['raw'] }}"></parse>
+                <parse content="{!! $articles->content['raw'] !!}"></parse>
+                {{--<parse content="{{ $articles->content['raw'] }}"></parse>--}}
                 {{--<div>{!! $articles->content['raw'] !!}</div>--}}
                 <div class="publishing alert alert-dismissible alert-info">
                     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -117,12 +117,6 @@
 @endsection
 
 @section('js')
-    <script>
-        window.hasLogin = '{{Auth::check()}}';
-        window.article_id = '{{$articles->id}}';
-        window.commentable_type = 'App\\Article';
-        window.token = '{{csrf_token()}}';
-    </script>
     <script src="/js/highlight.pack.js"></script>
     <script src="/js/layer/layer.js"></script>
     {{--<script src="/js/detials.js"></script>--}}

@@ -29,7 +29,7 @@ export default {
           return hljs.highlightAuto(code).value
         },
         sanitize: true
-      })
+      });
 
       return emojione.toImage(marked(content))
     },

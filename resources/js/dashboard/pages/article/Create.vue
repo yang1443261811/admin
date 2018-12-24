@@ -129,11 +129,11 @@
                 placeholder: 'Please input article content.',
                 autoDownloadFontAwesome: true,
                 forceSync: true,
-                previewRender(plainText, preview) {
-                    preview.className += ' markdown';
-
-                    return self.parse(plainText)
-                },
+//                previewRender(plainText, preview) {
+//                    preview.className += ' markdown';
+//
+//                    return self.parse(plainText)
+//                },
             });
 
         },
@@ -160,8 +160,7 @@
                     tagIDs[i] = this.tags[i].id
                 }
 
-                //将simplemde语法的文本内容转换成html格式的
-                this.article.content = this.simplemde.markdown(this.simplemde.value());
+                this.article.content = this.simplemde.value();
                 this.article.category_id = this.selected.id;
                 this.article.tags = JSON.stringify(tagIDs);
                 this.article.publish_at = this.startTime.time;

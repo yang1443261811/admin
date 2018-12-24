@@ -72123,6 +72123,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        parse: function parse(content) {
+            marked.setOptions({
+                highlight: function highlight(code) {
+                    return hljs.highlightAuto(code).value;
+                },
+                sanitize: true
+            });
+
+            return emojione.toImage(marked(content));
+        },
         onSubmit: function onSubmit() {
             if (!this.tags || !this.selected) {
                 toastr.error('Category and Tag must select one or more.');
@@ -72135,8 +72145,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 tagIDs[i] = this.tags[i].id;
             }
 
-            //将simplemde语法的文本内容转换成html格式的
-            this.article.content = this.simplemde.markdown(this.simplemde.value());
+            this.article.content = this.simplemde.value();
             this.article.category_id = this.selected.id;
             this.article.tags = JSON.stringify(tagIDs);
             this.article.publish_at = this.startTime.time;
