@@ -100,7 +100,7 @@ class DiscussionRepository
      *
      * @param  int $id
      * @param  array $data
-     * @return boolean
+     * @return mixed
      */
     public function updateWithoutTags(int $id, array $data)
     {

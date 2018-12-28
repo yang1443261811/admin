@@ -2,7 +2,7 @@
     <div class="row">
         <div class="box">
             <div class="box-title">
-                <small class="float-right"><a href="/admin/articles/" class="btn btn-sm btn-secondary">Back</a></small>
+                <small class="float-right"><a @click.prevent="back" class="btn btn-sm btn-secondary" style="color:white">Back</a></small>
                 <h5>Edit Article</h5>
             </div>
             <div class="box-content">
@@ -186,8 +186,7 @@
                 this.article.tags = JSON.stringify(tagIDs);
                 this.article.published_at = this.startTime.time;
                 this.article.page_image = this.page_image;
-console.log(this.article.is_original);
-//return false;
+
                 this.$http.post('article/update/' + article_id, this.article)
                     .then((response) => {
                         toastr.success('You update the article success!');
@@ -220,6 +219,9 @@ console.log(this.article.is_original);
                     .then((response) => {
                         this.article = response.data.data;
                     })
+            },
+            back(){
+                this.$router.back();
             }
         }
     }

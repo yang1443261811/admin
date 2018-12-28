@@ -17,7 +17,6 @@
             </div>
             <li class="nav-index">
                 <router-link :to="{name : 'home'}"><i class="fa fa-dashboard"></i> Dashboard </router-link>
-                <!--<a href="/admin/dashboard" class="active">/a>-->
             </li>
             <li class="nav-users">
                 <router-link :to="{name:'users'}"> <i class="fa fa-users"></i> Users </router-link>
@@ -25,8 +24,9 @@
             <li class="nav-articles">
                 <router-link :to="{name:'articles'}"> <i class="fa fa-book"></i> Articles </router-link>
             </li>
-            <li class="nav-discussions"><a href="/admin/discussions/" class="">
-                <i class="fa fa-question-circle"></i> Discussion </a></li>
+            <li class="nav-discussions">
+                <router-link :to="{name:'discussions'}"> <i class="fa fa-question-circle"></i> Discussion </router-link>
+            </li>
             <li class="nav-comments"><a href="/admin/comments" class="">
                 <i class="fa fa-comments"></i> Comments </a></li>
             <li class="nav-files"><a href="/admin/files" class="">

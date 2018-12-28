@@ -12,50 +12,52 @@
 </style>
 <template>
     <div class="row">
-        <div class="box">
-            <div class="box-title d-flex">
-                <h5 class="align-self-center font-weight-normal">Articles</h5>
-                <small class="ml-auto d-flex flex-row" style="height:31px;">
-                    <form @submit.prevent="search" style="display: inherit;">
-                        <div class="input-group input-group-sm mr-2">
-                            <input type="text" name="keyword" placeholder="" class="form-control" v-model="keyword"/>
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-outline-secondary"><span
-                                        class="fa fa-search"></span></button>
+        <div  class="box">
+            <div  class="box-title d-flex">
+                <h5  class="align-self-center font-weight-normal">Discussions</h5>
+                <small  class="ml-auto d-flex flex-row" style="height:31px;">
+                    <form action="/admin/discussions" method="get" style="display: inherit;">
+                        <div  class="input-group input-group-sm mr-2">
+                            <input  type="text" name="keyword" placeholder="" class="form-control" value=""/>
+                            <div  class="input-group-append">
+                                <button  type="submit" class="btn btn-outline-secondary"><span class="fa fa-search"></span></button>
                             </div>
                         </div>
                     </form>
-                    <router-link :to="{name:'article.create'}" class="btn btn-sm btn-success" style="height:31px;">
+                    <router-link :to="{name:'discussion.create'}" class="btn btn-sm btn-success" style="height:31px;">
                         Create
                     </router-link>
                 </small>
             </div>
-            <div class="box-content no-padding table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th class="width-5-percent text-center"> ID </th>
-                        <th> Title </th>
-                        <th> Sub Title </th>
-                        <th class="width-10-percent"> Published At </th>
-                        <th class="text-center"> Actions </th>
+            <div  class="box-content no-padding table-responsive">
+                <table  class="table table-striped table-hover">
+                    <thead >
+                    <tr >
+                        <th  class="width-5-percent text-center"> ID </th>
+                        <th  class="text-center"> User Name </th>
+                        <th > Title </th>
+                        <th  class="text-center"> Status </th>
+                        <th > Created At </th>
+                        <th  class="text-center"> Actions </th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr v-if="items.length == 0">
-                        <td class="text-center" colspan="5"> 没有数据 </td>
+                    <tbody >
+                    <tr >
+                        <td  class="text-center" colspan="6"> no Content </td>
                     </tr>
+                  
                     <tr v-for="(item, key) in items">
-                        <td class="text-center"> {{item.id}} </td>
-                        <td><a href="" title="查看">{{item.title}}</a>
+                        <td  class="text-center"> {{item.id}} </td>
+                        <td  class="text-center">Issac DuBuque</td>
+                        <td > {{item.title}} </td>
+                        <td  class="component text-center">
+                            <state :itemStatus="item.status" :itemID="item.id" :url="'discussion/status'"></state>
                         </td>
-                        <td> {{item.subtitle}} </td>
-                        <td> {{item.published_at}} </td>
-                        <td class="actions text-center">
-                            <a class="btn btn-success" :href="'/post/show/' + item.id" target="_blank"><i class="fa fa-eye"></i> </a>
-                            <!--<a class="btn btn-info" href=""><i class="fa fa-pencil"></i> </a>-->
-                            <router-link :to="{name:'article.edit', params:{id: item.id}}" class="btn btn-info"><i class="fa fa-pencil"></i></router-link>
-                            <delete :itemID="item.id" :url="'article/delete'" v-on:reload="reload"></delete>
+                        <td > {{item.created_at}} </td>
+                        <td  class="actions text-center">
+                            <a class="btn btn-success" :href="'/discussion/show/' + item.id" target="_blank"><i class="fa fa-eye"></i> </a>
+                            <router-link :to="{name:'discussion.edit', params:{id: item.id}}" class="btn btn-info"><i class="fa fa-pencil"></i></router-link>
+                            <delete :itemID="item.id" :url="'discussion/delete'" v-on:reload="reload"></delete>
                         </td>
                     </tr>
                     </tbody>
@@ -116,7 +118,7 @@
 
                 this.$router.push({name: this.$route.name, query: params});
 
-                this.$http.get('articles', {params: params})
+                this.$http.get('discussions', {params: params})
                     .then((response) => {
                         this.items = response.data.data;
                         this.meta = response.data.meta.pagination;
@@ -128,7 +130,7 @@
                 this.loadData();
             },
             edit(data){
-                this.$router.push({name: 'article.edit', params: {id: data.id}})
+                this.$router.push({name: 'discussion.edit', params: {id: data.id}})
             }
         },
         mounted(){

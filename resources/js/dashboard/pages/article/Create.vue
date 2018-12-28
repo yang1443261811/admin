@@ -2,7 +2,7 @@
     <div class="row">
         <div class="box">
             <div class="box-title">
-                <small class="float-right"><a href="/admin/articles/" class="btn btn-sm btn-secondary">Back</a></small>
+                <small class="float-right"><a @click.prevent="back" class="btn btn-sm btn-secondary" style="color:white">Back</a></small>
                 <h5>Create Article</h5>
             </div>
             <div class="box-content">
@@ -192,6 +192,9 @@
 
                         this.page_image = '/' + response.data.url;
                 })
+            },
+            back(){
+                this.$router.back();
             }
         }
     }

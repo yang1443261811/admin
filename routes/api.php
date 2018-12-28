@@ -25,7 +25,7 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api']], function () {
     Route::post('/crop/avatar', 'UserController@cropAvatar');
     Route::get('/statistics', 'HomeController@statistics');
     Route::get('/users', 'UserController@index');
-    Route::get('/user/status', 'UserController@status');
+    Route::get('/user/status/{id}', 'UserController@status');
     Route::get('/user/delete/{id}', 'UserController@delete');
     Route::get('/user/{id}/edit', 'UserController@edit');
     Route::post('/user/update/{id}', 'UserController@update');
@@ -37,4 +37,8 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api']], function () {
     Route::post('/article/update/{id}', 'ArticlesController@update');
     Route::get('/categories', 'CategoryController@getList');
     Route::get('/tags', 'TagController@getList');
+    Route::get('/discussions', 'DiscussionController@getList');
+    Route::get('/discussion/status/{id}', 'DiscussionController@status');
+    Route::get('/discussion/delete/{id}', 'DiscussionController@delete');
+    Route::post('/discussion/create', 'DiscussionController@create');
 });

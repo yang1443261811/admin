@@ -75,11 +75,9 @@ class UserController extends ApiController
      * @param int int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function status(Request $request)
+    public function status(Request $request, $id)
     {
-        $id = $request->input('id');
-        $status = $request->only('status');
-        $this->user->update($id, $status);
+        $this->user->update($id, $request->all());
 
         return response()->json(true);
     }

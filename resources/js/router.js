@@ -43,6 +43,16 @@ export default new vueRouter({
                     path: 'article/edit/:id',
                     name: 'article.edit',
                     component: Vue.component('articles', require('dashboard/pages/article/Edit.vue'))
+                },
+                {
+                    path: 'discussions',
+                    name: 'discussions',
+                    component: Vue.component('discussions', require('dashboard/pages/discussion/Discussion.vue'))
+                },
+                {
+                    path: 'discussion/create',
+                    name: 'discussion.create',
+                    component: Vue.component('discussions', require('dashboard/pages/discussion/Create.vue'))
                 }
             ],
             mode: 'history',

@@ -1,5 +1,5 @@
 <template>
-       <span :class="state == 1 ? 'red' : 'gray'" @click="setState()">
+       <span :class="state === 1 ? 'red' : 'gray'" @click="setState()">
            <i class="fa fa-circle"></i>
        </span>
 </template>
@@ -13,8 +13,8 @@
             }
         },
         mounted(){
-            this.ID = this.itemID;
-            this.state = this.itemStatus;
+            this.ID = parseInt(this.itemID);
+            this.state = parseInt(this.itemStatus);
         },
         methods: {
             setState(){
@@ -30,8 +30,8 @@
                 }).then(function (isConfirm) {
                     if (isConfirm.value) {
                         that.state = (that.state === 1) ? 0 : 1;
-                        let params = {id: that.ID, status: that.state};
-                        that.$http.get(that.url, {params: params})
+                        let apiUrl = that.url + '/' + that.ID + '?status=' +  that.state;
+                        that.$http.get(apiUrl)
                             .then(function (response) {
                                 swal({title: "成功！", text: "用户状态设置成功.", type: "success", timer: 2000});
                             })
