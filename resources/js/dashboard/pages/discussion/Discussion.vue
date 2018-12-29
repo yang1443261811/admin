@@ -16,9 +16,9 @@
             <div  class="box-title d-flex">
                 <h5  class="align-self-center font-weight-normal">Discussions</h5>
                 <small  class="ml-auto d-flex flex-row" style="height:31px;">
-                    <form action="/admin/discussions" method="get" style="display: inherit;">
+                    <form @submit.prevent="search" style="display: inherit;">
                         <div  class="input-group input-group-sm mr-2">
-                            <input  type="text" name="keyword" placeholder="" class="form-control" value=""/>
+                            <input  type="text" v-model="keyword" placeholder="" class="form-control"/>
                             <div  class="input-group-append">
                                 <button  type="submit" class="btn btn-outline-secondary"><span class="fa fa-search"></span></button>
                             </div>

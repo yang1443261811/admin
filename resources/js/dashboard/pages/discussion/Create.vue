@@ -107,7 +107,7 @@
 
                 this.$http.post('discussion/create', this.discussion)
                     .then((response) => {
-                        toastr.success('You ' + this.mode + 'd the discussion success!');
+                        toastr.success('You created the discussion success!');
 
                         this.$router.push({name: 'discussions'})
                     }).catch(({response}) => {

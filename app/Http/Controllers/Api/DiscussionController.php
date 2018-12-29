@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Tag;
 use App\Discussion;
 use Illuminate\Http\Request;
 use App\Http\Requests\DiscussionRequest;
@@ -58,23 +57,18 @@ class DiscussionController extends ApiController
      */
     public function edit($id)
     {
-        $tags = Tag::all();
-        $discussion = $this->discussion->getById($id);
-
-        return view('back.discussion.update', compact('tags', 'discussion'));
+        return $this->response->item($this->discussion->getById($id));
     }
 
     /**
      * 更新
      *
-     * @param Request $request
-     * @param $id
+     * @param DiscussionRequest $request
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(DiscussionRequest $request, $id)
     {
-        $this->validator($request);
-
         $this->discussion->update($id, $request->all());
 
         return response()->json(true);

@@ -2,8 +2,8 @@
 
 namespace App;
 
+use App\Tools\Markdowner;
 use App\Scopes\StatusScope;
-//use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -78,14 +78,14 @@ class Discussion extends Model
      *
      * @param $value
      */
-//    public function setContentAttribute($value)
-//    {
-//        $data = [
-//            'raw'  => $value,
-//            'html' => (new Markdowner)->convertMarkdownToHtml($value)
-//        ];
-//
-//        $this->attributes['content'] = json_encode($data);
-//    }
+    public function setContentAttribute($value)
+    {
+        $data = [
+            'raw'  => $value,
+            'html' => (new Markdowner)->convertMarkdownToHtml($value)
+        ];
+
+        $this->attributes['content'] = json_encode($data);
+    }
 
 }

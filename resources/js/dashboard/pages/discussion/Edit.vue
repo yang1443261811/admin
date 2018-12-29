@@ -66,18 +66,47 @@
     </div>
 </template>
 <script>
+    import Multiselect from 'vue-multiselect';
+    import {default as SimpleMDE} from 'simplemde/dist/simplemde.min';
     export default{
+        components: { Multiselect },
         data(){
             return {
-                tags: [],
-                allTag: null,
-                discussion: {}
+                discussion: {},
+                simplemde: {},
+                tags: null,
+                allTag: []
             }
         },
         methods: {
+            onSubmit(){
+                if (!this.tags || this.tags.length == 0) {
+                    toastr.error('Tag must select one or more.');
+                    return;
+                }
+
+                let tagIDs = [];
+                for (var i = 0; i < this.tags.length; i++) {
+                    tagIDs[i] = this.tags[i].id
+                }
+
+                this.discussion.tags = JSON.stringify(tagIDs);
+                this.discussion.content = this.simplemde.value();
+
+                this.$http.post('discussion/update/' + this.discussion.id, this.discussion)
+                    .then((response) => {
+                        toastr.success('You updated the discussion success!');
+
+                        this.$router.push({name: 'discussions'})
+                    }).catch(({response}) => {
+                        let errors = response.data.errors;
+                        let keys = Object.keys(errors);
+                        toastr.warning(errors[keys[0]]);
+                })
+            },
             loadDiscussion(){
                 let discussion_id = this.$route.params.id;
-                this.$http.get('discussion/edit/' + discussion_id)
+                this.$http.get('discussion/edit/' + discussion_id + '?include=tags')
                     .then((response) => {
                         this.discussion = response.data.data;
                     })
