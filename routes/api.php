@@ -43,4 +43,8 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api']], function () {
     Route::post('/discussion/create', 'DiscussionController@create');
     Route::get('/discussion/edit/{id}', 'DiscussionController@edit');
     Route::post('/discussion/update/{id}', 'DiscussionController@update');
+    Route::get('/comments', 'CommentController@getList');
+    Route::get('/comment/delete/{id}', 'CommentController@delete');
+    Route::get('/comment/edit/{id}', 'CommentController@edit');
+    Route::post('/comment/update/{id}', 'CommentController@update');
 });

@@ -12,7 +12,7 @@
     <div class="row">
         <div class="box">
             <div class="box-title">
-                <small class="float-right"><a class="btn btn-sm btn-secondary" @click.prevent="back">Back</a>
+                <small class="float-right"><a class="btn btn-sm btn-secondary" @click.prevent="back" style="color:white">Back</a>
                 </small>
                 <h5>Create Discussion</h5>
             </div>

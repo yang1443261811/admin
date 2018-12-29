@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use Carbon\Carbon;
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Repositories\CommentRepository;
 
@@ -15,6 +15,19 @@ class CommentController extends ApiController
         parent::__construct();
 
         $this->comment = $comment;
+    }
+
+    /**
+     * 分页获取评论
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getList(Request $request)
+    {
+        return $this->response->collection(
+            $this->comment->pageWithRequest($request)
+        );
     }
 
     /**
@@ -53,9 +66,7 @@ class CommentController extends ApiController
      */
     public function postVoteComment(Request $request, $type)
     {
-        $this->validate($request, [
-            'id' => 'required|exists:comments,id',
-        ]);
+        $this->validate($request, ['id' => 'required|exists:comments,id']);
 
         ($type == 'up')
             ? $this->comment->toggleVote($request->id)
@@ -82,6 +93,46 @@ class CommentController extends ApiController
         }
 
         return $this->response->collection($comments);
+    }
+
+    /**
+     * 删除评论
+     *
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
+    {
+        $result = Comment::destroy($id);
+
+        return response()->json($result);
+    }
+
+    /**
+     * 编辑
+     *
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit($id)
+    {
+        return $this->response->item(
+            $this->comment->getById($id)
+        );
+    }
+
+    /**
+     * 更新
+     *
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(Request $request, $id)
+    {
+        $this->comment->update($id, $request->all());
+
+        return response()->json(true);
     }
 
 }

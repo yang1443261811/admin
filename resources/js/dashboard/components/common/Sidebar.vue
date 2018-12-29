@@ -27,8 +27,9 @@
             <li class="nav-discussions">
                 <router-link :to="{name:'discussions'}"> <i class="fa fa-question-circle"></i> Discussion </router-link>
             </li>
-            <li class="nav-comments"><a href="/admin/comments" class="">
-                <i class="fa fa-comments"></i> Comments </a></li>
+            <li class="nav-comments">
+                <router-link :to="{name:'comments'}"> <i class="fa fa-comments"></i> Comments </router-link>
+            </li>
             <li class="nav-files"><a href="/admin/files" class="">
                 <i class="fa fa-folder"></i> Files </a></li>
             <li class="nav-tags"><a href="/admin/tags" class="">

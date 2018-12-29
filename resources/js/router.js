@@ -58,6 +58,16 @@ export default new vueRouter({
                     path: 'discussion/edit/:id',
                     name: 'discussion.edit',
                     component: Vue.component('discussions', require('dashboard/pages/discussion/Edit.vue'))
+                },
+                {
+                    path: 'comments',
+                    name: 'comments',
+                    component: Vue.component('comments', require('dashboard/pages/comment/Comment.vue'))
+                },
+                {
+                    path: 'comment/edit/:id',
+                    name: 'comment.edit',
+                    component: Vue.component('comments', require('dashboard/pages/comment/Edit.vue'))
                 }
             ],
             mode: 'history',

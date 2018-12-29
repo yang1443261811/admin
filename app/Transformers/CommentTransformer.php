@@ -19,7 +19,7 @@ class CommentTransformer extends TransformerAbstract
             'avatar'        => isset($comment->user) ? $comment->user->avatar : config('blog.default_avatar'),
             'commentable'   => isset($comment->commentable) ? $comment->commentable->title : 'Be Forbidden!',
             'type'          => $comment->commentable_type,
-            'content_raw'   => $comment->content,
+            'content'       => $comment->content,
             'created_at'    => $comment->created_at,
             'is_voted'      => \Auth()->id() ? $comment->isVotedBy(\Auth()->id()) : false,
             'is_up_voted'   => \Auth()->id() ? \Auth()->user()->hasUpVoted($comment) : false,
