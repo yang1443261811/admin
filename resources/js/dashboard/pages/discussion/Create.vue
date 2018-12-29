@@ -12,7 +12,7 @@
     <div class="row">
         <div class="box">
             <div class="box-title">
-                <small class="float-right"><a href="/admin/discussions/" class="btn btn-sm btn-secondary">Back</a>
+                <small class="float-right"><a class="btn btn-sm btn-secondary" @click.prevent="back">Back</a>
                 </small>
                 <h5>Create Discussion</h5>
             </div>
@@ -111,9 +111,9 @@
 
                         this.$router.push({name: 'discussions'})
                     }).catch(({response}) => {
-                    let errors = response.data.errors;
-                    let keys = Object.keys(errors);
-                    toastr.warning(errors[keys[0]]);
+                        let errors = response.data.errors;
+                        let keys = Object.keys(errors);
+                        toastr.warning(errors[keys[0]]);
                 })
             },
             loadTags() {
@@ -122,6 +122,9 @@
                         this.allTag = response.data.data
                     })
             },
+            back(){
+                this.$router.back();
+            }
         }
     }
 </script>
